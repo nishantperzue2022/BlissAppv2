@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.Feedback.FeedbackHistoryPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:BlissApp.DTO.FeedbackModule;assembly=BlissApp.DTO"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewmodel="clr-namespace:BlissApp.ViewModels"
+    Title="Feedback History"
+    Shell.BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.TitleColor="Black">
+
+    <Grid
+        ColumnDefinitions="*,*"
+        ColumnSpacing="5"
+        RowDefinitions="*,Auto"
+        RowSpacing="0">
+        <RefreshView
+            Grid.ColumnSpan="2"
+            Command="{Binding GetHistoryCommand}"
+            IsRefreshing="{Binding IsRefreshing}">
+            <CollectionView ItemsSource="{Binding Feedbacks}" SelectionMode="None">
+
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                            <Image Margin="50" Source="empty.svg" />
+                        </StackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:FeedbackDetailDTO">
+
+                        <Frame
+                            Margin="10"
+                            Padding="20"
+                            Style="{StaticResource CardView}">
+
+                            <VerticalStackLayout>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Margin="0,0,0,0"
+                                    FontSize="15"
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource LabelBold}"
+                                    Text="{Binding PatientName}" />
+                                <Grid ColumnSpacing="5" RowSpacing="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        FontAttributes="Bold"
+                                        Style="{StaticResource LabelMedium}"
+                                        Text="Department:" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Style="{StaticResource LabelMedium}"
+                                        Text="{Binding DepartmentName}" />
+
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        FontAttributes="Bold"
+                                        Style="{StaticResource LabelMedium}"
+                                        Text="Description:" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Style="{StaticResource LabelMedium}"
+                                        Text="{Binding Description}" />
+
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        FontAttributes="Bold"
+                                        Style="{StaticResource LabelMedium}"
+                                        Text="Medical Facility:" />
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        Style="{StaticResource LabelMedium}"
+                                        Text="{Binding MedicalCentreName}" />
+
+                                    <Label
+                                        Grid.Row="3"
+                                        Grid.Column="0"
+                                        FontAttributes="Bold"
+                                        Style="{StaticResource LabelMedium}"
+                                        Text="Date Of Visit:" />
+                                    <Label
+                                        Grid.Row="3"
+                                        Grid.Column="1"
+                                        Style="{StaticResource LabelMedium}"
+                                        Text="{Binding NewDateOfVisit}" />
+
+                                    <!--<Label
+                                            x:Name="label"
+                                            Grid.Row="3"
+                                            Grid.Column="1"
+                                            HorizontalTextAlignment="End"
+                                            Text="Delete"
+                                            TextColor="Red">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ComplaintDetailViewModel}}, Path=DeleteCommand}" CommandParameter="{Binding .}" />
+                                            </Label.GestureRecognizers>
+                                        </Label>-->
+
+                                </Grid>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        <ActivityIndicator
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="2"
+            HorizontalOptions="Fill"
+            IsRunning="{Binding IsBusy}"
+            IsVisible="{Binding IsBusy}"
+            VerticalOptions="Center" />
+    </Grid>
+
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding GetHistoryCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+</ContentPage>

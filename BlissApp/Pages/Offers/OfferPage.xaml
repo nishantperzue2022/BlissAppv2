@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.Offers.OfferPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:BlissApp.Utility"
+    xmlns:model="clr-namespace:BlissApp.DTO.OfferModule;assembly=BlissApp.DTO"
+    xmlns:templates="clr-namespace:BlissApp.Controls"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewmodel="clr-namespace:BlissApp.ViewModels"
+    Title="Offers"
+    Background="{StaticResource BackgroudColor}"
+    Shell.BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.TitleColor="Black">
+
+    <StackLayout>
+        <Image
+            x:Name="imgLoader"
+            Margin="10"
+            HorizontalOptions="Center"
+            IsAnimationPlaying="True"
+            Source="offer.gif" />
+    </StackLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--  TabView Container  -->
+
+
+
+    <!--<WebView Source="https://skisoftsystems.com" />-->
+
+
+    <!--<ScrollView>
+        <StackLayout Grid.Row="0">
+            <VerticalStackLayout Margin="10">
+                <Label
+                    FontSize="15"
+                    HorizontalOptions="Start"
+                    Style="{StaticResource LabelBold}"
+                    Text="Ongoing Offers" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout>
+                <CollectionView ItemsSource="{Binding OfferList}" SelectionMode="None">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout HorizontalItemSpacing="5" Orientation="Horizontal" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.EmptyView>
+                        <ContentView>
+                            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                                <Image Margin="50" Source="empty.svg" />
+                            </StackLayout>
+                        </ContentView>
+                    </CollectionView.EmptyView>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:OfferDTO">
+                            <StackLayout>
+                                <Border
+                                    Margin="5,0,0,0"
+                                    Stroke="{StaticResource Primary}"
+                                    WidthRequest="180">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="10" />
+                                    </Border.StrokeShape>
+                                    <StackLayout Margin="10">
+                                        <Label Text="Netmeds Diabetic Check up" />
+                                        <Label Text="52 Test" />
+                                    </StackLayout>
+                                </Border>
+                            </StackLayout>
+    -->
+    <!--<Grid Margin="10">
+
+                            <Frame
+                                Padding="0"
+                                CornerRadius="20"
+                                HasShadow="True"
+                                VerticalOptions="Start">
+
+                                <VerticalStackLayout
+                                    Grid.Column="0"
+                                    Padding="15"
+                                    VerticalOptions="Center">
+
+                                    <Grid ColumnSpacing="5">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="2"
+                                            Style="{StaticResource LabelMedium}"
+                                            Text="{Binding Title}" />
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="2"
+                                            Style="{StaticResource LabelMedium}"
+                                            Text="{Binding Title}" />
+                                    </Grid>
+                                </VerticalStackLayout>
+                            </Frame>
+                        </Grid>-->
+    <!--
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+
+                <ActivityIndicator
+                    Grid.RowSpan="2"
+                    Grid.ColumnSpan="2"
+                    HorizontalOptions="Fill"
+                    IsRunning="{Binding IsBusy}"
+                    IsVisible="{Binding IsBusy}"
+                    VerticalOptions="Center" />
+
+            </VerticalStackLayout>
+
+
+            <StackLayout>
+                <templates:LargeTextLabel
+                    Command="{Binding ExpandContractCommand}"
+                    Expanded="{Binding TextExpanded}"
+                    Text="{Binding LabelText}" />
+            </StackLayout>
+
+        </StackLayout>
+
+
+
+
+    </ScrollView>
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding GetOffersCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>-->
+</ContentPage>

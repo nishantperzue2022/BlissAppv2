@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.Settings.SettingsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:BlissApp.Utility"
+    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    Title="Settings"
+    Background="{StaticResource BackgroudColor}"
+    Shell.BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.TitleColor="Black">
+    <ScrollView>
+        <StackLayout>
+            <Grid IsVisible="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    Grid.ColumnSpan="2"
+                    Margin="10,20,0,0"
+                    FontSize="15"
+                    Style="{StaticResource LabelBold}"
+                    Text="Biometric and  Security"
+                    TextColor="{StaticResource Primary}" />
+
+                <Image
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="10,0,0,0"
+                    HeightRequest="50"
+                    HorizontalOptions="Start"
+                    Source="biom1.png"
+                    VerticalOptions="Center" />
+
+                <StackLayout
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="-50,0,0,0">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Data Vault" />
+                    <Label FontSize="13" Text="Biometric Security" />
+                </StackLayout>
+
+                <Image
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Margin="60,0,0,0"
+                    HeightRequest="15"
+                    HorizontalOptions="Start"
+                    Source="forward"
+                    VerticalOptions="Center" />
+
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ManageBiometricsCommand}" />
+                </Grid.GestureRecognizers>
+            </Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    Grid.ColumnSpan="2"
+                    Margin="10,20,0,0"
+                    FontSize="15"
+                    Style="{StaticResource LabelBold}"
+                    Text="PIN"
+                    TextColor="{StaticResource Primary}" />
+
+                <Image
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="10,0,0,0"
+                    HeightRequest="50"
+                    HorizontalOptions="Start"
+                    Source="lock.png"
+                    VerticalOptions="Center" />
+
+                <StackLayout
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="-50,0,0,0">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Change PIN" />
+                    <Label FontSize="13" Text="Keep your account safe and Secure" />
+                </StackLayout>
+
+                <Image
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Margin="60,0,0,0"
+                    HeightRequest="15"
+                    HorizontalOptions="Start"
+                    Source="forward"
+                    VerticalOptions="Center" />
+
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ChangePasswordCommand}" />
+                </Grid.GestureRecognizers>
+            </Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    Grid.ColumnSpan="2"
+                    Margin="10,20,0,0"
+                    FontSize="15"
+                    Style="{StaticResource LabelBold}"
+                    Text="Manage Account"
+                    TextColor="{StaticResource Primary}" />
+
+                <Image
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="10,0,0,0"
+                    HeightRequest="50"
+                    HorizontalOptions="Start"
+                    Source="remove.png"
+                    VerticalOptions="Center" />
+
+                <StackLayout
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="-50,0,0,0">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Delete Account" />
+                    <Label FontSize="13" Text="Manage your account's privacy" />
+                </StackLayout>
+
+                <Image
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Margin="60,0,0,0"
+                    HeightRequest="15"
+                    HorizontalOptions="Start"
+                    Source="forward"
+                    VerticalOptions="Center" />
+
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToDeleteAccountPageCommand}" />
+                </Grid.GestureRecognizers>
+            </Grid>
+            <Grid IsVisible="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    Grid.ColumnSpan="2"
+                    Margin="10,20,0,0"
+                    FontSize="15"
+                    Style="{StaticResource LabelBold}"
+                    Text="Common"
+                    TextColor="{StaticResource Primary}" />
+
+                <Image
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="10,0,0,0"
+                    HeightRequest="50"
+                    HorizontalOptions="Start"
+                    Source="terms.png"
+                    VerticalOptions="Center" />
+
+                <StackLayout
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="-50,0,0,0">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Terms of service" />
+                    <Label FontSize="13" Text="Read our terms of service" />
+                </StackLayout>
+
+                <Image
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Margin="60,0,0,0"
+                    HeightRequest="15"
+                    HorizontalOptions="Start"
+                    Source="forward"
+                    VerticalOptions="Center" />
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TermsCommand}" />
+                </Grid.GestureRecognizers>
+            </Grid>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    Grid.ColumnSpan="2"
+                    Margin="10,20,0,0"
+                    FontSize="15"
+                    Style="{StaticResource LabelBold}"
+                    Text="My Application"
+                    TextColor="{StaticResource Primary}" />
+
+                <Image
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="10,0,0,0"
+                    HeightRequest="50"
+                    HorizontalOptions="Start"
+                    Source="reset.png"
+                    VerticalOptions="Center" />
+
+                <StackLayout
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="-50,0,0,0">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Reset Application" />
+                    <Label FontSize="13" Text="Clear all the data" />
+                </StackLayout>
+
+                <Image
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Margin="60,0,0,0"
+                    HeightRequest="15"
+                    HorizontalOptions="Start"
+                    Source="forward"
+                    VerticalOptions="Center" />
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ResetApplicationCommand}" />
+                </Grid.GestureRecognizers>
+            </Grid>
+
+            <Grid Margin="0,20,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+
+                <Image
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="10,0,0,0"
+                    HeightRequest="50"
+                    HorizontalOptions="Start"
+                    Source="exit.png"
+                    VerticalOptions="Center" />
+
+                <StackLayout
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="-50,0,0,0">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        Text="Exit Application" />
+                    <Label FontSize="13" Text="Exit" />
+                </StackLayout>
+
+                <Image
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Margin="60,0,0,0"
+                    HeightRequest="15"
+                    HorizontalOptions="Start"
+                    Source="forward"
+                    VerticalOptions="Center" />
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ExitApplicationCommand}" />
+                </Grid.GestureRecognizers>
+            </Grid>
+
+            <!--<Button Text="Exit" x:Name="btnExit" Clicked="btnExit_Clicked"  IsVisible="True"  Margin="10"/>-->
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

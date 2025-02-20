@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.Account.SignInPage2"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:BlissApp.Converters"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:sfCore="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Title="SignInPage2"
+    NavigationPage.HasNavigationBar="false"
+    Shell.NavBarIsVisible="False"
+    Style="{StaticResource OnBoardingAndRegistrationContentPages}">
+    <Page.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="White" StatusBarStyle="DarkContent" />
+    </Page.Behaviors>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="sfCoreLabelStyle" TargetType="sfCore:LabelStyle">
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontFamily" Value="PoppinsRegular" />
+                <Setter Property="TextColor" Value="{StaticResource LabelLight}" />
+            </Style>
+            <converters:BoolToInverseConverter x:Key="BoolToInverseConverter" />
+            <converters:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <ScrollView>
+
+        <StackLayout>
+
+            <StackLayout
+                Padding="20"
+                HorizontalOptions="Fill"
+                VerticalOptions="FillAndExpand">
+
+                <Image
+                    Margin="20"
+                    Aspect="Fill"
+                    HeightRequest="50"
+                    HorizontalOptions="Center"
+                    Source="logo" />
+                <Label
+                    Margin="0,0,0,10"
+                    FontSize="18"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource LabelMedium}"
+                    Text="Towards a Healthier Kenya"
+                    VerticalOptions="Start" />
+                <Label
+                    Margin="0,5,0,0"
+                    FontSize="26"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource LabelMedium}"
+                    Text="Welcome Back !"
+                    VerticalOptions="Start" />
+
+                <Label
+                    Margin="0,0,0,0"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource LabelLoginWith}"
+                    Text="{Binding ActiveUser}"
+                    VerticalOptions="Start" />
+
+                <StackLayout
+                    HorizontalOptions="Fill"
+                    Spacing="10"
+                    VerticalOptions="FillAndExpand">
+
+                    <sfCore:SfTextInputLayout
+                        EnablePasswordVisibilityToggle="true"
+                        ErrorText="{Binding PinErrorText}"
+                        HasError="{Binding PinHasError}"
+                        Hint="Enter Your PIN"
+                        Style="{StaticResource sfInputLayoutOutlineStyle}">
+                        <Entry
+                            Margin="0"
+                            IsPassword="True"
+                            Keyboard="Numeric"
+                            Text="{Binding Password}"
+                            VerticalOptions="Center" />
+                        <sfCore:SfTextInputLayout.HintLabelStyle>
+                            <sfCore:LabelStyle FontFamily="PoppinsRegular" FontSize="16" />
+                        </sfCore:SfTextInputLayout.HintLabelStyle>
+                    </sfCore:SfTextInputLayout>
+
+                    <Grid
+                        Margin="0,-10,0,0"
+                        ColumnDefinitions="*,*"
+                        RowDefinitions="*">
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource LabelMedium}"
+                            Text="Forgot PIN?">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToForgotPINPageCommand}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            HorizontalOptions="End"
+                            Style="{StaticResource LabelMedium}"
+                            Text="Use OTP">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OTPLoginPageCommand}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Grid>
+
+                    <StackLayout
+                        Margin="0,0,0,20"
+                        HorizontalOptions="Fill"
+                        Spacing="10"
+                        VerticalOptions="End">
+
+
+                        <StackLayout
+                            Margin="0,0,0,10"
+                            HorizontalOptions="Fill"
+                            Spacing="10"
+                            VerticalOptions="End">
+
+                            <ActivityIndicator
+                                HorizontalOptions="Center"
+                                IsRunning="{Binding IsBusy}"
+                                IsVisible="{Binding IsBusy}"
+                                VerticalOptions="Center"
+                                Color="{StaticResource Primary}" />
+
+
+                            <StackLayout Orientation="Horizontal" Spacing="5">
+                                <Grid ColumnDefinitions="*,*" RowDefinitions="*">
+                                    <CheckBox
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        HorizontalOptions="Start"
+                                        IsChecked="{Binding IsKeepMeSignedInChecked}"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        HorizontalOptions="Fill"
+                                        Style="{StaticResource LabelMedium}"
+                                        Text="Keep me Signed in"
+                                        VerticalOptions="Center" />
+                                </Grid>
+                            </StackLayout>
+                        </StackLayout>
+
+
+
+                        <Button
+                            Command="{Binding LoginTwoCommand}"
+                            Style="{StaticResource BaseButton}"
+                            Text="Login" />
+
+                        <!--<Button
+                            Command="{Binding GoToForgotPINPageCommand}"
+                            IsVisible="{Binding IsForgotPinVisible}"
+                            Style="{StaticResource ButtonOutline}"
+                            Text="Forgot PIN ?" />-->
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding GetUserInfoCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+</ContentPage>

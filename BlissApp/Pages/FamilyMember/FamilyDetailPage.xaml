@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.FamilyMember.FamilyDetailPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:BlissApp.Utility"
+    xmlns:model="clr-namespace:BlissApp.DTO.MemberModule;assembly=BlissApp.DTO"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewmodel="clr-namespace:BlissApp.ViewModels"
+    Title="Family Members"
+    Background="{StaticResource BackgroudColor}"
+    Shell.BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.TitleColor="Black">
+
+    <Grid
+        ColumnDefinitions="*,*"
+        ColumnSpacing="5"
+        RowDefinitions="*,Auto"
+        RowSpacing="0">
+        <RefreshView
+            Grid.ColumnSpan="2"
+            Command="{Binding GetFamilyMemberCommand}"
+            IsRefreshing="{Binding IsRefreshing}">
+            <CollectionView ItemsSource="{Binding listOfFamilyMember}" SelectionMode="None">
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                            <Image Margin="50" Source="empty.svg" />
+                        </StackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:FamilyMemberDTO">
+                        <Grid Margin="10">
+                            <Frame
+                                Padding="0"
+                                CornerRadius="20"
+                                HasShadow="True"
+                                Style="{StaticResource CardView}"
+                                VerticalOptions="Start">
+                                <!--<Frame.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:DependantsViewModel}}, Path=GoToDetailsCommand}"
+                                        CommandParameter="{Binding .}"/>
+                                    </Frame.GestureRecognizers>-->
+                                <VerticalStackLayout
+                                    Grid.Column="0"
+                                    Padding="15"
+                                    VerticalOptions="Center">
+                                    <Grid ColumnSpacing="5">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+
+                                        </Grid.ColumnDefinitions>
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Style="{StaticResource LabelMedium}"
+                                            Text="First Name" />
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Style="{StaticResource LabelMedium}"
+                                            Text=":" />
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="2"
+                                            Style="{StaticResource LabelMedium}"
+                                            Text="{Binding FirstName}" />
+
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Style="{StaticResource LabelMedium}"
+                                            Text="Last Name" />
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Style="{StaticResource LabelMedium}"
+                                            Text=":" />
+                                        <Label
+                                            Grid.Row="1"
+                                            Grid.Column="2"
+                                            Style="{StaticResource LabelMedium}"
+                                            Text="{Binding LastName}" />
+
+                                        <Label
+                                            Grid.Row="2"
+                                            Grid.Column="0"
+                                            Style="{StaticResource LabelMedium}"
+                                            Text="Relation" />
+                                        <Label
+                                            Grid.Row="2"
+                                            Grid.Column="1"
+                                            Style="{StaticResource LabelMedium}"
+                                            Text=":" />
+                                        <Label
+                                            Grid.Row="2"
+                                            Grid.Column="2"
+                                            Style="{StaticResource LabelMedium}"
+                                            Text="{Binding Relation}" />
+
+                                        <!--  Date Of Birth  -->
+                                        <Label
+                                            Grid.Row="3"
+                                            Grid.Column="0"
+                                            Style="{StaticResource LabelMedium}"
+                                            Text="Date Of Birth" />
+                                        <Label
+                                            Grid.Row="3"
+                                            Grid.Column="1"
+                                            Style="{StaticResource LabelMedium}"
+                                            Text=":" />
+                                        <Label
+                                            Grid.Row="3"
+                                            Grid.Column="2"
+                                            Style="{StaticResource LabelMedium}"
+                                            Text="{Binding NewDateOfBith}" />
+
+                                        <!--  Age  -->
+                                        <Label
+                                            Grid.Row="4"
+                                            Grid.Column="0"
+                                            Style="{StaticResource LabelMedium}"
+                                            Text="Age" />
+                                        <Label
+                                            Grid.Row="4"
+                                            Grid.Column="1"
+                                            Style="{StaticResource LabelMedium}"
+                                            Text=":" />
+
+                                        <Label
+                                            Grid.Row="4"
+                                            Grid.Column="2"
+                                            Style="{StaticResource LabelMedium}"
+                                            Text="{Binding Age}" />
+
+                                        <!--  Registration Date  -->
+                                        <Label
+                                            Grid.Row="5"
+                                            Grid.Column="0"
+                                            Style="{StaticResource LabelMedium}"
+                                            Text="Registration Date" />
+                                        <Label
+                                            Grid.Row="5"
+                                            Grid.Column="1"
+                                            Style="{StaticResource LabelMedium}"
+                                            Text=":" />
+                                        <Label
+                                            Grid.Row="5"
+                                            Grid.Column="2"
+                                            Style="{StaticResource LabelMedium}"
+                                            Text="{Binding NewCreateDate}" />
+
+
+                                    </Grid>
+                                    <VerticalStackLayout Margin="0,5,0,0">
+                                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="*">
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                FontFamily="FontAwesome"
+                                                FontSize="16"
+                                                Text="Edit"
+                                                TextColor="#08457E">
+                                                <!--<Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:FamilyMemberDetailsViewModel}}, Path=DeleteCommand}" CommandParameter="{Binding .}" />
+                                                    </Label.GestureRecognizers>-->
+                                            </Label>
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                FontFamily="FontAwesome"
+                                                FontSize="16"
+                                                Text="Confirm"
+                                                TextColor="#08457E">
+                                                <!--<Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:FamilyMemberDetailsViewModel}}, Path=EditDetailsCommand}" CommandParameter="{Binding .}" />
+                                                    </Label.GestureRecognizers>-->
+                                            </Label>
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="2"
+                                                FontFamily="FontAwesome"
+                                                FontSize="16"
+                                                Text="Delete"
+                                                TextColor="Red">
+                                                <!--<Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:FamilyMemberDetailsViewModel}}, Path=EditDetailsCommand}" CommandParameter="{Binding .}" />
+                                                    </Label.GestureRecognizers>-->
+                                            </Label>
+                                        </Grid>
+                                    </VerticalStackLayout>
+                                </VerticalStackLayout>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        <ActivityIndicator
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="2"
+            HorizontalOptions="Fill"
+            IsRunning="{Binding IsBusy}"
+            IsVisible="{Binding IsBusy}"
+            VerticalOptions="Center" />
+    </Grid>
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding GetFamilyMemberCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+</ContentPage>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.Pharmacy.HospitalPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:BlissApp.Utility"
+    xmlns:model="clr-namespace:BlissApp.DTO.MedicalCentres;assembly=BlissApp.DTO"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewmodel="clr-namespace:BlissApp.ViewModels"
+    Title="Hospitals"
+    Background="{StaticResource BackgroudColor}"
+    NavigationPage.HasNavigationBar="False"
+    Shell.BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.TitleColor="Black">
+    <Grid>
+        <RefreshView
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            Command="{Binding GetHospitalsCommand}"
+            IsRefreshing="{Binding IsRefreshing}">
+            <ScrollView>
+                <VerticalStackLayout BindableLayout.ItemsSource="{Binding ListOfMedicalCentre}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="model:Listofmedicalcentre">
+                            <StackLayout>
+                                <Border
+                                    Margin="15"
+                                    Padding="10"
+                                    Background="White"
+                                    BackgroundColor="White"
+                                    StrokeShape="RoundRectangle 5,5,5,5">
+                                    <Border.Shadow>
+                                        <Shadow Opacity="0.4" Offset="1,1" />
+                                    </Border.Shadow>
+                                    <StackLayout>
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            FontSize="14"
+                                            Style="{StaticResource LabelBold}"
+                                            Text="{Binding Location}" />
+                                        <BoxView
+                                            HeightRequest="2"
+                                            HorizontalOptions="Fill"
+                                            Color="{StaticResource AppPrimary}" />
+
+                                        <Grid
+                                            Margin="15,15,15,0"
+                                            ColumnSpacing="10"
+                                            RowDefinitions="*,*">
+                                            <Grid Grid.Row="0" ColumnDefinitions="*,*">
+                                                <Label
+                                                    Style="{StaticResource LabelMedium}"
+                                                    Text="Working Hours : "
+                                                    VerticalOptions="Start" />
+                                                <Image
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    HeightRequest="22"
+                                                    VerticalOptions="Center"
+                                                    WidthRequest="22">
+                                                    <Image.Source>
+                                                        <FontImageSource
+                                                            FontFamily="FontAwesome"
+                                                            Glyph="{x:Static fontawesome:IconFont.ClockO}"
+                                                            Size="20"
+                                                            Color="Black" />
+                                                    </Image.Source>
+                                                </Image>
+                                            </Grid>
+
+                                            <Label
+                                                Grid.Row="1"
+                                                Style="{StaticResource LabelLight}"
+                                                Text="{Binding Working_Hours}"
+                                                TextColor="Black" />
+                                        </Grid>
+
+                                        <Grid
+                                            Margin="15,15,15,20"
+                                            ColumnSpacing="10"
+                                            RowDefinitions="*,*">
+                                            <Grid Grid.Row="0" ColumnDefinitions="Auto,*">
+                                                <Label
+                                                    Grid.Column="0"
+                                                    Style="{StaticResource LabelMedium}"
+                                                    Text="Physical Address :"
+                                                    VerticalOptions="Start" />
+                                                <Image
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    HeightRequest="22"
+                                                    VerticalOptions="Center"
+                                                    WidthRequest="22">
+                                                    <Image.Source>
+                                                        <FontImageSource
+                                                            FontFamily="FontAwesome"
+                                                            Glyph="{x:Static fontawesome:IconFont.LocationArrow}"
+                                                            Size="20"
+                                                            Color="Black" />
+                                                    </Image.Source>
+                                                </Image>
+                                            </Grid>
+                                            <Label
+                                                Grid.Row="1"
+                                                Style="{StaticResource LabelLight}"
+                                                Text="{Binding Physical_Address}"
+                                                TextColor="Black" />
+                                        </Grid>
+                                    </StackLayout>
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding NavigateToBookAppointmentCommand, Source={RelativeSource AncestorType={x:Type viewmodel:PrescriptionViewModel}}, x:DataType=viewmodel:PrescriptionViewModel}" CommandParameter="{Binding .}" />
+                                    </Border.GestureRecognizers>
+                                </Border>
+                                <Border
+                                    Margin="15,-40,15,15"
+                                    Padding="10"
+                                    BackgroundColor="White"
+                                    Stroke="Transparent"
+                                    StrokeShape="RoundRectangle 5,5,5,5"
+                                    StrokeThickness="4"
+                                    WidthRequest="300">
+                                    <Border.Shadow>
+                                        <Shadow Opacity="0.4" Offset="1,1" />
+                                    </Border.Shadow>
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Offset="0" Color="{StaticResource AppPrimary}" />
+                                            <GradientStop Offset="2" Color="{StaticResource AppGreenColor}" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="16"
+                                        HorizontalOptions="Center"
+                                        Style="{StaticResource LabelLight}"
+                                        Text="Book Consultation"
+                                        TextColor="White"
+                                        VerticalOptions="Center" />
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding NavigateToBookAppointmentCommand, Source={RelativeSource AncestorType={x:Type viewmodel:PrescriptionViewModel}}, x:DataType=viewmodel:PrescriptionViewModel}" CommandParameter="{Binding .}" />
+                                    </Border.GestureRecognizers>
+                                </Border>
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+            </ScrollView>
+
+        </RefreshView>
+        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <ActivityIndicator
+                Grid.RowSpan="2"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="Fill"
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}"
+                VerticalOptions="Center"
+                Color="Goldenrod" />
+            <Label
+                FontAttributes="Bold"
+                IsVisible="{Binding IsBusy}"
+                Style="{StaticResource LabelMedium}"
+                Text="Please wait..."
+                TextColor="Goldenrod" />
+        </VerticalStackLayout>
+    </Grid>
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding GetHospitalsCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+</ContentPage>

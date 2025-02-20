@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.Account.ProfilePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:BlissApp.Control"
+    xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+    xmlns:fontawesome="clr-namespace:BlissApp.Utility"
+    xmlns:local="clr-namespace:BlissApp.Utility"
+    xmlns:model="clr-namespace:BlissApp.DTO.MemberModule;assembly=BlissApp.DTO"
+    xmlns:sfCore="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:sfavatar="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewmodel="clr-namespace:BlissApp.ViewModels"
+    Title="User Profile"
+    BackgroundColor="White"
+    Style="{StaticResource OnBoardingAndRegistrationContentPages}">
+
+
+    <ScrollView>
+        <StackLayout>
+
+            <StackLayout
+                Padding="20"
+                HorizontalOptions="Fill"
+                Spacing="0"
+                VerticalOptions="FillAndExpand">
+                <Grid
+                    ColumnDefinitions="0.2*,0.6*,0.2*"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Start">
+                    <StackLayout
+                        Grid.Column="0"
+                        HorizontalOptions="Fill"
+                        Orientation="Horizontal"
+                        Spacing="10">
+                        <Image
+                            HeightRequest="12"
+                            HorizontalOptions="Start"
+                            Source="back"
+                            VerticalOptions="Center" />
+                        <Label
+                            FontSize="14"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource LabelRegular}"
+                            Text="Back"
+                            VerticalOptions="Center" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackCommand}" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <Label
+                        Grid.Column="1"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource LabelMedium}"
+                        Text="Your Profile"
+                        VerticalOptions="Center" />
+                </Grid>
+
+                <sfavatar:SfAvatarView
+                    ContentType="Custom"
+                    CornerRadius="70"
+                    HeightRequest="140"
+                    HorizontalOptions="Center"
+                    ImageSource="{Binding PhotoPath}"
+                    VerticalOptions="Center"
+                    WidthRequest="140" />
+                <Border
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Margin="30,-70,-50,0"
+                    HeightRequest="40"
+                    Stroke="White"
+                    StrokeShape="RoundRectangle 80,80,80,80"
+                    StrokeThickness="5"
+                    WidthRequest="40">
+
+                    <ImageButton
+                        Grid.Row="2"
+                        Command="{Binding OpenProfilePicPageCommand}"
+                        HeightRequest="35"
+                        HorizontalOptions="Center"
+                        Source="photoicon.png"
+                        VerticalOptions="Center"
+                        WidthRequest="35" />
+                </Border>
+                <StackLayout Margin="0,80,0,0" Spacing="10">
+                    <Label
+                        FontSize="28"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource LabelMedium}"
+                        Text="{Binding MemberName}"
+                        TextColor="{StaticResource LabelDark}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+
+
+
+                    <StackLayout>
+
+
+                        <Grid ColumnDefinitions="*,*" RowDefinitions="*">
+                            <sfCore:SfTextInputLayout
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Hint="FirstName"
+                                Style="{StaticResource sfInputLayoutOutlineStyle}">
+                                <Entry
+                                    Margin="0"
+                                    Keyboard="Text"
+                                    Text="{Binding FirstName}"
+                                    VerticalOptions="Center" />
+                                <sfCore:SfTextInputLayout.HintLabelStyle>
+                                    <sfCore:LabelStyle FontFamily="PoppinsRegular" FontSize="16" />
+                                </sfCore:SfTextInputLayout.HintLabelStyle>
+                            </sfCore:SfTextInputLayout>
+
+                            <sfCore:SfTextInputLayout
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Hint="LastName"
+                                Style="{StaticResource sfInputLayoutOutlineStyle}">
+                                <Entry
+                                    Margin="0"
+                                    Keyboard="Text"
+                                    Text="{Binding LastName}"
+                                    VerticalOptions="Center" />
+                                <sfCore:SfTextInputLayout.HintLabelStyle>
+                                    <sfCore:LabelStyle FontFamily="PoppinsRegular" FontSize="16" />
+                                </sfCore:SfTextInputLayout.HintLabelStyle>
+                            </sfCore:SfTextInputLayout>
+                        </Grid>
+
+                        <sfCore:SfTextInputLayout Hint="Phone Number" Style="{StaticResource sfInputLayoutOutlineStyle}">
+                            <Entry
+                                Margin="0"
+                                IsReadOnly="True"
+                                Keyboard="Numeric"
+                                Text="{Binding PhoneNumber}"
+                                VerticalOptions="Center" />
+                            <sfCore:SfTextInputLayout.HintLabelStyle>
+                                <sfCore:LabelStyle FontFamily="PoppinsRegular" FontSize="16" />
+                            </sfCore:SfTextInputLayout.HintLabelStyle>
+                        </sfCore:SfTextInputLayout>
+
+
+                        <Grid ColumnDefinitions="*,*" RowDefinitions="*">
+                            <sfCore:SfTextInputLayout
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                ErrorText="{Binding CountyErrorText}"
+                                HasError="{Binding CountyHasError}"
+                                Hint="County"
+                                Style="{StaticResource sfInputLayoutOutlineStyle}">
+                                <editors:SfComboBox
+                                    DisplayMemberPath="Name"
+                                    BackgroundColor="White"
+                                    IsEditable="True"
+                                    ItemsSource="{Binding ListOfCounties}"
+                                    SelectedItem="{Binding SelectedCounty}"
+                                    TextMemberPath="Name" />
+                                <sfCore:SfTextInputLayout.HintLabelStyle>
+                                    <sfCore:LabelStyle FontFamily="PoppinsRegular" FontSize="16" />
+                                </sfCore:SfTextInputLayout.HintLabelStyle>
+                            </sfCore:SfTextInputLayout>
+
+
+                            <sfCore:SfTextInputLayout
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Hint="Status"
+                                Style="{StaticResource sfInputLayoutOutlineStyle}">
+                                <Entry
+                                    Margin="0"
+                                    IsReadOnly="True"
+                                    Keyboard="Numeric"
+                                    Text="{Binding Status}"
+                                    VerticalOptions="Center" />
+                                <sfCore:SfTextInputLayout.HintLabelStyle>
+                                    <sfCore:LabelStyle FontFamily="PoppinsRegular" FontSize="16" />
+                                </sfCore:SfTextInputLayout.HintLabelStyle>
+                            </sfCore:SfTextInputLayout>
+                        </Grid>
+
+                        <sfCore:SfTextInputLayout
+                            ErrorText="{Binding EmailErrorText}"
+                            HasError="{Binding EmailHasError}"
+                            Hint="Email"
+                            IsEnabled="{Binding EmailStatus}"
+                            Style="{StaticResource sfInputLayoutOutlineStyle}">
+                            <Entry
+                                Margin="0"
+                                IsReadOnly="False"
+                                Keyboard="Text"
+                                Text="{Binding Email}"
+                                VerticalOptions="Center" />
+                            <sfCore:SfTextInputLayout.HintLabelStyle>
+                                <sfCore:LabelStyle FontFamily="PoppinsRegular" FontSize="16" />
+                            </sfCore:SfTextInputLayout.HintLabelStyle>
+                        </sfCore:SfTextInputLayout>
+                        <Button
+                            Margin="0,0,0,10"
+                            Command="{Binding SendEmailVerificationOTPCommand}"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource BaseButton}"
+                            Text="Verify Email" />
+
+                        <Grid ColumnDefinitions="*,*" RowDefinitions="*">
+                            <sfCore:SfTextInputLayout
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Margin="0,0,0,0"
+                                Hint="Date Of Birth"
+                                Style="{StaticResource sfInputLayoutOutlineStyle}">
+                                <DatePicker
+                                    Date="{Binding DateOfBirth}"
+                                    Format="dd-MMM-yyyy"
+                                    HorizontalOptions="FillAndExpand"
+                                    MaximumDate="{Binding MaximumDate}"
+                                    VerticalOptions="Center" />
+                                <sfCore:SfTextInputLayout.HintLabelStyle>
+                                    <sfCore:LabelStyle FontFamily="PoppinsRegular" FontSize="15" />
+                                </sfCore:SfTextInputLayout.HintLabelStyle>
+                            </sfCore:SfTextInputLayout>
+
+                            <sfCore:SfTextInputLayout
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="0,0,0,10"
+                                Hint="Blood Group"
+                                Style="{StaticResource sfInputLayoutOutlineStyle}">
+                                <editors:SfComboBox
+                                    DisplayMemberPath="Name"
+                                    BackgroundColor="White"
+                                    IsEditable="True"
+                                    ItemsSource="{Binding ListOfBloodGroup}"
+                                    SelectedItem="{Binding SelectedBloodGroup}"
+                                    TextMemberPath="Name" />
+                                <sfCore:SfTextInputLayout.HintLabelStyle>
+                                    <sfCore:LabelStyle FontFamily="PoppinsRegular" FontSize="16" />
+                                </sfCore:SfTextInputLayout.HintLabelStyle>
+                            </sfCore:SfTextInputLayout>
+                        </Grid>
+
+                        <Label Text="Gender" />
+
+                        <syncfusion:SfRadioGroup x:Name="radioGroup" Spacing="0">
+                            <syncfusion:SfRadioButton
+                                x:Name="male"
+                                StateChanged="male_StateChanged"
+                                Text="Male" />
+                            <syncfusion:SfRadioButton
+                                x:Name="female"
+                                StateChanged="male_StateChanged"
+                                Text="Female" />
+                            <syncfusion:SfRadioButton
+                                x:Name="other"
+                                StateChanged="male_StateChanged"
+                                Text="Other" />
+
+                        </syncfusion:SfRadioGroup>
+
+
+
+
+                        <Button
+                            Command="{Binding UpdateAccountCommand}"
+                            IsVisible="True"
+                            Style="{StaticResource BaseButton}"
+                            Text="Update Profile" />
+
+                    </StackLayout>
+
+
+
+
+                </StackLayout>
+                <Button
+                    Command="{Binding UploadECardPhotoCommand}"
+                    IsVisible="False"
+                    Style="{StaticResource BaseButton}"
+                    Text="Upload E-Card Photo" />
+            </StackLayout>
+
+            <StackLayout Margin="10,0,10,0">
+
+                <CollectionView ItemsSource="{Binding listOfFamilyMember}" SelectionMode="None">
+                    <CollectionView.EmptyView>
+                        <ContentView>
+                            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                                <Image Margin="50" Source="empty.svg" />
+                            </StackLayout>
+                        </ContentView>
+                    </CollectionView.EmptyView>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:FamilyMemberDTO">
+                            <VerticalStackLayout>
+
+                                <Label
+                                    Margin="10,0,0,0"
+                                    FontSize="15"
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource LabelBold}"
+                                    Text="Family Members" />
+
+                                <Grid Margin="10">
+
+
+                                    <Border Padding="0" VerticalOptions="Start">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="10" />
+                                        </Border.StrokeShape>
+                                        <VerticalStackLayout
+                                            Grid.Column="0"
+                                            Padding="15"
+                                            VerticalOptions="Center">
+                                            <Grid ColumnSpacing="5">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    Style="{StaticResource LabelMedium}"
+                                                    Text="First Name" />
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    Style="{StaticResource LabelMedium}"
+                                                    Text=":" />
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="2"
+                                                    Style="{StaticResource LabelMedium}"
+                                                    Text="{Binding FirstName}" />
+
+
+                                                <Label
+                                                    Grid.Row="1"
+                                                    Grid.Column="0"
+                                                    Style="{StaticResource LabelMedium}"
+                                                    Text="Last Name" />
+                                                <Label
+                                                    Grid.Row="1"
+                                                    Grid.Column="1"
+                                                    Style="{StaticResource LabelMedium}"
+                                                    Text=":" />
+                                                <Label
+                                                    Grid.Row="1"
+                                                    Grid.Column="2"
+                                                    Style="{StaticResource LabelMedium}"
+                                                    Text="{Binding LastName}" />
+
+                                                <Label
+                                                    Grid.Row="2"
+                                                    Grid.Column="0"
+                                                    Style="{StaticResource LabelMedium}"
+                                                    Text="Relation" />
+                                                <Label
+                                                    Grid.Row="2"
+                                                    Grid.Column="1"
+                                                    Style="{StaticResource LabelMedium}"
+                                                    Text=":" />
+                                                <Label
+                                                    Grid.Row="2"
+                                                    Grid.Column="2"
+                                                    Style="{StaticResource LabelMedium}"
+                                                    Text="{Binding Relation}" />
+
+                                                <Label
+                                                    Grid.Row="3"
+                                                    Grid.Column="0"
+                                                    Style="{StaticResource LabelMedium}"
+                                                    Text="Date Of Birth" />
+                                                <Label
+                                                    Grid.Row="3"
+                                                    Grid.Column="1"
+                                                    Style="{StaticResource LabelMedium}"
+                                                    Text=":" />
+                                                <Label
+                                                    Grid.Row="3"
+                                                    Grid.Column="2"
+                                                    Style="{StaticResource LabelMedium}"
+                                                    Text="{Binding DateOfBirth, StringFormat='{0:MMMM dd, yyyy}'}" />
+                                            </Grid>
+                                        </VerticalStackLayout>
+                                    </Border>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </StackLayout>
+
+    </ScrollView>
+    <ContentPage.Behaviors>
+        <!--<toolkit:EventToCommandBehavior Command="{Binding GetFamilyMemberCommand}" EventName="Appearing" />
+        <toolkit:EventToCommandBehavior Command="{Binding GetBloodGroupCommand}" EventName="Appearing" />
+        <toolkit:EventToCommandBehavior Command="{Binding GetCountiesCommand}" EventName="Appearing" />-->
+    </ContentPage.Behaviors>
+</ContentPage>

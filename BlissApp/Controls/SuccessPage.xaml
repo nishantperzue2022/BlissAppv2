@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Controls.SuccessPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewmodel="clr-namespace:BlissApp.ViewModels"
+    Title="SuccessPage"
+    x:DataType="viewmodel:AlertViewModel"
+    Style="{StaticResource OnBoardingAndRegistrationContentPages}">
+
+    <VerticalStackLayout
+        Margin="10"
+        HorizontalOptions="Center"
+        Spacing="25"
+        VerticalOptions="Center">
+        <Image
+            x:Name="img"
+            HeightRequest="80"
+            Scale="0"
+            Source="check"
+            WidthRequest="80">
+            <Image.Behaviors>
+                <toolkit:IconTintColorBehavior TintColor="{StaticResource AppGreenColor}" />
+            </Image.Behaviors>
+        </Image>
+
+        <Label
+            x:Name="msg"
+            FontSize="18"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            Text="{Binding Text}"
+            TextColor="{StaticResource AppGreenColor}" />
+        <Button
+            x:Name="homebtn"
+            Padding="50,10"
+            BackgroundColor="{StaticResource AppGreenColor}"
+            Clicked="Homebtn_Clicked"
+            CornerRadius="22"
+            HorizontalOptions="Center"
+            Opacity="0"
+            Scale="0"
+            Text="Go to home screen" />
+    </VerticalStackLayout>
+</ContentPage>

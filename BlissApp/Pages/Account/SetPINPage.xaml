@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.Account.SetPINPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:sfCore="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Title="SetPINPage"
+    Style="{StaticResource OnBoardingAndRegistrationContentPages}">
+
+    <!--<Page.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="White" StatusBarStyle="DarkContent" />
+    </Page.Behaviors>-->
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="sfCoreLabelStyle" TargetType="sfCore:LabelStyle">
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontFamily" Value="PoppinsRegular" />
+                <Setter Property="TextColor" Value="{StaticResource LabelLight}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <StackLayout>
+            <StackLayout
+                Padding="20"
+                HorizontalOptions="Fill"
+                VerticalOptions="FillAndExpand">
+                <Image
+                    Margin="20"
+                    Aspect="Fill"
+                    HeightRequest="50"
+                    HorizontalOptions="Center"
+                    Source="logo" />
+                <Label
+                    Margin="0,0,0,10"
+                    FontSize="18"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource LabelMedium}"
+                    Text="Towards a healthier Kenya"
+                    VerticalOptions="Start" />
+                <Label
+                    Margin="0,5,0,0"
+                    FontSize="26"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource LabelMedium}"
+                    Text="Reset PIN"
+                    VerticalOptions="Start" />
+                <StackLayout
+                    HorizontalOptions="Fill"
+                    Spacing="10"
+                    VerticalOptions="FillAndExpand">
+                    <sfCore:SfTextInputLayout
+                        ErrorText="{Binding PinErrorText}"
+                        HasError="{Binding PinHasError}"
+                        Hint="New  PIN"
+                        Style="{StaticResource sfInputLayoutOutlineStyle}">
+                        <Entry
+                            Margin="0"
+                            IsPassword="True"
+                            Keyboard="Numeric"
+                            Text="{Binding NewPIN}"
+                            VerticalOptions="Center" />
+                        <sfCore:SfTextInputLayout.HintLabelStyle>
+                            <sfCore:LabelStyle FontFamily="PoppinsRegular" FontSize="16" />
+                        </sfCore:SfTextInputLayout.HintLabelStyle>
+                    </sfCore:SfTextInputLayout>
+
+                    <sfCore:SfTextInputLayout
+                        ErrorText="{Binding ConfirmPinErrorText}"
+                        HasError="{Binding ConfirmPinHasError}"
+                        Hint="Confirm PIN"
+                        Style="{StaticResource sfInputLayoutOutlineStyle}">
+                        <Entry
+                            Margin="0"
+                            IsPassword="True"
+                            Keyboard="Numeric"
+                            Text="{Binding ConfirmPIN}"
+                            VerticalOptions="Center" />
+                        <sfCore:SfTextInputLayout.HintLabelStyle>
+                            <sfCore:LabelStyle FontFamily="PoppinsRegular" FontSize="16" />
+                        </sfCore:SfTextInputLayout.HintLabelStyle>
+                    </sfCore:SfTextInputLayout>
+
+                    <StackLayout
+                        Margin="0,0,0,20"
+                        HorizontalOptions="Fill"
+                        Spacing="10"
+                        VerticalOptions="End">
+                        <ActivityIndicator
+                            HorizontalOptions="Center"
+                            IsRunning="{Binding IsBusy}"
+                            IsVisible="{Binding IsBusy}"
+                            VerticalOptions="Center"
+                            Color="{StaticResource Primary}" />
+                        <Button
+                            Command="{Binding CreateNewPINCommand}"
+                            Style="{StaticResource BaseButton}"
+                            Text="Continue" />
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

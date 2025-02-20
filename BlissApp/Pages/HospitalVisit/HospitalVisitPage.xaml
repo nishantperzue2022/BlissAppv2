@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.HospitalVisit.HospitalVisitPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:BlissApp.DTO.HospitalVisitModule;assembly=BlissApp.DTO"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewmodel="clr-namespace:BlissApp.ViewModels"
+    Title="Track Hospital Visits"
+    x:DataType="viewmodel:HospitalVisitViewModel"
+    Background="{StaticResource BackgroudColor}"
+    NavigationPage.HasNavigationBar="False">
+    <ScrollView>
+        <!--<Grid
+          ColumnDefinitions="*,*"
+          ColumnSpacing="5"
+          RowDefinitions="*,Auto"
+          RowSpacing="0">
+            <RefreshView  Grid.ColumnSpan="2"
+                       Command="{Binding GetHospitalVisitCommand}"
+                       IsRefreshing="{Binding IsRefreshing}">
+                <CollectionView
+                 ItemsSource="{Binding listofvisits}"
+                 SelectionMode="None">
+
+                    <CollectionView.EmptyView>
+                        <ContentView>
+                            <StackLayout  HorizontalOptions="Center"
+                                   VerticalOptions="Center">
+                                <Label    Text="Loading data..... !"
+                        Margin="10,25,10,10"
+                        FontAttributes="Bold"
+                        FontSize="18"
+                        HorizontalOptions="Fill"
+                        HorizontalTextAlignment="Center" />
+                             <Label Text="Try again later."
+                        FontAttributes="Italic"
+                        FontSize="12"
+                        HorizontalOptions="Fill"
+                        HorizontalTextAlignment="Center" />
+
+                                <Image Source="empty.svg" Margin="50" />
+
+                            </StackLayout>
+                        </ContentView>
+                    </CollectionView.EmptyView>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:HospitalVisitDTO">
+                            <Grid
+                               Margin="10">
+
+                                <Frame
+                                 HeightRequest="200"
+                                 Style="{StaticResource CardView}">
+
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:HospitalVisitViewModel}}, Path=GoToDetailsCommand}"
+                                     CommandParameter="{Binding .}"/>
+                                    </Frame.GestureRecognizers>
+                                    <Grid>
+
+                                        <VerticalStackLayout
+                                             VerticalOptions="Center"
+                                             Grid.Column="1"
+                                             Padding="15" >
+                                            <Grid ColumnSpacing="5" >
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition  Height="Auto"/>
+                                                    <RowDefinition  Height="Auto"/>
+                                                    <RowDefinition  Height="Auto"/>
+                                                    <RowDefinition  Height="Auto"/>
+                                                    <RowDefinition  Height="Auto"/>
+                                                </Grid.RowDefinitions>
+
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition  Width="Auto"/>
+                                                    <ColumnDefinition  Width="Auto"/>
+                                                    <ColumnDefinition  Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label Text="Hospital" Style="{StaticResource LabelMedium}"  Grid.Row="0" Grid.Column="0" />
+                                                <Label Text=":" Style="{StaticResource LabelMedium}"  Grid.Row="0" Grid.Column="1" />
+                                                <Label Style="{StaticResource LabelMedium}"  Grid.Row="0"  Grid.Column="2" Text="{Binding hospitalName}" />
+
+                                                <Label Text="Patient" Style="{StaticResource LabelMedium}"  Grid.Row="1" Grid.Column="0" />
+                                                <Label Text=":" Style="{StaticResource LabelMedium}"  Grid.Row="1" Grid.Column="1" />
+                                                <Label Style="{StaticResource LabelMedium}"   Grid.Row="1"  Grid.Column="2"  Text="{Binding name}" />
+
+                                                <Label Text="Visit Date" Style="{StaticResource LabelMedium}"  Grid.Row="2" Grid.Column="0" />
+                                                <Label Text=":" Style="{StaticResource LabelMedium}"  Grid.Row="2" Grid.Column="1" />
+                                                <Label Style="{StaticResource LabelMedium}"  Grid.Row="2"  Grid.Column="2" Text="{Binding mvcDate, StringFormat='{0:MMMM dd, yyyy}'}" />
+
+                                                <Label Text="Department" Style="{StaticResource LabelMedium}"  Grid.Row="3" Grid.Column="0" />
+                                                <Label Text=":" Style="{StaticResource LabelMedium}"  Grid.Row="3" Grid.Column="1" />
+                                                <Label Style="{StaticResource LabelMedium}"  Grid.Row="3"  Grid.Column="2" Text="{Binding department}" />
+
+                                                <Label Text="Mvc No" Style="{StaticResource LabelMedium}"  Grid.Row="4" Grid.Column="0" />
+                                                <Label Text=":" Style="{StaticResource LabelMedium}"  Grid.Row="4" Grid.Column="1" />
+                                                <Label Style="{StaticResource LabelMedium}"  Grid.Row="4"  Grid.Column="2" Text="{Binding mvcNumber}" />
+                                            </Grid>
+
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+
+
+            <ActivityIndicator IsVisible="{Binding IsBusy}"
+                        IsRunning="{Binding IsBusy}"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Center"
+                        Grid.RowSpan="2"
+                        Grid.ColumnSpan="2"/>
+
+        </Grid>-->
+
+    </ScrollView>
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding GetHospitalVisitCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
+</ContentPage>

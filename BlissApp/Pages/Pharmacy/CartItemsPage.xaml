@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.Pharmacy.CartItemsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:BlissApp.Utility"
+    xmlns:model="clr-namespace:BlissApp.DTO.OrderModule;assembly=BlissApp.DTO"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:vm="clr-namespace:BlissApp.ViewModels"
+    Title="Cart"
+    Background="{StaticResource BackgroudColor}"
+    NavigationPage.HasNavigationBar="False"
+    Shell.BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.TitleColor="Black">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding ClearCartCommand}" Text=" Clear Cart" />
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <RefreshView
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            Command="{Binding GetOrdersCommand}"
+            IsRefreshing="{Binding IsRefreshing}">
+
+            <CollectionView ItemsSource="{Binding ListOfOrders}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="8" Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                            <Image Margin="50" Source="undrawempty2.svg" />
+                        </StackLayout>
+                        <!--<StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                            <Label
+                                Margin="10,25,10,10"
+                                FontAttributes="Bold"
+                                FontSize="18"
+                                HorizontalOptions="Fill"
+                                HorizontalTextAlignment="Center"
+                                Text="No results matched your filter." />
+
+                        </StackLayout>-->
+                    </ContentView>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:OrderDTO">
+                        <Border
+                            Padding="10"
+                            BackgroundColor="White"
+                            StrokeShape="RoundRectangle 15"
+                            StrokeThickness="0">
+                            <Grid ColumnDefinitions="*,Auto,*">
+                                <Label
+                                    Grid.Column="0"
+                                    FontAttributes="Bold"
+                                    FontSize="13"
+                                    Text="{Binding MedicineName}"
+                                    VerticalOptions="Center" />
+
+                                <VerticalStackLayout
+                                    Grid.Column="1"
+                                    Spacing="2"
+                                    VerticalOptions="Center">
+                                    <Label Text="{Binding Quantity}" />
+                                </VerticalStackLayout>
+
+
+                                <Image
+                                    Grid.Column="2"
+                                    HeightRequest="25"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center"
+                                    WidthRequest="25">
+                                    <Image.Source>
+                                        <FontImageSource
+                                            FontFamily="FontAwesome"
+                                            Glyph="{x:Static fontawesome:IconFont.Trash}"
+                                            Size="20"
+                                            Color="Red" />
+                                    </Image.Source>
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding DeleteOrderCommand, Source={RelativeSource AncestorType={x:Type vm:OrderViewModel}}, x:DataType=vm:OrderViewModel}" CommandParameter="{Binding .}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+
+
+
+        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <ActivityIndicator
+                Grid.RowSpan="2"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="Fill"
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}"
+                VerticalOptions="Center"
+                Color="Goldenrod" />
+            <Label
+                FontAttributes="Bold"
+                IsVisible="{Binding IsBusy}"
+                Style="{StaticResource LabelMedium}"
+                Text="Please wait..."
+                TextColor="Goldenrod" />
+        </VerticalStackLayout>
+
+        <Border
+            Margin="5"
+            Padding="10"
+            BackgroundColor="White"
+            Stroke="{StaticResource AppGreenColor}"
+            StrokeShape="RoundRectangle 40"
+            StrokeThickness="1"
+            VerticalOptions="End">
+            <Grid ColumnDefinitions="*,*">
+                <Button
+                    Grid.Column="0"
+                    BackgroundColor="{StaticResource AppGreenColor}"
+                    Command="{Binding NavigateToAddToCartCommand}"
+                    CornerRadius="22"
+                    HorizontalOptions="Start"
+                    Text="+ Add to another item"
+                    TextColor="White"
+                    VerticalOptions="Center" />
+
+                <Button
+                    Grid.Column="1"
+                    Padding="25,10"
+                    BackgroundColor="{StaticResource AppGreenColor}"
+                    Command="{Binding SubmitOrderCommand}"
+                    CornerRadius="22"
+                    HorizontalOptions="End"
+                    Text="Submit Order"
+                    TextColor="White"
+                    VerticalOptions="Center" />
+            </Grid>
+        </Border>
+    </Grid>
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding GetOrdersCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+</ContentPage>

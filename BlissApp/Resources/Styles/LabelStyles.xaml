@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Style TargetType="Label">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LabelDark}, Dark={StaticResource White}}" />
+        <Setter Property="FontFamily" Value="PoppinsRegular" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray600}}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style x:Key="LabelBold" TargetType="Label">
+        <Setter Property="FontFamily" Value="PoppinsBold" />
+    </Style>
+
+    <Style x:Key="LabelMedium" TargetType="Label">
+        <Setter Property="FontFamily" Value="PoppinsMedium" />
+    </Style>
+
+    <Style x:Key="LabelRegular" TargetType="Label">
+        <Setter Property="FontFamily" Value="PoppinsRegular" />
+    </Style>
+
+    <Style x:Key="LabelThin" TargetType="Label">
+        <Setter Property="FontFamily" Value="PoppinsThin" />
+    </Style>
+
+    <Style x:Key="LabelLight" TargetType="Label">
+        <Setter Property="FontFamily" Value="PoppinsLight" />
+    </Style>
+
+    <Style
+        x:Key="LabelLoginWith"
+        BasedOn="{StaticResource LabelMedium}"
+        TargetType="Label">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="TextColor" Value="{StaticResource Primary}" />
+        <Setter Property="VerticalOptions" Value="Center" />
+    </Style>
+
+    <Style
+        x:Key="LabelError"
+        BasedOn="{StaticResource LabelLight}"
+        TargetType="Label">
+        <Setter Property="TextColor" Value="Red" />
+        <Setter Property="FontSize" Value="10" />
+    </Style>
+
+</ResourceDictionary>

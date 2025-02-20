@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.FindHospital.CountiesPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:BlissApp.Utility"
+    xmlns:model="clr-namespace:BlissApp.DTO.CountyModule;assembly=BlissApp.DTO"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewmodel="clr-namespace:BlissApp.ViewModels"
+    Title="Select County"
+    x:DataType="viewmodel:CountyViewModel"
+    Background="{StaticResource BackgroudColor}"
+    Shell.BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.TitleColor="Black">
+    <ScrollView>
+
+
+        <Grid>
+            <!--<ListView ItemsSource="{Binding listOfCounties}"
+                        SelectionMode="Single"
+                        HasUnevenRows="True"
+
+
+                    >
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="model:CountyDTO">
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                     Grid.Row="0"
+                                     Grid.Column="0"
+                                     HeightRequest="25"
+                                     WidthRequest="25" >
+                                    <Image.Source>
+                                        <FontImageSource FontFamily="FontAwesome" Glyph="{x:Static fontawesome:IconFont.MapMarker}" Color="#08457E" Size="20" />
+                                    </Image.Source>
+                                </Image>
+
+                                <Label
+                                  Grid.Row="0"
+                                  Grid.Column="1"
+                                  Text="{Binding Name}"
+                                  TextColor="Black" />
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>-->
+
+
+
+            <CollectionView
+                x:Name="colection"
+                ItemsSource="{Binding listOfCounties}"
+                SelectionMode="None">
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                            <Image
+                                HeightRequest="100"
+                                Source="empty_4.png"
+                                WidthRequest="100" />
+                        </StackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:CountyDTO">
+                        <Grid Margin="10">
+
+                            <HorizontalStackLayout Spacing="0">
+                                <Image
+                                    Margin="5"
+                                    HeightRequest="25"
+                                    WidthRequest="25">
+                                    <Image.Source>
+                                        <FontImageSource
+                                            FontFamily="FontAwesome"
+                                            Glyph="{x:Static fontawesome:IconFont.MapMarker}"
+                                            Size="20"
+                                            Color="Black" />
+                                    </Image.Source>
+                                </Image>
+
+                                <Label
+                                    Margin="5"
+                                    FontAttributes="Bold"
+                                    HorizontalTextAlignment="Start"
+                                    Style="{StaticResource LabelMedium}"
+                                    Text="{Binding Name}"
+                                    TextColor="Black"
+                                    VerticalTextAlignment="Start">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CountyViewModel}}, Path=GetCountyNameCommand}" CommandParameter="{Binding .}" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+
+        </Grid>
+
+
+    </ScrollView>
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding CountyListCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
+</ContentPage>

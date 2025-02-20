@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:vm="clr-namespace:BlissApp.ViewModels"
+    x:DataType="vm:OnboardingViewModel"
+    Style="{StaticResource OnBoardingAndRegistrationContentPages}">
+
+    <Page.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="White" StatusBarStyle="DarkContent" />
+    </Page.Behaviors>
+
+    <Grid RowDefinitions="*,Auto">
+        <CarouselView
+            Grid.Row="0"
+            HorizontalOptions="Fill"
+            IndicatorView="indicatorView"
+            ItemsSource="{Binding OnboardingSteps}"
+            Loop="False"
+            PositionChanged="CarouselView_PositionChanged"
+            VerticalOptions="FillAndExpand">
+            <CarouselView.ItemTemplate>
+                <DataTemplate x:DataType="vm:OnboardingModel">
+                    <StackLayout BackgroundColor="Transparent">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Image
+                                Grid.Row="0"
+                                Aspect="AspectFill"
+                                HorizontalOptions="Fill"
+                                Source="{Binding Image}"
+                                VerticalOptions="FillAndExpand" />
+                            <Label
+                                Grid.Row="1"
+                                Margin="0,70,0,0"
+                                FontSize="24"
+                                HorizontalOptions="Center"
+                                Style="{StaticResource LabelMedium}"
+                                Text="{Binding Heading}"
+                                TextColor="{StaticResource Black}"
+                                VerticalOptions="Start" />
+                            <Label
+                                Grid.Row="2"
+                                Margin="20,0,20,0"
+                                FontSize="14"
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource LabelLight}"
+                                Text="{Binding Description}"
+                                TextColor="{StaticResource Black}"
+                                TextType="Text" />
+
+                        </Grid>
+                    </StackLayout>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+
+        <VerticalStackLayout
+            Grid.Row="1"
+            Margin="10"
+            Spacing="10">
+
+            <Grid
+                ColumnDefinitions="*,Auto,*"
+                ColumnSpacing="5"
+                RowDefinitions="*">
+                <IndicatorView
+                    x:Name="indicatorView"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    HorizontalOptions="End"
+                    IndicatorColor="#009e4e"
+                    IndicatorSize="15"
+                    IndicatorsShape="Circle"
+                    SelectedIndicatorColor="#1f3c86"
+                    VerticalOptions="Center" />
+
+                <Button
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Padding="0"
+                    BackgroundColor="White"
+                    CornerRadius="10"
+                    FontAttributes="Bold"
+                    FontSize="16"
+                    HeightRequest="35"
+                    HorizontalOptions="EndAndExpand"
+                    IsVisible="{Binding IsNotLastStep}"
+                    Text="Skip"
+                    TextColor="Black"
+                    VerticalOptions="End"
+                    WidthRequest="65">
+                    <Button.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                    </Button.GestureRecognizers>
+                </Button>
+
+                <Button
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Padding="0"
+                    CornerRadius="10"
+                    FontAttributes="Bold"
+                    FontSize="12"
+                    HeightRequest="35"
+                    HorizontalOptions="End"
+                    IsVisible="{Binding IsLastStep}"
+                    Pressed="Button_Pressed"
+                    Text="Get Started"
+                    WidthRequest="100" />
+
+            </Grid>
+        </VerticalStackLayout>
+    </Grid>
+
+</ContentPage>

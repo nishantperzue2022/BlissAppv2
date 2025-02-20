@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.Appointment.AppointmentDetailsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:BlissApp.Utility"
+    xmlns:model="clr-namespace:BlissApp.DTO.AppointmentModule;assembly=BlissApp.DTO"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewmodel="clr-namespace:BlissApp.ViewModels"
+    Title="Appointments"
+    Background="{StaticResource BackgroudColor}"
+    NavigationPage.HasNavigationBar="False"
+    Shell.BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.TitleColor="#009e4e">
+
+    <Grid
+        ColumnDefinitions="*,*"
+        ColumnSpacing="5"
+        RowDefinitions="*,Auto"
+        RowSpacing="0">
+
+        <RefreshView
+            Grid.ColumnSpan="2"
+            Command="{Binding GetHistoryCommand}"
+            IsRefreshing="{Binding IsRefreshing}">
+            <CollectionView ItemsSource="{Binding ListOfAppointments}" SelectionMode="None">
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                            <Image Margin="50" Source="empty.svg" />
+                        </StackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:AppointmentDetailsDTO">
+                        <Border
+                            Margin="10,10,10,10"
+                            Padding="10"
+                            StrokeShape="RoundRectangle 5,5,5,5">
+                            <StackLayout>
+                                <Grid ColumnDefinitions="*,*" RowDefinitions="*">
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Margin="0,0,0,0"
+                                        FontSize="15"
+                                        HorizontalOptions="Start"
+                                        Style="{StaticResource LabelBold}"
+                                        Text="{Binding PatientName}" />
+                                </Grid>
+
+                                <Grid
+                                    Margin="15,15,15,0"
+                                    ColumnDefinitions="Auto,Auto,Auto"
+                                    ColumnSpacing="10"
+                                    RowDefinitions="*">
+                                    <Image
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        HeightRequest="22"
+                                        VerticalOptions="Center"
+                                        WidthRequest="22">
+                                        <Image.Source>
+                                            <FontImageSource
+                                                FontFamily="FontAwesome"
+                                                Glyph="{x:Static fontawesome:IconFont.Medkit}"
+                                                Size="20"
+                                                Color="Black" />
+                                        </Image.Source>
+                                    </Image>
+
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        FontSize="12"
+                                        Style="{StaticResource LabelMedium}"
+                                        Text="Medical Centre"
+                                        VerticalOptions="Start" />
+
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="2"
+                                        Style="{StaticResource LabelMedium}"
+                                        TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <Span Text=": " />
+                                                    <Span Text="{Binding MedicalCentre}" />
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </Grid>
+
+                                <Grid
+                                    Margin="15,15,15,0"
+                                    ColumnDefinitions="Auto,Auto,Auto"
+                                    ColumnSpacing="10"
+                                    RowDefinitions="*">
+                                    <Image
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        HeightRequest="22"
+                                        VerticalOptions="Center"
+                                        WidthRequest="22">
+                                        <Image.Source>
+                                            <FontImageSource
+                                                FontFamily="FontAwesome"
+                                                Glyph="{x:Static fontawesome:IconFont.BuildingO}"
+                                                Size="20"
+                                                Color="Black" />
+                                        </Image.Source>
+                                    </Image>
+
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        FontSize="12"
+                                        Style="{StaticResource LabelMedium}"
+                                        Text="Department"
+                                        VerticalOptions="Start" />
+
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="2"
+                                        Style="{StaticResource LabelMedium}"
+                                        TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <Span Text=": " />
+                                                    <Span Text="{Binding DepartmentName}" />
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </Grid>
+
+
+                                <Grid
+                                    Margin="15,15,15,0"
+                                    ColumnDefinitions="Auto,Auto,Auto"
+                                    ColumnSpacing="10"
+                                    RowDefinitions="*">
+                                    <Image
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        HeightRequest="22"
+                                        VerticalOptions="Center"
+                                        WidthRequest="22">
+                                        <Image.Source>
+                                            <FontImageSource
+                                                FontFamily="FontAwesome"
+                                                Glyph="{x:Static fontawesome:IconFont.Calendar}"
+                                                Size="20"
+                                                Color="Black" />
+                                        </Image.Source>
+                                    </Image>
+
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        FontSize="12"
+                                        Style="{StaticResource LabelMedium}"
+                                        Text="Date"
+                                        VerticalOptions="Start" />
+
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="2"
+                                        Style="{StaticResource LabelMedium}"
+                                        TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <Span Text=": " />
+                                                    <Span Text="{Binding NewProposedDate}" />
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </Grid>
+
+                                <Grid
+                                    Margin="15,15,15,0"
+                                    ColumnDefinitions="Auto,Auto,Auto"
+                                    ColumnSpacing="10"
+                                    RowDefinitions="*">
+                                    <Image
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        HeightRequest="22"
+                                        VerticalOptions="Center"
+                                        WidthRequest="22">
+                                        <Image.Source>
+                                            <FontImageSource
+                                                FontFamily="FontAwesome"
+                                                Glyph="{x:Static fontawesome:IconFont.ClockO}"
+                                                Size="20"
+                                                Color="Black" />
+                                        </Image.Source>
+                                    </Image>
+
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        FontSize="12"
+                                        Style="{StaticResource LabelMedium}"
+                                        Text="Time"
+                                        VerticalOptions="Start" />
+
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="2"
+                                        Style="{StaticResource LabelMedium}"
+                                        TextColor="Black">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <Span Text=": " />
+                                                    <Span Text="{Binding PriorityTime}" />
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </Grid>
+
+
+
+
+
+                            </StackLayout>
+                        </Border>
+
+
+
+
+
+
+
+
+
+                        <!--<Grid Margin="10">
+                                <Frame
+                                    Padding="0"
+                                    CornerRadius="20"
+                                    HasShadow="True"
+                                    Style="{StaticResource CardView}"
+                                    VerticalOptions="Start">
+
+
+
+
+
+                                    <VerticalStackLayout
+                                        Grid.Column="0"
+                                        Padding="15"
+                                        VerticalOptions="Center">
+                                        <Grid ColumnSpacing="5">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                Style="{StaticResource LabelMedium}"
+                                                Text="Patient Name" />
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                Style="{StaticResource LabelMedium}"
+                                                Text=":" />
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="2"
+                                                Style="{StaticResource LabelMedium}"
+                                                Text="{Binding PatientName}" />
+
+                                            <Label
+                                                Grid.Row="1"
+                                                Grid.Column="0"
+                                                Style="{StaticResource LabelMedium}"
+                                                Text="Dental" />
+                                            <Label
+                                                Grid.Row="1"
+                                                Grid.Column="1"
+                                                Style="{StaticResource LabelMedium}"
+                                                Text=":" />
+                                            <Label
+                                                Grid.Row="1"
+                                                Grid.Column="2"
+                                                Style="{StaticResource LabelMedium}"
+                                                Text="{Binding DepartmentName}" />
+
+
+                                            <Label
+                                                Grid.Row="2"
+                                                Grid.Column="0"
+                                                Style="{StaticResource LabelMedium}"
+                                                Text="Dental" />
+                                            <Label
+                                                Grid.Row="2"
+                                                Grid.Column="1"
+                                                Style="{StaticResource LabelMedium}"
+                                                Text=":" />
+                                            <Label
+                                                Grid.Row="3"
+                                                Grid.Column="2"
+                                                Style="{StaticResource LabelMedium}"
+                                                Text="{Binding MedicalCentre}" />
+                                        </Grid>
+
+                                    </VerticalStackLayout>
+                                </Frame>
+                            </Grid>-->
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+        <ActivityIndicator
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="2"
+            HorizontalOptions="Fill"
+            IsRunning="{Binding IsBusy}"
+            IsVisible="{Binding IsBusy}"
+            VerticalOptions="Center" />
+    </Grid>
+
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding GetHistoryCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+</ContentPage>

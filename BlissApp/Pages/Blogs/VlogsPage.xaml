@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.Blogs.VlogsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Vlogs"
+    Background="{StaticResource BackgroudColor}"
+    Shell.BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.TitleColor="Black">
+    <VerticalStackLayout Margin="0,10,0,0">
+
+        <Grid ColumnDefinitions="*,*" RowDefinitions="*">
+            <Border
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="10,0,0,0"
+                Stroke="#fff">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
+                <Grid Padding="10" RowDefinitions="Auto,Auto">
+                    <Border
+                        Grid.Row="0"
+                        Margin="0,-5,0,0"
+                        HeightRequest="130"
+                        HorizontalOptions="Center"
+                        StrokeShape="RoundRectangle 10,10,10,10"
+                        StrokeThickness="1"
+                        WidthRequest="180">
+                        <Image
+                            Aspect="Fill"
+                            HeightRequest="130"
+                            HorizontalOptions="Center"
+                            Source="hypertension"
+                            VerticalOptions="Center"
+                            WidthRequest="180" />
+                    </Border>
+                    <Label
+                        Grid.Row="1"
+                        FontSize="15"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource LabelBold}"
+                        Text="Understanding Hypertension (Pt 1)" />
+                </Grid>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding HypertensionCommand}" />
+                </Border.GestureRecognizers>
+            </Border>
+            <Border
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="0,0,10,0"
+                Stroke="#fff">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
+                <Grid Padding="10" RowDefinitions="Auto,Auto">
+                    <Border
+                        Grid.Row="0"
+                        Margin="0,-5,0,0"
+                        HeightRequest="130"
+                        HorizontalOptions="Center"
+                        StrokeShape="RoundRectangle 10,10,10,10"
+                        StrokeThickness="1"
+                        WidthRequest="180">
+
+                        <Image
+                            Aspect="Fill"
+                            HeightRequest="130"
+                            HorizontalOptions="Center"
+                            Source="mentalhealth"
+                            VerticalOptions="Center"
+                            WidthRequest="180" />
+                    </Border>
+                    <Label
+                        Grid.Row="1"
+                        FontSize="15"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource LabelBold}"
+                        Text="5 Ways To Manage Your Mental Health" />
+                </Grid>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding MentalHealthCommand}" />
+                </Border.GestureRecognizers>
+            </Border>
+        </Grid>
+
+    </VerticalStackLayout>
+</ContentPage>

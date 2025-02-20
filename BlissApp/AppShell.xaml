@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="BlissApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:account="clr-namespace:BlissApp.Pages.Account"
+    xmlns:appointment="clr-namespace:BlissApp.Pages.Appointment"
+    xmlns:blogs="clr-namespace:BlissApp.Pages.Blogs"
+    xmlns:callback="clr-namespace:BlissApp.Pages.Callback"
+    xmlns:contactUs="clr-namespace:BlissApp.Pages.ContactUs"
+    xmlns:dashboard="clr-namespace:BlissApp.Pages.Dashboard"
+    xmlns:dependants="clr-namespace:BlissApp.Pages.Dependants"
+    xmlns:familyMember="clr-namespace:BlissApp.Pages.FamilyMember"
+    xmlns:feedback="clr-namespace:BlissApp.Pages.Feedback"
+    xmlns:fontawesome="clr-namespace:BlissApp.Utility"
+    xmlns:hospitalVisit="clr-namespace:BlissApp.Pages.HospitalVisit"
+    xmlns:local="clr-namespace:BlissApp"
+    xmlns:locations="clr-namespace:BlissApp.Pages.MedicalCentres"
+    xmlns:offers="clr-namespace:BlissApp.Pages.Offers"
+    xmlns:pharmacy="clr-namespace:BlissApp.Pages.Pharmacy"
+    xmlns:settings="clr-namespace:BlissApp.Pages.Settings"
+    xmlns:telemedicine="clr-namespace:BlissApp.Pages.Telemedicine"
+    xmlns:templates="clr-namespace:BlissApp.Controls"
+    Shell.FlyoutBehavior="Flyout">
+
+    <Shell.FlyoutHeader>
+        <templates:FlyoutHeader />
+    </Shell.FlyoutHeader>
+
+    <ShellContent
+        Title="Dashboard"
+        ContentTemplate="{DataTemplate dashboard:DashboardPage}"
+        Route="DashboardPage">
+        <ShellContent.Icon>
+            <FontImageSource
+                FontFamily="FontAwesome"
+                Glyph="{x:Static fontawesome:IconFont.ClockO}"
+                Size="25"
+                Color="Black" />
+        </ShellContent.Icon>
+    </ShellContent>
+
+    <ShellContent
+        Title="Request Appointment"
+        ContentTemplate="{DataTemplate appointment:AppointmentPage}"
+        Route="AppointmentPage">
+        <ShellContent.Icon>
+            <FontImageSource
+                FontFamily="FontAwesome"
+                Glyph="{x:Static fontawesome:IconFont.CalendarCheckO}"
+                Size="25"
+                Color="Black" />
+        </ShellContent.Icon>
+    </ShellContent>
+
+    <ShellContent
+        Title="Family Members"
+        ContentTemplate="{DataTemplate familyMember:AddMemberPage}"
+        Route="AddMemberPage">
+        <ShellContent.Icon>
+            <FontImageSource
+                FontFamily="FontAwesome"
+                Glyph="{x:Static fontawesome:IconFont.Umbrella}"
+                Size="25"
+                Color="Black" />
+        </ShellContent.Icon>
+    </ShellContent>
+
+    <ShellContent
+        Title="Find Medical Centres"
+        ContentTemplate="{DataTemplate locations:MedicalCentrePage}"
+        Route="MedicalCentrePage">
+        <ShellContent.Icon>
+            <FontImageSource
+                FontFamily="FontAwesome"
+                Glyph="{x:Static fontawesome:IconFont.LocationArrow}"
+                Size="25"
+                Color="Black" />
+        </ShellContent.Icon>
+    </ShellContent>
+
+    <ShellContent
+        Title="Feedback"
+        ContentTemplate="{DataTemplate feedback:FeedbackPage}"
+        Route="FeedbackPage">
+        <ShellContent.Icon>
+            <FontImageSource
+                FontFamily="FontAwesome"
+                Glyph="{x:Static fontawesome:IconFont.ListAlt}"
+                Size="25"
+                Color="Black" />
+        </ShellContent.Icon>
+    </ShellContent>
+
+    <ShellContent
+        Title="Request Callback"
+        ContentTemplate="{DataTemplate callback:RequestCallbackPage}"
+        Route="RequestCallbackPage">
+        <ShellContent.Icon>
+            <FontImageSource
+                FontFamily="FontAwesome"
+                Glyph="{x:Static fontawesome:IconFont.AddressBookO}"
+                Size="25"
+                Color="Black" />
+        </ShellContent.Icon>
+    </ShellContent>
+
+    <ShellContent
+        Title="Pharmacy"
+        ContentTemplate="{DataTemplate pharmacy:PrescriptionPage}"
+        Route="PrescriptionPage">
+        <ShellContent.Icon>
+            <FontImageSource
+                FontFamily="FontAwesome"
+                Glyph="{x:Static fontawesome:IconFont.Stethoscope}"
+                Size="25"
+                Color="Black" />
+        </ShellContent.Icon>
+    </ShellContent>
+
+    <ShellContent
+        Title="Offers"
+        ContentTemplate="{DataTemplate offers:OfferPage}"
+        Route="OfferPage">
+        <ShellContent.Icon>
+            <FontImageSource
+                FontFamily="FontAwesome"
+                Glyph="{x:Static fontawesome:IconFont.Gift}"
+                Size="25"
+                Color="Black" />
+        </ShellContent.Icon>
+    </ShellContent>
+
+    <ShellContent
+        Title="Contact us"
+        ContentTemplate="{DataTemplate contactUs:ContactUsPage}"
+        Route="ContactUsPage">
+        <ShellContent.Icon>
+            <FontImageSource
+                FontFamily="FontAwesome"
+                Glyph="{x:Static fontawesome:IconFont.Headphones}"
+                Size="25"
+                Color="Black" />
+        </ShellContent.Icon>
+    </ShellContent>
+
+    <ShellContent
+        Title="Settings"
+        ContentTemplate="{DataTemplate settings:SettingsPage}"
+        Route="SettingsPage">
+        <ShellContent.Icon>
+            <FontImageSource
+                FontFamily="FontAwesome"
+                Glyph="{x:Static fontawesome:IconFont.Cog}"
+                Size="25"
+                Color="Black" />
+        </ShellContent.Icon>
+    </ShellContent>
+
+    <ShellContent
+        Title="Logout"
+        ContentTemplate="{DataTemplate account:SignInPage2}"
+        Route="SignInPage2">
+        <ShellContent.Icon>
+            <FontImageSource
+                FontFamily="FontAwesome"
+                Glyph="{x:Static fontawesome:IconFont.SignOut}"
+                Size="25"
+                Color="Black" />
+        </ShellContent.Icon>
+
+    </ShellContent>
+
+</Shell>

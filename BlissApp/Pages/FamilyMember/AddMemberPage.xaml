@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.FamilyMember.AddMemberPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+    xmlns:sfCore="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Title="Add Family Member"
+    BackgroundColor="{StaticResource BackgroudColor}"
+    Shell.BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.TitleColor="Black">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="sfCoreLabelStyle" TargetType="sfCore:LabelStyle">
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontFamily" Value="PoppinsRegular" />
+                <Setter Property="TextColor" Value="{StaticResource LabelLight}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+        <StackLayout>
+            <StackLayout
+                Padding="20"
+                HorizontalOptions="Fill"
+                VerticalOptions="FillAndExpand">
+
+                <StackLayout
+                    HorizontalOptions="Fill"
+                    Spacing="0"
+                    VerticalOptions="FillAndExpand">
+
+                    <sfCore:SfTextInputLayout
+                        Margin="0,0,0,0"
+                        ErrorText="{Binding FirstNameErrorText}"
+                        HasError="{Binding FirstNameHasError}"
+                        Hint="First Name"
+                        Style="{StaticResource sfInputLayoutOutlineStyle}">
+                        <Entry
+                            Margin="0"
+                            Keyboard="Text"
+                            Text="{Binding FirstName}"
+                            VerticalOptions="Center" />
+                        <sfCore:SfTextInputLayout.HintLabelStyle>
+                            <sfCore:LabelStyle FontFamily="PoppinsRegular" FontSize="15" />
+                        </sfCore:SfTextInputLayout.HintLabelStyle>
+                    </sfCore:SfTextInputLayout>
+
+                    <sfCore:SfTextInputLayout
+                        Margin="0,0,0,0"
+                        ErrorText="{Binding LastNameErrorText}"
+                        HasError="{Binding LastNameHasError}"
+                        Hint="Last Name"
+                        Style="{StaticResource sfInputLayoutOutlineStyle}">
+                        <Entry
+                            Margin="0"
+                            Keyboard="Text"
+                            Text="{Binding LastName}"
+                            VerticalOptions="Center" />
+                        <sfCore:SfTextInputLayout.HintLabelStyle>
+                            <sfCore:LabelStyle FontFamily="PoppinsRegular" FontSize="15" />
+                        </sfCore:SfTextInputLayout.HintLabelStyle>
+                    </sfCore:SfTextInputLayout>
+
+
+                    <sfCore:SfTextInputLayout
+                        Margin="0,0,0,0"
+                        ErrorText="{Binding DateOfBErrorText}"
+                        HasError="{Binding DateOfBHasError}"
+                        HeightRequest="90"
+                        Hint="Date of Birth"
+                        Style="{StaticResource sfInputLayoutOutlineStyle}">
+
+                        <DatePicker
+                            Date="{Binding DateOfBirth}"
+                            Format="dd-MMM-yyyy"
+                            HorizontalOptions="Fill"
+                            MaximumDate="{Binding MinimumDate}"
+                            VerticalOptions="Center" />
+
+                        <sfCore:SfTextInputLayout.HintLabelStyle>
+                            <sfCore:LabelStyle FontFamily="PoppinsRegular" FontSize="15" />
+                        </sfCore:SfTextInputLayout.HintLabelStyle>
+                    </sfCore:SfTextInputLayout>
+
+
+                    <sfCore:SfTextInputLayout
+                        ErrorText="{Binding RelationErrorText}"
+                        HasError="{Binding RelationHasError}"
+                        Hint="Relation"
+                        Style="{StaticResource sfInputLayoutOutlineStyle}">
+                        <editors:SfComboBox
+                            DisplayMemberPath="Name"
+                            BackgroundColor="White"
+                            ItemsSource="{Binding listOfRelation}"
+                            SelectedItem="{Binding SelectedRelation}"
+                            TextMemberPath="Name" />
+                        <sfCore:SfTextInputLayout.HintLabelStyle>
+                            <sfCore:LabelStyle FontFamily="PoppinsRegular" FontSize="16" />
+                        </sfCore:SfTextInputLayout.HintLabelStyle>
+                    </sfCore:SfTextInputLayout>
+
+                    <sfCore:SfTextInputLayout
+                        ErrorText="{Binding NatureOfEngHasError}"
+                        HasError="{Binding NatureOfEngErrorText}"
+                        Hint="Gender"
+                        Style="{StaticResource sfInputLayoutOutlineStyle}">
+                        <editors:SfComboBox
+                            DisplayMemberPath="Name"
+                            BackgroundColor="White"
+                            ItemsSource="{Binding listOfGender}"
+                            SelectedItem="{Binding SelectedGender}"
+                            TextMemberPath="Name" />
+                        <sfCore:SfTextInputLayout.HintLabelStyle>
+                            <sfCore:LabelStyle FontFamily="PoppinsRegular" FontSize="16" />
+                        </sfCore:SfTextInputLayout.HintLabelStyle>
+                    </sfCore:SfTextInputLayout>
+
+                </StackLayout>
+
+                <VerticalStackLayout VerticalOptions="End">
+                    <ActivityIndicator
+                        HorizontalOptions="Center"
+                        IsRunning="{Binding IsBusy}"
+                        IsVisible="{Binding IsBusy}"
+                        VerticalOptions="Center"
+                        Color="{StaticResource Primary}" />
+                    <Button
+                        Command="{Binding SubmitDataCommand}"
+                        Style="{StaticResource BaseButton}"
+                        Text="Submit" />
+
+                    <Button
+                        Margin="0,5,0,0"
+                        Command="{Binding GoToDetailsCommand}"
+                        Style="{StaticResource ButtonOutline}"
+                        Text="View Details" />
+                </VerticalStackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding GetRelationCommand}" EventName="Appearing" />
+        <toolkit:EventToCommandBehavior Command="{Binding GetGenderCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+</ContentPage>

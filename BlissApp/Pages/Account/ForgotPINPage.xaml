@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.Account.ForgotPINPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="ForgotPasswordPage"
+    Style="{StaticResource OnBoardingAndRegistrationContentPages}">
+    <VerticalStackLayout
+        Margin="20"
+        HorizontalOptions="Center"
+        Spacing="10"
+        VerticalOptions="Center">
+        <Image
+            Margin="10"
+            Aspect="AspectFit"
+            HeightRequest="80"
+            Source="password3.png"
+            WidthRequest="80" />
+
+        <Label
+            FontAttributes="Bold"
+            FontSize="18"
+            HorizontalOptions="Center"
+            Text="Forgot PIN"
+            TextColor="Black"
+            VerticalOptions="Center" />
+        <Label
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            Text="{Binding MemberName, StringFormat='Dear {0:F2} an OTP PIN will be generated and send to your registered phone number.'}"
+            TextColor="Black"
+            VerticalOptions="Center" />
+        <StackLayout
+            Margin="0,0,0,20"
+            HorizontalOptions="Fill"
+            Spacing="10"
+            VerticalOptions="End">
+            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <ActivityIndicator
+                    HorizontalOptions="Center"
+                    IsRunning="{Binding IsBusy}"
+                    IsVisible="{Binding IsBusy}"
+                    VerticalOptions="Center"
+                    Color="{StaticResource Primary}" />
+            </VerticalStackLayout>
+
+            <Button
+                Command="{Binding SendNewPinCommand}"
+                Style="{StaticResource ButtonOutline}"
+                Text="Proceed &gt;&gt; " />
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

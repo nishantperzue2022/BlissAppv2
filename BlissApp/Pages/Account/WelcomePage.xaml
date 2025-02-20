@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.Account.WelcomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="WelcomePage"
+    Style="{StaticResource OnBoardingAndRegistrationContentPages}">
+    <StackLayout
+        Padding="20"
+        Spacing="25"
+        VerticalOptions="FillAndExpand">
+
+        <Image
+            Margin="0,20,0,0"
+            HorizontalOptions="Fill"
+            Source="welcome.svg"
+            VerticalOptions="Start"
+            WidthRequest="350" />
+
+
+
+        <StackLayout
+            Margin="0,20,0,0"
+            HorizontalOptions="Fill"
+            Spacing="20"
+            VerticalOptions="Start">
+
+            <Label
+                FontSize="24"
+                HorizontalOptions="Center"
+                Style="{StaticResource LabelMedium}"
+                Text="Welcome"
+                TextColor="{StaticResource TextDark}"
+                VerticalOptions="Start" />
+
+            <Label
+                FontSize="14"
+                HorizontalOptions="Fill"
+                HorizontalTextAlignment="Center"
+                Style="{StaticResource LabelLight}"
+                Text="MAKL offers end-to-end health insurance administration services, including policy management, claims processing, member enrollment, and premium collection."
+                TextColor="{StaticResource TextLight}"
+                VerticalOptions="Start"
+                WidthRequest="300" />
+
+        </StackLayout>
+
+        <StackLayout
+            HorizontalOptions="Fill"
+            Spacing="10"
+            VerticalOptions="End">
+
+            <Button
+                x:Name="btnRegister"
+                Clicked="btnRegister_Clicked"
+                IsEnabled="False"
+                Text="Create Account" />
+
+            <Button
+                x:Name="btnLogin"
+                Clicked="btnLogin_Clicked"
+                Style="{StaticResource ButtonOutline}"
+                Text="Login" />
+
+        </StackLayout>
+
+
+    </StackLayout>
+</ContentPage>

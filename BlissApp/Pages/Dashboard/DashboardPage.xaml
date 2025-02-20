@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.Dashboard.DashboardPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:control="clr-namespace:BlissApp.Control"
+    xmlns:fontawesome="clr-namespace:BlissApp.Utility"
+    xmlns:rating="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+    xmlns:sfavatar="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewmodel="clr-namespace:BlissApp.ViewModels"
+    Title="Bliss"
+    Shell.BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.TitleColor="Black"
+    Style="{StaticResource OnBoardingAndRegistrationContentPages}">
+
+    <Page.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="White" StatusBarStyle="DarkContent" />
+    </Page.Behaviors>
+    <ContentPage.BindingContext>
+        <viewmodel:HomePageViewModel />
+    </ContentPage.BindingContext>
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+        <VerticalStackLayout Grid.Row="0" Margin="0,10,0,10">
+            <Grid
+                ColumnDefinitions="*,*,*"
+                RowDefinitions="*"
+                VerticalOptions="Center">
+                <Image
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="15,0,0,0"
+                    HeightRequest="22"
+                    HorizontalOptions="Start"
+                    Source="menu"
+                    VerticalOptions="Center" />
+                <Image
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    HeightRequest="35"
+                    HorizontalOptions="Center"
+                    Source="logo"
+                    VerticalOptions="Center" />
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                </Grid.GestureRecognizers>
+            </Grid>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Grid.Row="1">
+            <Frame
+                Margin="10,0,10,10"
+                Padding="0"
+                HeightRequest="50">
+                <Grid
+                    ColumnDefinitions="Auto,Auto"
+                    ColumnSpacing="20"
+                    RowDefinitions="*"
+                    RowSpacing="10">
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="20"
+                        HeightRequest="18"
+                        HorizontalOptions="Start"
+                        Source="search_3"
+                        VerticalOptions="Center" />
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="0,0,0,0"
+                        HorizontalOptions="Start"
+                        HorizontalTextAlignment="Start"
+                        Style="{StaticResource LabelLight}"
+                        Text="Find Nearest Bliss Centres"
+                        VerticalOptions="Center" />
+                </Grid>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding FindHospitalCommand}" />
+                </Frame.GestureRecognizers>
+            </Frame>
+        </VerticalStackLayout>
+
+        <ScrollView Grid.Row="2">
+            <VerticalStackLayout
+                BackgroundColor="#F0F0F0"
+                Spacing="1"
+                VerticalOptions="FillAndExpand">
+
+                <VerticalStackLayout>
+                    <!--<Label
+                        Margin="10,10,10,0"
+                        FontSize="15"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource LabelBold}"
+                        Text="Events &amp; Offers" />-->
+                </VerticalStackLayout>
+
+                <VerticalStackLayout>
+                    <!--<Label
+                        Margin="10,10,10,0"
+                        FontSize="15"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource LabelBold}"
+                        Text="Health Tips" />-->
+                    <CarouselView
+                        x:Name="cvBanner"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="5,0,5,5">
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Margin="5">
+                                    <Image
+                                        Aspect="AspectFill"
+                                        HorizontalOptions="Fill"
+                                        Source="{Binding URL}"
+                                        VerticalOptions="FillAndExpand" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                    </CarouselView>
+
+
+
+                </VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Label
+                        Margin="10,10,10,0"
+                        FontSize="15"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource LabelBold}"
+                        Text="Our Services"
+                        TextColor="#009e4e" />
+                    <Grid
+                        Margin="0,0,0,5"
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="5"
+                        RowDefinitions="*">
+                        <Frame
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Margin="10,0,0,0"
+                            Padding="0"
+                            CornerRadius="10"
+                            HeightRequest="170"
+                            IsClippedToBounds="True">
+
+                            <Grid Padding="5" RowDefinitions="Auto,Auto">
+                                <Border
+                                    Grid.Row="0"
+                                    HeightRequest="130"
+                                    HorizontalOptions="Center"
+                                    StrokeShape="RoundRectangle 10,10,10,10"
+                                    StrokeThickness="1"
+                                    WidthRequest="180">
+                                    <Image
+                                        Aspect="AspectFill"
+                                        HeightRequest="130"
+                                        HorizontalOptions="Center"
+                                        Source="consultation"
+                                        VerticalOptions="Center" />
+                                </Border>
+                                <Label
+                                    Grid.Row="1"
+                                    FontSize="12"
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource LabelBold}"
+                                    Text="Consultation" />
+                            </Grid>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ConsultationCommand}" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                        <Frame
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="0,0,10,0"
+                            Padding="0"
+                            CornerRadius="10"
+                            HeightRequest="170"
+                            IsClippedToBounds="True">
+
+                            <Grid Padding="5" RowDefinitions="Auto,Auto">
+                                <Border
+                                    Grid.Row="0"
+                                    HeightRequest="130"
+                                    HorizontalOptions="Center"
+                                    StrokeShape="RoundRectangle 10,10,10,10"
+                                    StrokeThickness="1"
+                                    WidthRequest="180">
+
+                                    <Image
+                                        Aspect="AspectFill"
+                                        HeightRequest="130"
+                                        HorizontalOptions="Center"
+                                        Source="pharmacy"
+                                        VerticalOptions="Center" />
+                                </Border>
+                                <Label
+                                    Grid.Row="1"
+                                    FontSize="12"
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource LabelBold}"
+                                    Text="Pharmacy" />
+                            </Grid>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding PharmacyCommand}" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </Grid>
+                    <Grid
+                        Margin="0,0,0,5"
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="5"
+                        RowDefinitions="*">
+                        <Frame
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Margin="10,0,0,0"
+                            Padding="0"
+                            CornerRadius="10"
+                            HeightRequest="170"
+                            IsClippedToBounds="True">
+
+                            <Grid Padding="5" RowDefinitions="Auto,Auto">
+                                <Border
+                                    Grid.Row="0"
+                                    HeightRequest="130"
+                                    HorizontalOptions="Center"
+                                    StrokeShape="RoundRectangle 10,10,10,10"
+                                    StrokeThickness="1"
+                                    WidthRequest="180">
+                                    <Image
+                                        Aspect="AspectFill"
+                                        HeightRequest="130"
+                                        HorizontalOptions="Center"
+                                        Source="Laboratory"
+                                        VerticalOptions="Center" />
+                                </Border>
+                                <Label
+                                    Grid.Row="1"
+                                    FontSize="12"
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource LabelBold}"
+                                    Text="Laboratory" />
+                            </Grid>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding LaboratoryCommand}" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                        <Frame
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="0,0,10,0"
+                            Padding="0"
+                            CornerRadius="10"
+                            HeightRequest="170"
+                            IsClippedToBounds="True">
+
+                            <Grid Padding="5" RowDefinitions="Auto,Auto">
+                                <Border
+                                    Grid.Row="0"
+                                    HeightRequest="130"
+                                    HorizontalOptions="Center"
+                                    StrokeShape="RoundRectangle 10,10,10,10"
+                                    StrokeThickness="1"
+                                    WidthRequest="180">
+                                    <Image
+                                        Aspect="AspectFill"
+                                        HeightRequest="130"
+                                        HorizontalOptions="Center"
+                                        Source="Optical"
+                                        VerticalOptions="Center" />
+                                </Border>
+                                <Label
+                                    Grid.Row="1"
+                                    FontSize="12"
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource LabelBold}"
+                                    Text="Optical" />
+                            </Grid>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpticalCommand}" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </Grid>
+                    <Grid
+                        Margin="0,0,0,5"
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="5"
+                        RowDefinitions="*">
+                        <Frame
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Margin="10,0,0,0"
+                            Padding="0"
+                            CornerRadius="10"
+                            HeightRequest="170"
+                            IsClippedToBounds="True">
+
+                            <Grid Padding="5" RowDefinitions="Auto,Auto">
+                                <Border
+                                    Grid.Row="0"
+                                    HeightRequest="130"
+                                    HorizontalOptions="Center"
+                                    StrokeShape="RoundRectangle 10,10,10,10"
+                                    StrokeThickness="1"
+                                    WidthRequest="180">
+                                    <Image
+                                        Aspect="AspectFill"
+                                        HeightRequest="130"
+                                        HorizontalOptions="Center"
+                                        Source="dental"
+                                        VerticalOptions="Center" />
+                                </Border>
+                                <Label
+                                    Grid.Row="1"
+                                    FontSize="12"
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource LabelBold}"
+                                    Text="Dental" />
+                            </Grid>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding DentalCommand}" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                        <Frame
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Margin="0,0,10,0"
+                            Padding="0"
+                            CornerRadius="10"
+                            HeightRequest="170"
+                            IsClippedToBounds="True">
+
+                            <Grid Padding="5" RowDefinitions="Auto,Auto">
+                                <Border
+                                    Grid.Row="0"
+                                    HeightRequest="130"
+                                    HorizontalOptions="Center"
+                                    StrokeShape="RoundRectangle 10,10,10,10"
+                                    StrokeThickness="1"
+                                    WidthRequest="180">
+                                    <Image
+                                        Aspect="AspectFill"
+                                        HeightRequest="130"
+                                        HorizontalOptions="Center"
+                                        Source="Radiology"
+                                        VerticalOptions="Center" />
+                                </Border>
+                                <Label
+                                    Grid.Row="1"
+                                    FontSize="12"
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource LabelBold}"
+                                    Text="Radiology" />
+                            </Grid>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding X_RayCommand}" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+
+
+
+
+                    </Grid>
+                    <Grid
+                        Margin="0,0,0,5"
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="5"
+                        RowDefinitions="*">
+                        <Frame
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Margin="10,0,0,0"
+                            Padding="0"
+                            CornerRadius="10"
+                            HeightRequest="170"
+                            IsClippedToBounds="True">
+
+                            <Grid Padding="5" RowDefinitions="Auto,Auto">
+                                <Border
+                                    Grid.Row="0"
+                                    HeightRequest="130"
+                                    HorizontalOptions="Center"
+                                    StrokeShape="RoundRectangle 10,10,10,10"
+                                    StrokeThickness="1"
+                                    WidthRequest="180">
+                                    <Image
+                                        Aspect="AspectFill"
+                                        HeightRequest="130"
+                                        HorizontalOptions="Center"
+                                        Source="dawanyumbani"
+                                        VerticalOptions="Center" />
+                                </Border>
+                                <Label
+                                    Grid.Row="1"
+                                    FontSize="12"
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource LabelBold}"
+                                    Text="Dawa Nyumbani" />
+                            </Grid>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding DawaCommand}" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </Grid>
+
+
+                </VerticalStackLayout>
+
+                <Label
+                    Margin="10,10,0,10"
+                    FontSize="15"
+                    HorizontalOptions="Start"
+                    Style="{StaticResource LabelBold}"
+                    Text="Blogs &amp; Vlogs"
+                    TextColor="#009e4e" />
+                <Frame
+                    Margin="10,0,10,0"
+                    Padding="0"
+                    CornerRadius="10">
+                    <VerticalStackLayout Margin="10,0,10,0">
+                        <Grid RowDefinitions="Auto,*">
+                            <VerticalStackLayout>
+                                <CarouselView
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    IndicatorView="indicatorView"
+                                    ItemsSource="{Binding BlogsList}">
+                                    <CarouselView.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackLayout Margin="5">
+                                                <Image
+                                                    Margin="0,10,0,0"
+                                                    Aspect="Fill"
+                                                    HeightRequest="200"
+                                                    Source="{Binding ImageUrl}">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:HomePageViewModel}}, Path=GoBlogsTypeCommand}" CommandParameter="{Binding .}" />
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                                <Label
+                                                    Margin="0,10,0,0"
+                                                    HorizontalOptions="Start"
+                                                    Style="{StaticResource LabelBold}"
+                                                    Text="{Binding Title}" />
+                                                <Label HorizontalOptions="Center" Text="{Binding Description}" />
+                                                <!--<Button
+                                                    FontSize="10"
+                                                    HeightRequest="40"
+                                                    HorizontalOptions="Start"
+                                                    Text="Read More"
+                                                    VerticalOptions="Center" />-->
+                                            </StackLayout>
+
+                                        </DataTemplate>
+                                    </CarouselView.ItemTemplate>
+                                </CarouselView>
+                                <IndicatorView
+                                    x:Name="indicatorView"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Margin="0,0,0,10"
+                                    HorizontalOptions="Center"
+                                    IndicatorColor="LightGray"
+                                    IndicatorSize="10"
+                                    IndicatorsShape="Circle"
+                                    SelectedIndicatorColor="#1f3c86"
+                                    VerticalOptions="Center" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!--<Label
+                    Margin="10,10,0,10"
+                    FontSize="15"
+                    HorizontalOptions="Start"
+                    Style="{StaticResource LabelBold}"
+                    Text="Testimonials" />-->
+
+
+
+
+                <!--<WebView Margin="10,0,10,20" Source="https://skisoftsystems.com" />-->
+
+
+
+                <!--<Frame
+                    Margin="10,0,10,20"
+                    Padding="0"
+                    CornerRadius="10">
+
+                    <VerticalStackLayout Margin="0,0,0,10" Padding="0">
+
+                        <CarouselView
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            IndicatorView="indicatorView1"
+                            ItemsSource="{Binding TestimonialList}">
+                            <CarouselView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand">
+                                        <Label
+                                            Margin="10,10,10,0"
+                                            FlowDirection="MatchParent"
+                                            Style="{StaticResource LabelLight}"
+                                            Text="{Binding Description}"
+                                            TextType="Html" />
+
+                -->
+                <!--<WebView HeightRequest="300">
+                                            <WebView.Source>
+                                                                       <WebView HeightRequest="400" Source="https://skisoftsystems.com/" />
+
+                                            </WebView.Source>
+                                        </WebView>-->
+                <!--
+
+                                        <Grid
+                                            Margin="10,0,0,20"
+                                            ColumnDefinitions="Auto,Auto"
+                                            RowDefinitions="Auto,Auto,Auto">
+
+                                            <Image
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                Aspect="AspectFit"
+                                                HeightRequest="25"
+                                                HorizontalOptions="Start"
+                                                Source="{Binding GenderImage}"
+                                                WidthRequest="25" />
+
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                FontAttributes="Italic"
+                                                HorizontalOptions="Start"
+                                                Style="{StaticResource LabelBold}"
+                                                Text="{Binding PatientName}"
+                                                VerticalOptions="Center" />
+
+                -->
+                <!--<rating:SfRating
+                                                x:Name="rating"
+                                                HorizontalOptions="Start"
+                                                IsEnabled="False"
+                                                ItemSize="13"
+                                                ItemSpacing="15"
+                                                Precision="Standard"
+                                                Value="5">
+                                                <rating:SfRating.RatingSettings>
+                                                    <rating:RatingSettings RatedFill="#F0D311" />
+                                                </rating:SfRating.RatingSettings>
+                                            </rating:SfRating>-->
+                <!--
+
+                                        </Grid>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CarouselView.ItemTemplate>
+                        </CarouselView>
+
+                        <StackLayout Margin="10,0,0,0" VerticalOptions="End">
+
+
+                            <IndicatorView
+                                x:Name="indicatorView1"
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Margin="0,0,0,10"
+                                HorizontalOptions="Center"
+                                IndicatorColor="LightGray"
+                                IndicatorSize="10"
+                                IndicatorsShape="Circle"
+                                SelectedIndicatorColor="#1f3c86"
+                                VerticalOptions="End" />
+                        </StackLayout>
+                    </VerticalStackLayout>
+                </Frame>-->
+
+
+
+
+
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+    <!--<ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding GetTestimonialsCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>-->
+</ContentPage>

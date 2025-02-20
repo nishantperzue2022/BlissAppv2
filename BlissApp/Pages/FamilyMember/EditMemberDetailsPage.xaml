@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.FamilyMember.EditMemberDetailsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+    xmlns:sfCore="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewmodel="clr-namespace:BlissApp.ViewModels"
+    Title="Edit Member Details"
+    x:DataType="viewmodel:EditMemberFamilyViewModel"
+    BackgroundColor="{StaticResource BackgroudColor}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="sfCoreLabelStyle" TargetType="sfCore:LabelStyle">
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontFamily" Value="PoppinsRegular" />
+                <Setter Property="TextColor" Value="{StaticResource LabelLight}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+        <StackLayout>
+            <StackLayout
+                Padding="20"
+                HorizontalOptions="Fill"
+                VerticalOptions="FillAndExpand">
+
+                <StackLayout
+                    HorizontalOptions="Fill"
+                    Spacing="0"
+                    VerticalOptions="FillAndExpand">
+
+                    <sfCore:SfTextInputLayout
+                        Margin="0,0,0,0"
+                        ErrorText="{Binding FirstNameErrorText}"
+                        HasError="{Binding FirstNameHasError}"
+                        Hint="First Name"
+                        Style="{StaticResource sfInputLayoutOutlineStyle}">
+                        <Entry
+                            x:Name="txtFirstName"
+                            Margin="0"
+                            Keyboard="Text"
+                            Text="{Binding FamilyMemberDTO.FirstName}"
+                            TextChanged="txtFirstName_TextChanged"
+                            VerticalOptions="Center" />
+                        <sfCore:SfTextInputLayout.HintLabelStyle>
+                            <sfCore:LabelStyle FontFamily="PoppinsRegular" FontSize="15" />
+                        </sfCore:SfTextInputLayout.HintLabelStyle>
+                    </sfCore:SfTextInputLayout>
+
+                    <sfCore:SfTextInputLayout
+                        Margin="0,0,0,0"
+                        ErrorText="{Binding LastNameErrorText}"
+                        HasError="{Binding LastNameHasError}"
+                        Hint="Last Name"
+                        Style="{StaticResource sfInputLayoutOutlineStyle}">
+                        <Entry
+                            x:Name="txtLastName"
+                            Margin="0"
+                            Keyboard="Text"
+                            Text="{Binding FamilyMemberDTO.LastName}"
+                            TextChanged="txtLastName_TextChanged"
+                            VerticalOptions="Center" />
+                        <sfCore:SfTextInputLayout.HintLabelStyle>
+                            <sfCore:LabelStyle FontFamily="PoppinsRegular" FontSize="15" />
+                        </sfCore:SfTextInputLayout.HintLabelStyle>
+                    </sfCore:SfTextInputLayout>
+
+
+                    <sfCore:SfTextInputLayout
+                        Margin="0,0,0,0"
+                        ErrorText="{Binding DateOfBErrorText}"
+                        HasError="{Binding DateOfBHasError}"
+                        HeightRequest="90"
+                        Hint="Date of Birth"
+                        Style="{StaticResource sfInputLayoutOutlineStyle}">
+                        <DatePicker
+                            x:Name="dtDOB"
+                            BindingContextChanged="dtDOB_BindingContextChanged"
+                            Date="{Binding FamilyMemberDTO.DateOfBirth}"
+                            Format="dd-MMM-yyyy"
+                            HorizontalOptions="Fill"
+                            Style="{StaticResource Primary}"
+                            VerticalOptions="Center" />
+                        <sfCore:SfTextInputLayout.HintLabelStyle>
+                            <sfCore:LabelStyle FontFamily="PoppinsRegular" FontSize="15" />
+                        </sfCore:SfTextInputLayout.HintLabelStyle>
+                    </sfCore:SfTextInputLayout>
+
+                    <!--<sfCore:SfTextInputLayout
+                        ErrorText="{Binding RelationErrorText}"
+                        HasError="{Binding RelationHasError}"
+                        Hint="Relation"
+                        Style="{StaticResource sfInputLayoutOutlineStyle}">
+                        <editors:SfComboBox ItemsSource="{Binding listOfRelation}" SelectedItem="{Binding SelectedRelation}"
+                    DisplayMemberPath = "Name"
+                    TextMemberPath = "Name" />
+                        <sfCore:SfTextInputLayout.HintLabelStyle>
+                            <sfCore:LabelStyle FontFamily="PoppinsRegular" FontSize="16" />
+                        </sfCore:SfTextInputLayout.HintLabelStyle>
+                    </sfCore:SfTextInputLayout>-->
+
+                    <ActivityIndicator
+                        HorizontalOptions="Center"
+                        IsRunning="{Binding IsBusy}"
+                        IsVisible="{Binding IsBusy}"
+                        VerticalOptions="Center"
+                        Color="{StaticResource Primary}" />
+                </StackLayout>
+
+
+                <VerticalStackLayout VerticalOptions="End">
+                    <Button
+                        Command="{Binding SubmitDataCommand}"
+                        Style="{StaticResource BaseButton}"
+                        Text="Submit" />
+                </VerticalStackLayout>
+            </StackLayout>
+        </StackLayout>
+
+    </ScrollView>
+
+
+
+
+
+
+</ContentPage>

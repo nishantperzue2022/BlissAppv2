@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.Feedback.FeedbackPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+    xmlns:sf="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:sfCore="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Title="Feedback"
+    Background="{StaticResource BackgroudColor}"
+    Shell.BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.TitleColor="Black">
+
+
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="sfCoreLabelStyle" TargetType="sfCore:LabelStyle">
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontFamily" Value="PoppinsRegular" />
+                <Setter Property="TextColor" Value="{StaticResource LabelLight}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+
+
+    <ScrollView>
+        <StackLayout Margin="15">
+
+
+            <VerticalStackLayout Spacing="15">
+                <Label
+                    x:Name="labelFeed"
+                    Margin="12,0,0,0"
+                    FontSize="12"
+                    Text="Select Relation" />
+                <syncfusion:SfRadioGroup x:Name="radioGroupFeed" Margin="0,-10,0,0">
+                    <syncfusion:SfRadioButton
+                        x:Name="selfFeed"
+                        IsChecked="False"
+                        StateChanged="CheckBox_StateChanged"
+                        Text="Self" />
+                    <syncfusion:SfRadioButton
+                        x:Name="otherFeed"
+                        IsChecked="False"
+                        StateChanged="CheckBox_StateChanged"
+                        Text="Other" />
+                </syncfusion:SfRadioGroup>
+            </VerticalStackLayout>
+
+
+            <Entry
+                x:Name="txtRelationFeed"
+                BackgroundColor="Gray"
+                IsVisible="False"
+                Text="{Binding Relation}" />
+
+            <StackLayout x:Name="IsOtherMembersFeed">
+                <sfCore:SfTextInputLayout
+                    Margin="0,0,0,0"
+                    ErrorText="{Binding FirstNameErrorText}"
+                    HasError="{Binding FirstNameHasError}"
+                    Hint="Family Member"
+                    Style="{StaticResource sfInputLayoutOutlineStyle}">
+                    <editors:SfComboBox
+                        BackgroundColor="White"
+                        DisplayMemberPath="FullName"
+                        IsEditable="True"
+                        ItemsSource="{Binding ListOfFamilyMember}"
+                        SelectedItem="{Binding SelectedFamilyMember}"
+                        TextMemberPath="FullName" />
+                    <sfCore:SfTextInputLayout.HintLabelStyle>
+                        <sfCore:LabelStyle FontFamily="PoppinsRegular" FontSize="16" />
+                    </sfCore:SfTextInputLayout.HintLabelStyle>
+                </sfCore:SfTextInputLayout>
+                <Label
+                    HorizontalOptions="End"
+                    Text="Click Here to Add Member"
+                    TextColor="{StaticResource Primary}"
+                    VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding AddFamilyCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+
+            <sfCore:SfTextInputLayout
+                Margin="0,0,0,10"
+                ErrorText="{Binding MedCentreErrorText}"
+                HasError="{Binding MedCenterHasError}"
+                Hint="Medical Centre"
+                Style="{StaticResource sfInputLayoutOutlineStyle}">
+                <editors:SfComboBox
+                    BackgroundColor="White"
+                    DisplayMemberPath="Location"
+                    IsEditable="True"
+                    ItemsSource="{Binding ListOfMedicalCentre}"
+                    SelectedItem="{Binding SelectedMedicalCentre}"
+                    TextMemberPath="Location" />
+                <sfCore:SfTextInputLayout.HintLabelStyle>
+                    <sfCore:LabelStyle FontFamily="PoppinsRegular" FontSize="16" />
+                </sfCore:SfTextInputLayout.HintLabelStyle>
+            </sfCore:SfTextInputLayout>
+
+            <sfCore:SfTextInputLayout
+                Margin="0,0,0,0"
+                ErrorText="{Binding DateErrorText}"
+                HasError="{Binding DateHasError}"
+                HeightRequest="90"
+                Hint="Date"
+                Style="{StaticResource sfInputLayoutOutlineStyle}">
+
+                <DatePicker
+                    Date="{Binding SelectedDateOfVisit}"
+                    Format="dd-MMM-yyyy"
+                    HorizontalOptions="Fill"
+                    MinimumDate="{Binding MinimumDate}"
+                    VerticalOptions="Center" />
+
+                <sfCore:SfTextInputLayout.HintLabelStyle>
+                    <sfCore:LabelStyle FontFamily="PoppinsRegular" FontSize="15" />
+                </sfCore:SfTextInputLayout.HintLabelStyle>
+
+                <sfCore:SfTextInputLayout.TrailingView>
+                    <StackLayout
+                        Margin="0,0,0,0"
+                        HorizontalOptions="Start"
+                        Orientation="Horizontal"
+                        Spacing="2"
+                        VerticalOptions="Center">
+                        <Image
+                            HeightRequest="20"
+                            HorizontalOptions="Start"
+                            Source="seaticon"
+                            VerticalOptions="Center" />
+
+                    </StackLayout>
+                </sfCore:SfTextInputLayout.TrailingView>
+            </sfCore:SfTextInputLayout>
+
+
+
+            <sfCore:SfTextInputLayout
+                Margin="0,0,0,10"
+                ErrorText="{Binding DepartmentErrorText}"
+                HasError="{Binding DepartmentHasError}"
+                Hint="Department"
+                Style="{StaticResource sfInputLayoutOutlineStyle}">
+                <editors:SfComboBox
+                    BackgroundColor="White"
+                    DisplayMemberPath="Name"
+                    IsEditable="True"
+                    ItemsSource="{Binding ListOfDepartment}"
+                    SelectedItem="{Binding SelectedDepartment}"
+                    TextMemberPath="Name" />
+                <sfCore:SfTextInputLayout.HintLabelStyle>
+                    <sfCore:LabelStyle FontFamily="PoppinsRegular" FontSize="16" />
+                </sfCore:SfTextInputLayout.HintLabelStyle>
+            </sfCore:SfTextInputLayout>
+
+
+            <sfCore:SfTextInputLayout
+                Margin="0,0,0,10"
+                ErrorText="{Binding FeedbackTypeErrorText}"
+                HasError="{Binding FeedbackTypeHasError}"
+                Hint="Feedback"
+                Style="{StaticResource sfInputLayoutOutlineStyle}">
+                <editors:SfComboBox
+                    BackgroundColor="White"
+                    DisplayMemberPath="Name"
+                    IsEditable="False"
+                    ItemsSource="{Binding ListOfFeedbackType}"
+                    SelectedItem="{Binding SelectedFeedbackType}"
+                    TextMemberPath="Name" />
+                <sfCore:SfTextInputLayout.HintLabelStyle>
+                    <sfCore:LabelStyle FontFamily="PoppinsRegular" FontSize="16" />
+                </sfCore:SfTextInputLayout.HintLabelStyle>
+            </sfCore:SfTextInputLayout>
+
+
+            <VerticalStackLayout>
+
+                <sf:SfTextInputLayout
+                    Margin="0,10,0,0"
+                    ContainerBackground="White"
+                    ContainerType="Outlined"
+                    ErrorText="{Binding DescriptionErrorText}"
+                    HasError="{Binding DescriptionHasError}"
+                    Hint="Description"
+                    IsHintAlwaysFloated="True"
+                    OutlineCornerRadius="25"
+                    Style="{StaticResource sfInputLayoutOutlineStyle}">
+                    <sf:SfTextInputLayout.HintLabelStyle>
+                        <sf:LabelStyle FontSize="18" TextColor="Black" />
+                    </sf:SfTextInputLayout.HintLabelStyle>
+                    <Editor
+                        AutoSize="TextChanges"
+                        FontSize="16"
+                        HeightRequest="100"
+                        Text="{Binding Description}"
+                        VerticalOptions="Center" />
+                </sf:SfTextInputLayout>
+
+                <ActivityIndicator
+                    Grid.RowSpan="2"
+                    Grid.ColumnSpan="2"
+                    HorizontalOptions="Fill"
+                    IsRunning="{Binding IsBusy}"
+                    IsVisible="{Binding IsBusy}"
+                    VerticalOptions="Center" />
+
+            </VerticalStackLayout>
+
+
+            <VerticalStackLayout VerticalOptions="End">
+                <Button
+                    Margin="0,10,0,0"
+                    Command="{Binding SubmitFeedBackCommand}"
+                    HorizontalOptions="Fill"
+                    Style="{StaticResource BaseButton}"
+                    Text="{Binding ButtonText}"
+                    TextColor="White"
+                    VerticalOptions="Start" />
+                <Button
+                    Margin="0,5,0,0"
+                    Command="{Binding GoToDetailsCommand}"
+                    IsVisible="True"
+                    Style="{StaticResource ButtonOutline}"
+                    Text="View History" />
+            </VerticalStackLayout>
+        </StackLayout>
+    </ScrollView>
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding GetDepartmentsCommand}" EventName="Appearing" />
+        <toolkit:EventToCommandBehavior Command="{Binding GetMedicalCentresCommand}" EventName="Appearing" />
+        <toolkit:EventToCommandBehavior Command="{Binding GetFamilyMemberCommand}" EventName="Appearing" />
+        <toolkit:EventToCommandBehavior Command="{Binding GetFeedbackTypeCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+</ContentPage>

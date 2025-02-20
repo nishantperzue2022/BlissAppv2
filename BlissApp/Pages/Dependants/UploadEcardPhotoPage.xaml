@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.Dependants.UploadEcardPhotoPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sfavatar="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Title="UploadEcardPhotoPage"
+    Style="{StaticResource OnBoardingAndRegistrationContentPages}">
+    <ScrollView>
+
+        <StackLayout>
+            <StackLayout
+                Padding="20"
+                HorizontalOptions="Fill"
+                Spacing="25"
+                VerticalOptions="FillAndExpand">
+
+                <Grid
+                    ColumnDefinitions="0.2*,0.6*,0.2*"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Start">
+
+                    <StackLayout
+                        Grid.Column="0"
+                        HorizontalOptions="Fill"
+                        Orientation="Horizontal"
+                        Spacing="10">
+
+                        <Image
+                            HeightRequest="12"
+                            HorizontalOptions="Start"
+                            Source="back"
+                            VerticalOptions="Center" />
+                        <Label
+                            FontSize="14"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource LabelRegular}"
+                            Text="Back"
+                            VerticalOptions="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding BackToProfileDetailsCommand}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+
+                    </StackLayout>
+
+                    <Label
+                        Grid.Column="1"
+                        FontSize="18"
+                        HorizontalOptions="Center"
+                        Style="{StaticResource LabelMedium}"
+                        Text="Upload Ecard Photo"
+                        VerticalOptions="Center" />
+
+                </Grid>
+
+                <!--<Image
+            HeightRequest="150"
+            HorizontalOptions="Center"
+            Source="userprofilenew"
+            VerticalOptions="Start" />-->
+
+
+
+                <sfavatar:SfAvatarView
+                    ContentType="Custom"
+                    CornerRadius="70"
+                    HeightRequest="140"
+                    HorizontalOptions="Center"
+                    ImageSource="{Binding MyPhoto}"
+                    VerticalOptions="Center"
+                    WidthRequest="140" />
+
+                <StackLayout Margin="20" VerticalOptions="Start">
+                    <Button
+                        x:Name="btnCamera"
+                        Margin="0,10,0,10"
+                        BackgroundColor="{StaticResource Primary}"
+                        Command="{Binding DependantPhotoFromCameraCommand}"
+                        CornerRadius="10"
+                        HorizontalOptions="Fill"
+                        Text="Take photo from a camera"
+                        TextColor="White"
+                        TextTransform="None"
+                        VerticalOptions="Center" />
+
+                    <Button
+                        x:Name="btnGallery"
+                        Margin="0,10,0,10"
+                        BackgroundColor="{StaticResource Primary}"
+                        Command="{Binding DependantPhotoFromFileCommand}"
+                        CornerRadius="10"
+                        HorizontalOptions="Fill"
+                        Text="Select from gallery"
+                        TextColor="White"
+                        TextTransform="None"
+                        VerticalOptions="Center" />
+                </StackLayout>
+
+
+                <VerticalStackLayout Margin="20">
+
+                    <Label
+                        HorizontalOptions="EndAndExpand"
+                        Text="*Ecard photos can only be uploaded once, if you need to change afterwards kindly contact +254-730-724-000."
+                        VerticalOptions="End" />
+                </VerticalStackLayout>
+            </StackLayout>
+
+
+
+
+
+            <ActivityIndicator
+                Grid.RowSpan="2"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="Center"
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}"
+                VerticalOptions="Center"
+                Color="Aqua" />
+        </StackLayout>
+    </ScrollView>
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding IsDependantPhotoExistCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+</ContentPage>

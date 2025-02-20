@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.ContactUs.ContactUsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:BlissApp.Utility"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Title="Contact us"
+    Background="{StaticResource BackgroudColor}"
+    Shell.BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.TitleColor="Black">
+    <ScrollView>
+        <VerticalStackLayout>
+            <StackLayout Margin="20">
+                <Label
+                    FontSize="18"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource LabelMedium}"
+                    Text="We are here ready to help you.Contact us today!"
+                    VerticalOptions="Center" />
+            </StackLayout>
+
+            <StackLayout>
+                <Grid Margin="20" ColumnSpacing="20">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HeightRequest="20"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"
+                        WidthRequest="20">
+                        <Image.Source>
+                            <FontImageSource
+                                FontFamily="FontAwesome"
+                                Glyph="{x:Static fontawesome:IconFont.Phone}"
+                                Size="20"
+                                Color="#08457E" />
+                        </Image.Source>
+                    </Image>
+                    <Label
+                        x:Name="PhoneTwo"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Style="{StaticResource LabelMedium}"
+                        Text="{Binding ContactNo}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GetDialerCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </Grid>
+                <Border
+                    Margin="20,5,20,0"
+                    BackgroundColor="#1f3c86"
+                    Stroke="#1f3c86"
+                    StrokeThickness="1" />
+            </StackLayout>
+
+            <StackLayout>
+                <Grid Margin="20" ColumnSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HeightRequest="20"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"
+                        WidthRequest="20">
+                        <Image.Source>
+                            <FontImageSource
+                                FontFamily="FontAwesome"
+                                Glyph="{x:Static fontawesome:IconFont.Inbox}"
+                                Size="20"
+                                Color="#08457E" />
+                        </Image.Source>
+                    </Image>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Style="{StaticResource LabelMedium}"
+                        Text="{Binding InfoEmail}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GetEmailCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </Grid>
+                <Border
+                    Margin="20,5,20,0"
+                    BackgroundColor="#1f3c86"
+                    Stroke="#1f3c86"
+                    StrokeThickness="1" />
+            </StackLayout>
+
+
+            <StackLayout>
+                <Grid Margin="20" ColumnSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HeightRequest="20"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"
+                        WidthRequest="20">
+                        <Image.Source>
+                            <FontImageSource
+                                FontFamily="FontAwesome"
+                                Glyph="{x:Static fontawesome:IconFont.Whatsapp}"
+                                Size="20"
+                                Color="#08457E" />
+                        </Image.Source>
+                    </Image>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Style="{StaticResource LabelMedium}"
+                        Text="+254 780100065">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GetLindaLinkCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </Grid>
+                <Border
+                    Margin="20,5,20,0"
+                    BackgroundColor="#1f3c86"
+                    Stroke="#1f3c86"
+                    StrokeThickness="1" />
+            </StackLayout>
+
+            <StackLayout>
+                <Grid Margin="20" ColumnSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HeightRequest="20"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"
+                        WidthRequest="20">
+                        <Image.Source>
+                            <FontImageSource
+                                FontFamily="FontAwesome"
+                                Glyph="{x:Static fontawesome:IconFont.Facebook}"
+                                Size="20"
+                                Color="#08457E" />
+                        </Image.Source>
+                    </Image>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Style="{StaticResource LabelMedium}"
+                        Text="Facebook Page">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GetFacebookLinkCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </Grid>
+                <Border
+                    Margin="20,5,20,0"
+                    BackgroundColor="#1f3c86"
+                    Stroke="#1f3c86"
+                    StrokeThickness="1" />
+            </StackLayout>
+
+
+            <StackLayout>
+                <Grid Margin="20" ColumnSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HeightRequest="20"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"
+                        WidthRequest="20">
+                        <Image.Source>
+                            <FontImageSource
+                                FontFamily="FontAwesome"
+                                Glyph="{x:Static fontawesome:IconFont.Instagram}"
+                                Size="20"
+                                Color="#08457E" />
+                        </Image.Source>
+                    </Image>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Style="{StaticResource LabelMedium}"
+                        Text="Instagram">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToInstagramCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </Grid>
+                <Border
+                    Margin="20,5,20,0"
+                    BackgroundColor="#1f3c86"
+                    Stroke="#1f3c86"
+                    StrokeThickness="1" />
+            </StackLayout>
+
+            <StackLayout>
+                <Grid Margin="20" ColumnSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HeightRequest="20"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"
+                        WidthRequest="20">
+                        <Image.Source>
+                            <FontImageSource
+                                FontFamily="FontAwesome"
+                                Glyph="{x:Static fontawesome:IconFont.Globe}"
+                                Size="20"
+                                Color="#08457E" />
+                        </Image.Source>
+                    </Image>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Style="{StaticResource LabelMedium}"
+                        Text="Visit our website">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GetToBlissWebsiteCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                </Grid>
+                <Border
+                    Margin="20,5,20,0"
+                    BackgroundColor="#1f3c86"
+                    Stroke="#1f3c86"
+                    StrokeThickness="1" />
+            </StackLayout>
+
+
+
+            <ActivityIndicator
+                Grid.RowSpan="2"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="Fill"
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}"
+                VerticalOptions="Center" />
+        </VerticalStackLayout>
+    </ScrollView>
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding GetContactDetailsCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+</ContentPage>

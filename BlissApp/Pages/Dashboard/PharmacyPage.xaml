@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.Dashboard.PharmacyPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Title="Pharmacy"
+    Shell.BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.TitleColor="Black">
+    <StackLayout Margin="15" BackgroundColor="Transparent">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Image
+                Grid.Row="0"
+                Aspect="AspectFill"
+                HorizontalOptions="Fill"
+                Source="{Binding Image}"
+                VerticalOptions="FillAndExpand" />
+            <Label
+                x:Name="txtConsulation"
+                Grid.Row="2"
+                Margin="20,0,20,0"
+                FontSize="14"
+                HorizontalTextAlignment="Center"
+                Style="{StaticResource LabelLight}"
+                Text="{Binding PharmacyDescription}"
+                TextColor="{StaticResource Black}"
+                TextType="Text" />
+        </Grid>
+
+    </StackLayout>
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding GetPharmacyCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+</ContentPage>

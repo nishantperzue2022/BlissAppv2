@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.MedicalCentres.MedicalCentrePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:BlissApp.Utility"
+    xmlns:local="clr-namespace:BlissApp"
+    xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+    xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewmodel="clr-namespace:BlissApp.ViewModels"
+    Title="Find Medical Centres"
+    Background="{StaticResource BackgroudColor}"
+    Shell.BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.TitleColor="Black">
+    <Grid RowDefinitions="*,Auto,200">
+
+        <RefreshView Command="{Binding ShowLocationsCommand}" IsRefreshing="{Binding IsRefreshing}">
+            <maps:Map
+                x:Name="map"
+                Grid.Row="0"
+                Grid.Column="0"
+                IsTrafficEnabled="False"
+                IsZoomEnabled="True"
+                ItemsSource="{Binding listofLocations}">
+                <maps:Map.ItemTemplate>
+                    <DataTemplate x:DataType="local:MapLocation">
+                        <maps:Pin
+                            Address="{Binding Address}"
+                            Label="{Binding Description}"
+                            Location="{Binding Position}" />
+                    </DataTemplate>
+                </maps:Map.ItemTemplate>
+            </maps:Map>
+        </RefreshView>
+
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="10"
+                Command="{Binding OpenCountiesPageCommand}"
+                FontSize="10"
+                HorizontalOptions="Fill"
+                Style="{StaticResource ButtonOutline}"
+                Text="Search clinics by county"
+                VerticalOptions="Start" />
+
+            <Button
+                x:Name="btnNearMe"
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="10"
+                Clicked="btnNearMe_Clicked"
+                FontSize="10"
+                HorizontalOptions="Fill"
+                Style="{StaticResource ButtonOutline}"
+                Text="Get clinics near me"
+                VerticalOptions="Start" />
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.Column="0">
+
+
+            <CollectionView
+                x:Name="colection"
+                ItemsSource="{Binding ProviderList}"
+                SelectionMode="None">
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                            <Image
+                                HeightRequest="100"
+                                Source="empty_pin.svg"
+                                WidthRequest="100" />
+                        </StackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="10">
+                            <HorizontalStackLayout Spacing="0">
+                                <Image
+                                    Margin="5"
+                                    HeightRequest="25"
+                                    WidthRequest="25">
+                                    <Image.Source>
+                                        <FontImageSource
+                                            FontFamily="FontAwesome"
+                                            Glyph="{x:Static fontawesome:IconFont.HospitalO}"
+                                            Size="20"
+                                            Color="Black" />
+                                    </Image.Source>
+                                </Image>
+
+                                <Label
+                                    Margin="5"
+                                    FontAttributes="Bold"
+                                    HorizontalTextAlignment="Start"
+                                    Style="{StaticResource LabelMedium}"
+                                    Text="{Binding Location}"
+                                    TextColor="Black"
+                                    VerticalTextAlignment="Start">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CountyViewModel}}, Path=GoToDetailsCommand}" CommandParameter="{Binding .}" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+
+    </Grid>
+    <!--<Grid RowSpacing="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <RefreshView Command="{Binding ShowLocationsCommand}" IsRefreshing="{Binding IsRefreshing}">
+            <Map
+                x:Name="map"
+                Grid.Row="0"
+                Grid.Column="0"
+                IsTrafficEnabled="False"
+                IsZoomEnabled="True"
+                ItemsSource="{Binding listofLocations}">
+                <Map.ItemTemplate>
+                    <DataTemplate x:DataType="local:MapLocation">
+                        <Pin
+                            Address="{Binding Address}"
+                            Label="{Binding Description}"
+                            Location="{Binding Position}" />
+                    </DataTemplate>
+                </Map.ItemTemplate>
+            </Map>
+        </RefreshView>
+
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="10"
+                Command="{Binding OpenCountiesPageCommand}"
+                FontSize="10"
+                HorizontalOptions="Fill"
+                Style="{StaticResource ButtonOutline}"
+                Text="Search clinics by county"
+                VerticalOptions="Start" />
+
+            <Button
+                x:Name="btnNearMe"
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="10"
+                Clicked="btnNearMe_Clicked"
+                FontSize="10"
+                HorizontalOptions="Fill"
+                Style="{StaticResource ButtonOutline}"
+                Text="Get clinics near me"
+                VerticalOptions="Start" />
+        </Grid>
+
+
+        <ActivityIndicator
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="2"
+            HorizontalOptions="Fill"
+            IsRunning="{Binding IsBusy}"
+            IsVisible="{Binding IsBusy}"
+            VerticalOptions="Center" />
+    -->
+    <!--<Grid Grid.Row="2" Grid.Column="0">
+
+
+            <CollectionView
+                x:Name="colection"
+                ItemsSource="{Binding ProviderList}"
+                SelectionMode="None">
+                <CollectionView.EmptyView>
+                    <ContentView>
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                            <Image
+                                HeightRequest="100"
+                                Source="empty_pin.svg"
+                                WidthRequest="100" />
+                        </StackLayout>
+                    </ContentView>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="10">
+                            <HorizontalStackLayout Spacing="0">
+                                <Image
+                                    Margin="5"
+                                    HeightRequest="25"
+                                    WidthRequest="25">
+                                    <Image.Source>
+                                        <FontImageSource
+                                            FontFamily="FontAwesome"
+                                            Glyph="{x:Static fontawesome:IconFont.HospitalO}"
+                                            Size="20"
+                                            Color="Black" />
+                                    </Image.Source>
+                                </Image>
+
+                                <Label
+                                    Margin="5"
+                                    FontAttributes="Bold"
+                                    HorizontalTextAlignment="Start"
+                                    Style="{StaticResource LabelMedium}"
+                                    Text="{Binding Location}"
+                                    TextColor="Black"
+                                    VerticalTextAlignment="Start">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CountyViewModel}}, Path=GoToDetailsCommand}" CommandParameter="{Binding .}" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>-->
+    <!--
+    </Grid>-->
+
+</ContentPage>

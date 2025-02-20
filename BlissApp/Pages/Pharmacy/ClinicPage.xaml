@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.Pharmacy.ClinicPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Doctors"
+    Background="{StaticResource PageBackgoundMintColor}"
+    NavigationPage.HasNavigationBar="False"
+    Shell.BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.TitleColor="Black">
+    <VerticalStackLayout>
+
+
+
+
+
+
+
+        <Label
+            HorizontalOptions="Center"
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" />
+
+
+
+
+    </VerticalStackLayout>
+</ContentPage>

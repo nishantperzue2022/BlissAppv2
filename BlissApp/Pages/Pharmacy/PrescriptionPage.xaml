@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.Pharmacy.PrescriptionPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:BlissApp.Utility"
+    Title="Pharmacy"
+    Background="{StaticResource BackgroudColor}"
+    NavigationPage.HasNavigationBar="False"
+    Shell.BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.TitleColor="Black">
+
+    <VerticalStackLayout Margin="10,10,10,0" Spacing="5">
+
+        <Frame
+            BackgroundColor="{StaticResource FrameBackgoundMintColor}"
+            BorderColor="{StaticResource AppGreenColor}"
+            IsClippedToBounds="True">
+            <Grid
+                ColumnDefinitions="Auto,Auto,*"
+                ColumnSpacing="5"
+                RowDefinitions="Auto">
+                <Frame
+                    BackgroundColor="{StaticResource AppGreenColor}"
+                    BorderColor="Transparent"
+                    CornerRadius="17"
+                    HeightRequest="34"
+                    IsClippedToBounds="True"
+                    WidthRequest="34">
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HeightRequest="22"
+                        HorizontalOptions="Center"
+                        WidthRequest="22">
+                        <Image.Source>
+                            <FontImageSource
+                                FontFamily="FontAwesome"
+                                Glyph="{x:Static fontawesome:IconFont.Camera}"
+                                Size="20"
+                                Color="{StaticResource White}" />
+                        </Image.Source>
+                    </Image>
+                </Frame>
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource LabelMedium}"
+                    Text="Take a photo of prescription"
+                    VerticalOptions="Center" />
+
+            </Grid>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding UploadPrescriptionCommand}" />
+            </Frame.GestureRecognizers>
+
+        </Frame>
+
+        <Frame
+            BackgroundColor="{StaticResource FrameBackgoundMintColor}"
+            BorderColor="{StaticResource AppGreenColor}"
+            IsClippedToBounds="True">
+            <Grid
+                ColumnDefinitions="Auto,Auto,*"
+                ColumnSpacing="5"
+                RowDefinitions="Auto">
+                <Frame
+                    BackgroundColor="{StaticResource AppGreenColor}"
+                    BorderColor="Transparent"
+                    CornerRadius="17"
+                    HeightRequest="34"
+                    IsClippedToBounds="True"
+                    WidthRequest="34">
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HeightRequest="22"
+                        HorizontalOptions="Center"
+                        WidthRequest="22">
+                        <Image.Source>
+                            <FontImageSource
+                                FontFamily="FontAwesome"
+                                Glyph="{x:Static fontawesome:IconFont.Calendar}"
+                                Size="20"
+                                Color="{StaticResource White}" />
+                        </Image.Source>
+                    </Image>
+                </Frame>
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource LabelMedium}"
+                    Text="Consult a doctor"
+                    VerticalOptions="Center" />
+
+            </Grid>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding BookConsultationCommand}" />
+            </Frame.GestureRecognizers>
+        </Frame>
+
+        <Frame
+            BackgroundColor="{StaticResource FrameBackgoundMintColor}"
+            BorderColor="{StaticResource AppGreenColor}"
+            IsClippedToBounds="True">
+            <Grid
+                ColumnDefinitions="Auto,Auto,*"
+                ColumnSpacing="5"
+                RowDefinitions="Auto">
+                <Frame
+                    BackgroundColor="{StaticResource AppGreenColor}"
+                    BorderColor="Transparent"
+                    CornerRadius="17"
+                    HeightRequest="34"
+                    IsClippedToBounds="True"
+                    WidthRequest="34">
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HeightRequest="22"
+                        HorizontalOptions="Center"
+                        WidthRequest="22">
+                        <Image.Source>
+                            <FontImageSource
+                                FontFamily="FontAwesome"
+                                Glyph="{x:Static fontawesome:IconFont.FirstOrder}"
+                                Size="20"
+                                Color="{StaticResource White}" />
+                        </Image.Source>
+                    </Image>
+                </Frame>
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource LabelMedium}"
+                    Text="Order medicines"
+                    VerticalOptions="Center" />
+
+            </Grid>
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding OrderMedicineCommand}" />
+            </Frame.GestureRecognizers>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>

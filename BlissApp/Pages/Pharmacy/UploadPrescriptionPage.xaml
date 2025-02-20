@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.Pharmacy.UploadPrescriptionPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fontawesome="clr-namespace:BlissApp.Utility"
+    xmlns:local="clr-namespace:BlissApp.ViewModels"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Title="Upload Prescription"
+    Background="{StaticResource BackgroudColor}"
+    Shell.BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.TitleColor="Black">
+
+    <ContentPage.BindingContext>
+        <local:PrescriptionViewModel />
+    </ContentPage.BindingContext>
+    <Grid>
+
+
+        <VerticalStackLayout Margin="15" VerticalOptions="Start">
+
+
+            <Grid ColumnDefinitions="*,*">
+                <StackLayout Grid.Column="0">
+                    <Label Style="{StaticResource LabelMedium}" Text="{Binding CountFile}" />
+                    <Label Style="{StaticResource LabelLight}" Text="(Max 5 Images)" />
+                </StackLayout>
+
+                <Image
+                    Grid.Column="1"
+                    HeightRequest="25"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    WidthRequest="25">
+                    <Image.Source>
+                        <FontImageSource
+                            FontFamily="FontAwesome"
+                            Glyph="{x:Static fontawesome:IconFont.Trash}"
+                            Size="20"
+                            Color="Red" />
+                    </Image.Source>
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ClearListCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+
+
+
+            <CollectionView ItemsSource="{Binding PhotoPaths}">
+                <CollectionView.EmptyView>
+                    <ContentView>
+
+
+                        <Label Text="sssssdsd" />
+                    </ContentView>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            Margin="5"
+                            CornerRadius="10"
+                            HeightRequest="300"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            WidthRequest="230">
+
+                            <Image
+                                Grid.Column="0"
+                                Margin="10"
+                                Aspect="Fill"
+                                HeightRequest="300"
+                                Source="{Binding ImagePath}"
+                                WidthRequest="230" />
+                        </Frame>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+
+
+
+        <VerticalStackLayout
+            Grid.Row="1"
+            Grid.Column="0"
+            VerticalOptions="End">
+            <ActivityIndicator
+                HorizontalOptions="Fill"
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}"
+                VerticalOptions="Center" />
+            <Frame
+                Margin="10"
+                Padding="10"
+                BackgroundColor="{StaticResource FrameBackgoundMintColor}"
+                BorderColor="{StaticResource AppGreenColor}">
+                <StackLayout>
+                    <Label Text="Choose an option to upload" />
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="5"
+                        RowDefinitions="*,*"
+                        RowSpacing="5">
+                        <Button
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            BorderColor="Transparent"
+                            Command="{Binding TakePhotoCommand}"
+                            FontSize="15"
+                            Style="{StaticResource ButtonOutline}"
+                            Text="Camera"
+                            TextColor="Black">
+                            <Button.ImageSource>
+                                <FontImageSource
+                                    FontFamily="FontAwesome"
+                                    Glyph="{x:Static fontawesome:IconFont.Camera}"
+                                    Size="20"
+                                    Color="{StaticResource Tertiary}" />
+                            </Button.ImageSource>
+                        </Button>
+                        <Button
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            BorderColor="Transparent"
+                            Command="{Binding PickMultiplePhotosCommand}"
+                            FontSize="15"
+                            Style="{StaticResource ButtonOutline}"
+                            Text="Gallery"
+                            TextColor="Black">
+                            <Button.ImageSource>
+                                <FontImageSource
+                                    FontFamily="FontAwesome"
+                                    Glyph="{x:Static fontawesome:IconFont.PictureO}"
+                                    Size="20"
+                                    Color="{StaticResource Tertiary}" />
+                            </Button.ImageSource>
+                        </Button>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+
+            <Button
+                Margin="10"
+                Command="{Binding UploadImagesCommand}"
+                Style="{StaticResource BaseButton}"
+                Text="Submit" />
+
+            <!--<Button
+                Margin="10"
+                Command="{Binding UploadImagesCommand}"
+                IsVisible="{Binding SubmitButtonVisibility}"
+                Style="{StaticResource BaseButton}"
+                Text="Submit" />-->
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

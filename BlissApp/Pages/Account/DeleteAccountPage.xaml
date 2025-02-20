@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.Account.DeleteAccountPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sf="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    Title="DeleteAccountPage"
+    Background="{StaticResource BackgroudColor}"
+    Shell.BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.TitleColor="Black">
+    <StackLayout Margin="15">
+        <Label
+            FontSize="16"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            Style="{StaticResource LabelMedium}"
+            Text="Hi Peter , we are sad to see you go We aim for an exceptional experience. If something did not go according to plan, please let us know."
+            VerticalOptions="Start"
+            VerticalTextAlignment="Center" />
+
+        <VerticalStackLayout Margin="0,20,0,0" Spacing="10">
+            <syncfusion:SfRadioGroup x:Name="radioGroup" Spacing="5">
+                <Border HeightRequest="50">
+                    <syncfusion:SfRadioButton
+                        x:Name="Privacy"
+                        StateChanged="Privacy_StateChanged"
+                        Text="I have a privacy issue" />
+                </Border>
+                <Border HeightRequest="50">
+                    <syncfusion:SfRadioButton
+                        x:Name="Cover"
+                        StateChanged="Cover_StateChanged"
+                        Text="I am unable to link my cover" />
+                </Border>
+                <Border HeightRequest="50">
+                    <syncfusion:SfRadioButton
+                        x:Name="Details"
+                        StateChanged="Details_StateChanged"
+                        Text="My membership information is not correct" />
+                </Border>
+                <Border HeightRequest="50">
+                    <syncfusion:SfRadioButton
+                        x:Name="Other"
+                        StateChanged="Other_StateChanged"
+                        Text="Other" />
+                </Border>
+            </syncfusion:SfRadioGroup>
+
+            <Entry
+                x:Name="txtDeleteReason"
+                IsVisible="False"
+                Text="{Binding DeleteReason}" />
+
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Margin="0,20,0,0">
+            <sf:SfTextInputLayout
+                ContainerBackground="White"
+                ContainerType="Outlined"
+                Hint="Additional Information"
+                IsHintAlwaysFloated="true"
+                Stroke="{StaticResource Primary}"
+                Style="{StaticResource sfInputLayoutOutlineStyle}">
+                <sf:SfTextInputLayout.HintLabelStyle>
+                    <sf:LabelStyle FontSize="20" TextColor="Black" />
+                </sf:SfTextInputLayout.HintLabelStyle>
+                <Editor
+                    AutoSize="TextChanges"
+                    HeightRequest="100"
+                    Text="{Binding Description}"
+                    VerticalOptions="Center" />
+            </sf:SfTextInputLayout>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout VerticalOptions="End">
+            <Button
+                Command="{Binding DeleteAccountCommand}"
+                Style="{StaticResource BaseButton}"
+                Text="Submit" />
+        </VerticalStackLayout>
+    </StackLayout>
+</ContentPage>

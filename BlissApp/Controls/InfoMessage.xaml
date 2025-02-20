@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    x:Class="BlissApp.Control.InfoMessage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    CanBeDismissedByTappingOutsideOfPopup="False"
+    Color="Transparent">
+
+    <Frame
+        Margin="0"
+        CornerRadius="20"
+        HeightRequest="300"
+        HorizontalOptions="Center"
+        VerticalOptions="CenterAndExpand">
+        <VerticalStackLayout Spacing="10">
+
+
+            <Image
+                Margin="10"
+                Aspect="AspectFit"
+                HeightRequest="80"
+                Source="gps.png"
+                WidthRequest="80" />
+
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                HorizontalOptions="Center"
+                Text="Enable Location Services"
+                TextColor="Black"
+                VerticalOptions="CenterAndExpand" />
+
+            <Label
+                x:Name="lblMessage"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Text="Please enable Location Services to allow us find medical centres near you."
+                TextColor="Black"
+                VerticalOptions="Center" />
+
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                <Button
+                    x:Name="btnOk"
+                    BackgroundColor="#009e4e"
+                    BorderColor="Transparent"
+                    BorderWidth="2"
+                    Clicked="btnOk_Clicked"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    Text="Ok"
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="300" />
+
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </Frame>
+
+
+</toolkit:Popup>

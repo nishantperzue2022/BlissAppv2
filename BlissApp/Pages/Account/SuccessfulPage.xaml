@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.Account.SuccessfulPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="SuccessfulPage"
+    Style="{StaticResource OnBoardingAndRegistrationContentPages}">
+    <StackLayout
+        Padding="20"
+        HorizontalOptions="Fill"
+        VerticalOptions="FillAndExpand">
+
+        <!--<StackLayout Orientation="Horizontal" Spacing="10" BackgroundColor="Red">
+            <Image
+                HeightRequest="15"
+                HorizontalOptions="Start"
+                Source="back"
+                VerticalOptions="Center" />
+            <Label
+                FontSize="16"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource LabelRegular}"
+                Text="Back"
+                VerticalOptions="Center" />
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding GoBackCommand}" />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>-->
+
+        <StackLayout HorizontalOptions="Fill" VerticalOptions="Center">
+
+            <Image
+                HeightRequest="100"
+                HorizontalOptions="Center"
+                Source="success"
+                VerticalOptions="Start" />
+
+            <Label
+                Margin="0,22,0,0"
+                FontSize="26"
+                HorizontalOptions="Center"
+                Style="{StaticResource LabelMedium}"
+                Text="Successful"
+                VerticalOptions="Start" />
+
+            <Label
+                Margin="0,12,0,0"
+                FontSize="16"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Style="{StaticResource LabelRegular}"
+                Text="Your registration was successful. Click continue to verify your account."
+                TextColor="{StaticResource TextLight}"
+                VerticalOptions="Start" />
+
+        </StackLayout>
+
+        <Button
+            Command="{Binding GoToOTPPageCommand}"
+            Style="{StaticResource BaseButton}"
+            Text="Continue"
+            VerticalOptions="End" />
+
+
+    </StackLayout>
+</ContentPage>
