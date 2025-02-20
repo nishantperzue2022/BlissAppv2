@@ -30,6 +30,7 @@ using Syncfusion.Maui.Core.Hosting;
 using BlissApp.Pages.Pharmacy;
 using BlissApp.Controls;
 using BlissApp.BLL.OrderModule;
+using BlissApp.BLL.MedicineModule;
 namespace BlissApp
 {
     public static class MauiProgram
@@ -57,8 +58,6 @@ namespace BlissApp
               .UseMauiMaps();
 
 
-
-
             //Repositories
             builder.Services.AddTransient<IMemberRepository, MemberRepository>();
             builder.Services.AddTransient<IMedicalCenteRepository, MedicalCenteRepository>();
@@ -73,7 +72,7 @@ namespace BlissApp
             builder.Services.AddTransient<IOfferRepository, OfferRepository>();
             builder.Services.AddTransient<IDepartmentRepository, DepartmentRepository>();
             builder.Services.AddTransient<IOrderRepository, OrderRepository>();
-
+            builder.Services.AddTransient<IMedicineRepository, MedicineRepository>();
 
             //Pages
   

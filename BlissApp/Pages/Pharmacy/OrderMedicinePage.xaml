@@ -13,9 +13,6 @@
     Shell.BackgroundColor="White"
     Shell.ForegroundColor="Black"
     Shell.TitleColor="Black">
-
-
-
     <VerticalStackLayout>
         <StackLayout Margin="20">
             <!--<sfCore:SfTextInputLayout

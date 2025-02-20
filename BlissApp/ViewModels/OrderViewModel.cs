@@ -1,5 +1,6 @@
 ﻿using AndroidX.Navigation;
 using BlissApp.BLL.MedicalCenterModule;
+using BlissApp.BLL.MedicineModule;
 using BlissApp.BLL.OrderModule;
 using BlissApp.Control;
 using BlissApp.Controls;
@@ -17,6 +18,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace BlissApp.ViewModels
 {
@@ -31,14 +33,16 @@ namespace BlissApp.ViewModels
 
         private readonly IOrderRepository orderRepository;
 
-        private readonly IMedicalCenteRepository  medicalCenteRepository;
+        private readonly IMedicalCenteRepository medicalCenteRepository;
+
+        private readonly IMedicineRepository medicineRepository;
 
         [ObservableProperty]
         bool isRefreshing;
 
         [ObservableProperty]
-        string? _quantity;   
-        
+        string? _quantity;
+
         [ObservableProperty]
         string? _pickUplocation;
 
@@ -47,7 +51,7 @@ namespace BlissApp.ViewModels
         string _medicineName;
 
         [ObservableProperty]
-         double _quantityValue;
+        double _quantityValue;
 
         private string _selectedItem;
 
@@ -84,11 +88,13 @@ namespace BlissApp.ViewModels
 
 
         public OrderViewModel(IOrderRepository orderRepository,
-                              IMedicalCenteRepository medicalCenteRepository)
+                              IMedicalCenteRepository medicalCenteRepository, IMedicineRepository medicineRepository)
         {
             this.orderRepository = orderRepository;
 
             this.medicalCenteRepository = medicalCenteRepository;
+
+            this.medicineRepository = medicineRepository;
 
             Items = new ObservableCollection<string>
         {
@@ -215,54 +221,30 @@ namespace BlissApp.ViewModels
                 IsBusy = false;
             }
         }
-
+        //
         [RelayCommand]
         public async Task GetListOfMedicines()
         {
             try
             {
-                var data = GetListOfMedicalCentres();
+                var data = await medicineRepository.GetMedicine();
 
-                if (data != null)
+                if (data.Item1 == true)
                 {
-                    var list = data.ToList();
+                    if (data.Item2 != null)
+                    {
+                        var list = data.Item2.medicines;
 
-                    if (Medicines?.Count() != 0)
-                    {
-                        Medicines.Clear();
-                    }
-                    foreach (var item in list)
-                    {
-                        Medicines.Add(item);
+                        if (Medicines?.Count() != 0)
+                        {
+                            Medicines.Clear();
+                        }
+                        foreach (var item in list)
+                        {
+                            Medicines.Add(item);
+                        }
                     }
                 }
-
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-
-                await Application.Current.MainPage?.ShowPopupAsync(new ErrorMessage("Warning", "Unable to fetch data ,please try again later"));
-
-                return;
-            }
-
-        }     
-        
-        
-        [RelayCommand]
-        public async Task GetPackaging()
-        {
-            try
-            {
-                Items =
-                [
-                    "Apple",
-                    "Banana",
-                    "Orange",
-                    "Grapes"
-                ];
 
             }
             catch (Exception ex)
@@ -275,7 +257,6 @@ namespace BlissApp.ViewModels
             }
 
         }
-
 
 
         [RelayCommand]
@@ -415,29 +396,35 @@ namespace BlissApp.ViewModels
             }
         }
 
-        public List<MedicineDTO> GetListOfMedicalCentres()
-        {
-            var k = new List<MedicineDTO>()
-            {
-                        new MedicineDTO() { Name = "Panadol", ID = 100 },
-                        new MedicineDTO() { Name = "Amoxicillin", ID = 12 },
-                        new MedicineDTO() { Name = "Penicillin", ID = 1 },
-                        new MedicineDTO() { Name = "Ciprofloxacin ", ID = 2 },
-                        new MedicineDTO() { Name = "LinkedIn", ID = 3 },
-                        new MedicineDTO() { Name = "Skype", ID = 4 },
-                        new MedicineDTO() { Name = "Azithromycin ", ID = 5 },
-                        new MedicineDTO() { Name = "Doxycycline", ID = 6 },
-                        new MedicineDTO() { Name = "Clindamycin", ID = 7 },
-                        new MedicineDTO() { Name = "Fluoxetine ", ID = 8 },
-                        new MedicineDTO() { Name = "Sertraline ", ID = 9 },
-                        new MedicineDTO() { Name = "Omeprazole ", ID = 10 },
-                        new MedicineDTO() { Name = "Ranitidine ", ID = 11 },
-                        new MedicineDTO() { Name = "Lansoprazole ", ID = 12 },
-                        new MedicineDTO() { Name = "Calcium carbonate ", ID = 13 },
-            }.ToList();
+        //public async Task<List<MedicineDTO>> GetListOfMedicalCentres()
+        //{
 
-            return k;
-        }
+        //    var list = (await medicineRepository.GetMedicine()).Item3;
+
+
+
+
+        //    var k = new List<MedicineDTO>()
+        //    {
+        //                new MedicineDTO() { Name = "Panadol", ID = 100 },
+        //                new MedicineDTO() { Name = "Amoxicillin", ID = 12 },
+        //                new MedicineDTO() { Name = "Penicillin", ID = 1 },
+        //                new MedicineDTO() { Name = "Ciprofloxacin ", ID = 2 },
+        //                new MedicineDTO() { Name = "LinkedIn", ID = 3 },
+        //                new MedicineDTO() { Name = "Skype", ID = 4 },
+        //                new MedicineDTO() { Name = "Azithromycin ", ID = 5 },
+        //                new MedicineDTO() { Name = "Doxycycline", ID = 6 },
+        //                new MedicineDTO() { Name = "Clindamycin", ID = 7 },
+        //                new MedicineDTO() { Name = "Fluoxetine ", ID = 8 },
+        //                new MedicineDTO() { Name = "Sertraline ", ID = 9 },
+        //                new MedicineDTO() { Name = "Omeprazole ", ID = 10 },
+        //                new MedicineDTO() { Name = "Ranitidine ", ID = 11 },
+        //                new MedicineDTO() { Name = "Lansoprazole ", ID = 12 },
+        //                new MedicineDTO() { Name = "Calcium carbonate ", ID = 13 },
+        //    }.ToList();
+
+        //    return k;
+        //}
 
         [RelayCommand]
         public async Task GetMedicalCentres()
@@ -558,10 +545,10 @@ namespace BlissApp.ViewModels
                 }
                 IsBusy = true;
 
-                var response = await orderRepository.SubmitOrder();             
+                var response = await orderRepository.SubmitOrder();
 
                 if (response == true)
-                {          
+                {
 
                     var s = "Order has been successfuly submitted";
 
