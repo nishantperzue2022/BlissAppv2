@@ -21,7 +21,7 @@
                 Aspect="AspectFill"
                 HorizontalOptions="Fill"
                 Source="{Binding Image}"
-                VerticalOptions="FillAndExpand" />
+                VerticalOptions="Fill" />
             <Label
                 x:Name="txtConsulation"
                 Grid.Row="2"

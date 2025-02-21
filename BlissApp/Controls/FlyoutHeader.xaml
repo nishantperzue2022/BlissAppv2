@@ -7,7 +7,7 @@
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewmodel="clr-namespace:BlissApp.ViewModels">
     <ContentView.Content>
-        <Grid HorizontalOptions="Fill" VerticalOptions="FillAndExpand">
+        <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />

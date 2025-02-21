@@ -17,7 +17,7 @@
                     Aspect="AspectFill"
                     HorizontalOptions="Fill"
                     Source="{Binding URL}"
-                    VerticalOptions="FillAndExpand" />
+                    VerticalOptions="Fill" />
                 <Label
                     Grid.Row="1"
                     Margin="0,70,0,0"

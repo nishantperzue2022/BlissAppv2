@@ -4,7 +4,7 @@ namespace BlissApp.Pages.Pharmacy;
 
 public partial class AddToCartPage : ContentPage
 {
-	public AddToCartPage(OrderViewModel vm)
+	public AddToCartPage(CartViewModel vm)
 	{
 		InitializeComponent();
 

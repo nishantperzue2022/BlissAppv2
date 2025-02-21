@@ -53,6 +53,16 @@ namespace BlissApp
                     fonts.AddFont("Poppins-Bold.ttf", "PoppinsBold");
                     fonts.AddFont("Poppins-Thin.ttf", "PoppinsThin");
                     fonts.AddFont("Poppins-Light.ttf", "PoppinsLight");
+
+                    fonts.AddFont("Montserrat-Black.ttf", "MontserratBlack");
+                    fonts.AddFont("Montserrat-Bold.ttf", "MontserratBold");
+                    fonts.AddFont("Montserrat-Italic.ttf", "MontserratItalic");
+                    fonts.AddFont("Montserrat-Light.ttf", "MontserratLight");
+                    fonts.AddFont("Montserrat-Regular.ttf", "MontserratRegular");
+                    fonts.AddFont("Montserrat-Thin.ttf", "MontserratThin");
+                    fonts.AddFont("Montserrat-Medium.ttf", "MontserratMedium");
+                    fonts.AddFont("Montserrat-SemiBold.ttf", "MontserratSemiBold");
+
                 })
 
               .UseMauiMaps();
@@ -121,6 +131,7 @@ namespace BlissApp
             builder.Services.AddTransient<HospitalPage>();
             builder.Services.AddTransient<AddToCartPage>();
             //view models
+            builder.Services.AddTransient<CartViewModel>();
             builder.Services.AddTransient<AlertViewModel>();
             builder.Services.AddTransient<AccountViewModel>();
             builder.Services.AddTransient<DependantsViewModel>();

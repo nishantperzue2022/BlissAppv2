@@ -61,6 +61,7 @@
                         HasError="{Binding FirstNameHasError}"
                         Hint="Family Member"
                         Style="{StaticResource sfInputLayoutOutlineStyle}">
+                        
                         <editors:SfComboBox
                             BackgroundColor="White"
                             DisplayMemberPath="FullName"
@@ -68,6 +69,7 @@
                             ItemsSource="{Binding ListOfFamilyMember}"
                             SelectedItem="{Binding SelectedFamilyMember}"
                             TextMemberPath="FullName" />
+                        
                         <sfCore:SfTextInputLayout.HintLabelStyle>
                             <sfCore:LabelStyle FontFamily="PoppinsRegular" FontSize="16" />
                         </sfCore:SfTextInputLayout.HintLabelStyle>

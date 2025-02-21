@@ -6,7 +6,9 @@
     xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
     xmlns:sfCore="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewmodel="clr-namespace:BlissApp.ViewModels"
     Title="Add To Cart"
+    x:DataType="viewmodel:CartViewModel"
     Background="{StaticResource BackgroudColor}"
     NavigationPage.HasNavigationBar="False"
     Shell.BackgroundColor="White"
@@ -19,55 +21,76 @@
                 FontAttributes="Bold"
                 FontSize="18"
                 HorizontalOptions="Start"
-                Text="{Binding MedicineName}"
+                Text="{Binding MedicineDTO.Name}"
                 VerticalOptions="Start" />
 
-            <Label
+
+
+            <Grid
                 Margin="0,10,0,0"
-                FontAttributes="Bold"
-                FontSize="16"
-                HorizontalOptions="Start"
-                Text="Quantity"
-                VerticalOptions="Start" />
+                ColumnDefinitions="*,*"
+                ColumnSpacing="10">
 
-            <Grid ColumnDefinitions="*,*">
 
-                <editors:SfNumericEntry
+                <sfCore:SfTextInputLayout
                     Grid.Column="0"
-                    FontSize="12"
+                    Margin="10,0,0,0"
+                    ContainerType="None"
+                    ErrorText="{Binding QuantityValueErrorText}"
+                    HasError="{Binding QuantityValueHasError}"
+                    Hint="Quantity"
                     HorizontalOptions="Center"
-                    Minimum="1"
-                    ShowClearButton="False"
-                    UpDownButtonColor="{StaticResource AppGreenColor}"
-                    UpDownPlacementMode="Inline"
-                    WidthRequest="200"
-                    Value="{Binding QuantityValue}" />
+                    IsHintAlwaysFloated="true">
+                    <editors:SfNumericEntry
+                        FontSize="12"
+                        Minimum="1"
+                        ShowClearButton="False"
+                        UpDownButtonColor="{StaticResource AppGreenColor}"
+                        UpDownPlacementMode="Inline"
+                        Value="{Binding QuantityValue}" />
+                    <sfCore:SfTextInputLayout.HintLabelStyle>
+                        <sfCore:LabelStyle FontSize="24" />
+                    </sfCore:SfTextInputLayout.HintLabelStyle>
+                </sfCore:SfTextInputLayout>
 
-                <editors:SfComboBox
+
+
+
+                <sfCore:SfTextInputLayout
                     Grid.Column="1"
-                    Margin="0,10,0,0"
-                    ClearButtonIconColor="{StaticResource AppGreenColor}"
-                    ClipToBounds="True"
-                    DropDownIconColor="{StaticResource AppGreenColor}"
-                    FontSize="15"
-                    IsClearButtonVisible="False"
-                    ItemsSource="{Binding Items}"
-                    MaxDropDownHeight="300"
-                    Placeholder="Packaging"
-                    SelectedItem="{Binding SelectedItem}"
-                    Stroke="{StaticResource Tertiary}">
-                    <editors:SfComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <Label
-                                Margin="10,5,5,5"
-                                FontSize="13"
-                                Text="{Binding .}"
-                                VerticalOptions="Center" />
-                        </DataTemplate>
-                    </editors:SfComboBox.ItemTemplate>
-                </editors:SfComboBox>
-            </Grid>
+                    ContainerType="None"
+                    ErrorText="{Binding PackegingErrorText}"
+                    HasError="{Binding PackagingHasError}"
+                    Hint="Packaging"
+                    IsHintAlwaysFloated="true">
+                    <editors:SfComboBox
+                        Margin="0,10,0,0"
+                        ClearButtonIconColor="{StaticResource AppGreenColor}"
+                        ClipToBounds="True"
+                        DropDownIconColor="{StaticResource AppGreenColor}"
+                        FontSize="15"
+                        IsClearButtonVisible="False"
+                        ItemsSource="{Binding Items}"
+                        MaxDropDownHeight="300"
+                        SelectedItem="{Binding SelectedItem}"
+                        Stroke="{StaticResource Tertiary}">
+                        <editors:SfComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <Label
+                                    Margin="10,5,5,5"
+                                    FontSize="13"
+                                    Text="{Binding .}"
+                                    VerticalOptions="Center" />
+                            </DataTemplate>
+                        </editors:SfComboBox.ItemTemplate>
+                    </editors:SfComboBox>
+                    <sfCore:SfTextInputLayout.HintLabelStyle>
+                        <sfCore:LabelStyle FontSize="24" />
+                    </sfCore:SfTextInputLayout.HintLabelStyle>
+                </sfCore:SfTextInputLayout>
 
+
+            </Grid>
 
         </VerticalStackLayout>
 
@@ -83,7 +106,7 @@
                 Text="Description"
                 VerticalOptions="Start" />
 
-            <Label Text="Often used for ear infections, pneumonia, and urinary tract infections" />
+            <Label Text="{Binding MedicineDTO.Description}" />
 
             <Label
                 FontAttributes="Bold"

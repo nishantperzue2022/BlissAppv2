@@ -10,7 +10,7 @@
         <Setter Property="BorderColor" Value="{StaticResource BorderColor}" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="HeightRequest" Value="50" />
-        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="HorizontalOptions" Value="Fill" />
         <Setter Property="VerticalOptions" Value="Start" />
     </Style>
 

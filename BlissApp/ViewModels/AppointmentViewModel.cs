@@ -249,6 +249,7 @@ namespace BlissApp.ViewModels
                         DepartmentErrorText = "";
                     }
                 }
+
                 if (AppointmentType == "radiology")
                 {
                     DepartmentId = 2;

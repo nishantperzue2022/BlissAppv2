@@ -11,8 +11,8 @@
         <StackLayout Margin="0" Padding="0">
             <StackLayout
                 Padding="20"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand">
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill">
 
                 <Label
                     Margin="0,22,0,0"
@@ -35,7 +35,7 @@
                     Margin="0,50,0,0"
                     ColumnDefinitions="0.2*,0.2*,0.2*,0.2*,0.2*,0.2*"
                     ColumnSpacing="15"
-                    HorizontalOptions="FillAndExpand"
+                    HorizontalOptions="Fill"
                     VerticalOptions="Start">
 
                     <sfCore:SfTextInputLayout Grid.Column="0" Style="{StaticResource otpBorder}">

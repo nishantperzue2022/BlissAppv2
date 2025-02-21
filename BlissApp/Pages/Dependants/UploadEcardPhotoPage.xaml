@@ -14,7 +14,7 @@
                 Padding="20"
                 HorizontalOptions="Fill"
                 Spacing="25"
-                VerticalOptions="FillAndExpand">
+                VerticalOptions="Fill">
 
                 <Grid
                     ColumnDefinitions="0.2*,0.6*,0.2*"
@@ -102,7 +102,7 @@
                 <VerticalStackLayout Margin="20">
 
                     <Label
-                        HorizontalOptions="EndAndExpand"
+                        HorizontalOptions="End"
                         Text="*Ecard photos can only be uploaded once, if you need to change afterwards kindly contact +254-730-724-000."
                         VerticalOptions="End" />
                 </VerticalStackLayout>

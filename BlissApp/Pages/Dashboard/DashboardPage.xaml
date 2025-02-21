@@ -86,7 +86,7 @@
             <VerticalStackLayout
                 BackgroundColor="#F0F0F0"
                 Spacing="1"
-                VerticalOptions="FillAndExpand">
+                VerticalOptions="Fill">
 
                 <VerticalStackLayout>
                     <!--<Label
@@ -116,7 +116,7 @@
                                         Aspect="AspectFill"
                                         HorizontalOptions="Fill"
                                         Source="{Binding URL}"
-                                        VerticalOptions="FillAndExpand" />
+                                        VerticalOptions="Fill" />
                                 </StackLayout>
                             </DataTemplate>
                         </CarouselView.ItemTemplate>
@@ -503,7 +503,7 @@
                             ItemsSource="{Binding TestimonialList}">
                             <CarouselView.ItemTemplate>
                                 <DataTemplate>
-                                    <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand">
+                                    <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill">
                                         <Label
                                             Margin="10,10,10,0"
                                             FlowDirection="MatchParent"

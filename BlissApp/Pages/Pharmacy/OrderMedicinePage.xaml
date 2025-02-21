@@ -50,14 +50,16 @@
                 TextMemberPath="Name"
                 TextSearchMode="Contains" />-->
 
+
+
             <editors:SfAutocomplete
                 x:Name="autocomplete"
                 DisplayMemberPath="Name"
                 IsClearButtonVisible="False"
                 ItemsSource="{Binding Medicines}"
                 MaxDropDownHeight="250"
+                SelectedItem="{Binding SelectedDepartment}"
                 SelectedValuePath="ID"
-                SelectionChanged="OnSelectionChanged"
                 Stroke="{StaticResource Tertiary}"
                 TextMemberPath="Name"
                 TextSearchMode="Contains" />

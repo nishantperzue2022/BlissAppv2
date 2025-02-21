@@ -414,12 +414,43 @@
         <Setter Property="Keyboard" Value="Numeric" />
         <Setter Property="FontFamily" Value="PoppinsMedium" />
         <Setter Property="FontSize" Value="30" />
-        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
-        <Setter Property="VerticalOptions" Value="FillAndExpand" />
+        <Setter Property="HorizontalOptions" Value="Fill" />
+        <Setter Property="VerticalOptions" Value="Fill" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
     </Style>
 
 
+    <Style x:Key="LabelMontserratBlack" TargetType="Label">
+        <Setter Property="FontFamily" Value="MontserratBlack" />
+    </Style>
+
+    <Style x:Key="LabelMontserratBold" TargetType="Label">
+        <Setter Property="FontFamily" Value="MontserratBold" />
+    </Style>
+
+    <Style x:Key="LabelMontserratMedium" TargetType="Label">
+        <Setter Property="FontFamily" Value="MontserratMedium" />
+    </Style>
+
+    <Style x:Key="LabelMontserratRegular" TargetType="Label">
+        <Setter Property="FontFamily" Value="MontserratRegular" />
+    </Style>
+
+    <Style x:Key="LabelMontserratThin" TargetType="Label">
+        <Setter Property="FontFamily" Value="MontserratThin" />
+    </Style>
+
+    <Style x:Key="LabelMontserratLight" TargetType="Label">
+        <Setter Property="FontFamily" Value="MontserratLight" />
+    </Style>
+
+    <Style x:Key="LabelMontserratItalic" TargetType="Label">
+        <Setter Property="FontFamily" Value="MontserratItalic" />
+    </Style>
+
+    <Style x:Key="LabelMontserratSemiBold" TargetType="Label">
+        <Setter Property="FontFamily" Value="MontserratSemiBold" />
+    </Style>
 
 </ResourceDictionary>

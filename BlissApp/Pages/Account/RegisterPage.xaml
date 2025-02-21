@@ -28,7 +28,7 @@
             <StackLayout
                 Padding="20"
                 HorizontalOptions="Fill"
-                VerticalOptions="FillAndExpand">
+                VerticalOptions="Fill">
 
                 <Image
                     Margin="20"
@@ -47,7 +47,7 @@
                 <StackLayout
                     HorizontalOptions="Fill"
                     Spacing="0"
-                    VerticalOptions="FillAndExpand">
+                    VerticalOptions="Fill">
 
                     <Grid>
                         <Grid.RowDefinitions>

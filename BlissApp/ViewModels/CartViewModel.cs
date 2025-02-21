@@ -6,7 +6,6 @@ using BlissApp.Controls;
 using BlissApp.DTO.AuthenticationModule;
 using BlissApp.DTO.MedicalCentres;
 using BlissApp.DTO.MedicineModule;
-using BlissApp.DTO.MemberModule;
 using BlissApp.DTO.OrderModule;
 using BlissApp.Pages.Pharmacy;
 using BlissApp.Utility;
@@ -18,9 +17,13 @@ using System.Collections.ObjectModel;
 
 namespace BlissApp.ViewModels
 {
-
-    public partial class OrderViewModel : BaseViewModel
+    [QueryProperty(nameof(MedicineDTO), nameof(MedicineDTO))]
+    public partial class CartViewModel : BaseViewModel
     {
+
+        [ObservableProperty]
+        string? text;
+
         public ObservableCollection<OrderDTO>? ListOfOrders { get; set; } = new();
 
         public ObservableCollection<MedicineDTO>? Medicines { get; set; } = new();
@@ -33,10 +36,14 @@ namespace BlissApp.ViewModels
 
         private readonly IMedicineRepository medicineRepository;
 
-    
-        
         [ObservableProperty]
         bool isRefreshing;
+
+        [ObservableProperty]
+        bool _location;
+
+        [ObservableProperty]
+        MedicineDTO medicineDTO;
 
         [ObservableProperty]
         string? _quantity;
@@ -52,58 +59,18 @@ namespace BlissApp.ViewModels
         double _quantityValue;
 
 
-        private MedicineDTO _selectedDepartment;
-        public MedicineDTO SelectedDepartment
-        {
-            get { return _selectedDepartment; }
-            set
-            {
-                SetProperty(ref _selectedDepartment, value);
+        [ObservableProperty]
+        bool _quantityValueHasError;
 
-                if (SelectedDepartment != null)
-                {
+        [ObservableProperty]
+        string _quantityValueErrorText;    
+        
+        
+        [ObservableProperty]
+        bool _packagingHasError;
 
-                    var k = _selectedDepartment;
-
-                    OpenCartPage(_selectedDepartment);
-
-                    //DepartmentId = SelectedDepartment.Id;
-
-
-                }
-            }
-        }
-
-        private async void OpenCartPage(MedicineDTO  medicineDTO)
-        {
-
-
-            //var navigationParameter = new Dictionary<string, object>
-            //{
-            //    { "MedicineDTO", selectedDepartment }
-            //};
-
-            //await Shell.Current.GoToAsync(nameof(AddToCartPage), animate: true);
-
-            //await Shell.Current.GoToAsync($"AddToCartPage", navigationParameter);
-
-            //var s = "Order has been successfuly submitted";
-
-            //await Shell.Current.GoToAsync($"{nameof(AddToCartPage)}?Text={s}", animate: true);
-
-            var data = new Dictionary<string, object>
-            {
-                        { "MedicineDTO", medicineDTO }
-            };          
-
-            await Shell.Current.GoToAsync($"AddToCartPage", data);
-
-
-
-
-
-
-        }
+        [ObservableProperty]
+        string _packegingErrorText;
 
         private string _selectedItem;
 
@@ -139,7 +106,7 @@ namespace BlissApp.ViewModels
 
 
 
-        public OrderViewModel(IOrderRepository orderRepository,
+        public CartViewModel(IOrderRepository orderRepository,
                               IMedicalCenteRepository medicalCenteRepository, IMedicineRepository medicineRepository)
         {
             this.orderRepository = orderRepository;
@@ -181,40 +148,40 @@ namespace BlissApp.ViewModels
 
                 var userDetails = JsonConvert.DeserializeObject<Login>(logindetails);
 
-                //if (AppointmentType == "radiology")
-                //{
-                //    DepartmentId = 2;
-                //}
 
-                //if (MedicalCentreId == 0)
-                //{
-                //    MedicalCentreHasError = true;
+                if (QuantityValue == 0 || QuantityValue < 1)
+                {
+                    QuantityValueHasError = true;
 
-                //    MedicalCentreErrorText = "Please  select Medical Centre";
+                    QuantityValueErrorText = "Please  select  Quantity ";
 
-                //    return;
-                //}
-                //else
-                //{
-                //    MedicalCentreHasError = false;
+                    return;
+                }
+                else
+                {
+                    QuantityValueHasError = false;
 
-                //    MedicalCentreErrorText = "";
-                //}
+                    QuantityValueErrorText = "";
+                }
+                
 
-                //if (string.IsNullOrEmpty(CurrentTime.ToString(@"hh\:mm")))
-                //{
-                //    PriorityTimeHasError = true;
+                if (string.IsNullOrEmpty(SelectedItem))
+                {
+                    PackagingHasError = true;
 
-                //    PriorityTimeErrorText = "Please  select priority time";
+                    PackegingErrorText = "Please  select  package";
 
-                //    return;
-                //}
-                //else
-                //{
-                //    PriorityTimeHasError = false;
+                    return;
+                }
+                else
+                {
+                    QuantityValueHasError = false;
 
-                //    PriorityTimeErrorText = "";
-                //}
+                    QuantityValueErrorText = "";
+                }
+
+
+
 
                 IsBusy = true;
 
@@ -231,11 +198,11 @@ namespace BlissApp.ViewModels
 
                          Status =0,
 
-                         MedicineName = MedicineName,
+                         MedicineName = medicineDTO.Name,
 
                          PickupLocation = PickUplocation,
 
-                         Quantity = Quantity +" " + SelectedItem,
+                         Quantity = QuantityValue +" " + SelectedItem,
                      }
 
                 };
@@ -421,10 +388,13 @@ namespace BlissApp.ViewModels
 
                 if (response == true)
                 {
-                    await GetOrders();
-
                     await Application.Current.MainPage?.ShowPopupAsync(new SuccessMessage("Success", "Item has been successfuly removed from your cart"));
-                    
+
+                    IsBusy = false;
+
+                    IsRefreshing = true;
+
+                    await GetOrders();
                 }
                 else
                 {
@@ -634,4 +604,6 @@ namespace BlissApp.ViewModels
 
 
     }
+
+
 }

@@ -25,7 +25,7 @@
                 Padding="20"
                 HorizontalOptions="Fill"
                 Spacing="0"
-                VerticalOptions="FillAndExpand">
+                VerticalOptions="Fill">
                 <Grid
                     ColumnDefinitions="0.2*,0.6*,0.2*"
                     HorizontalOptions="Fill"
@@ -219,7 +219,7 @@
                                 <DatePicker
                                     Date="{Binding DateOfBirth}"
                                     Format="dd-MMM-yyyy"
-                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalOptions="Fill"
                                     MaximumDate="{Binding MaximumDate}"
                                     VerticalOptions="Center" />
                                 <sfCore:SfTextInputLayout.HintLabelStyle>

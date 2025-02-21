@@ -21,7 +21,7 @@
                 Padding="20"
                 HorizontalOptions="Fill"
                 Spacing="25"
-                VerticalOptions="FillAndExpand">
+                VerticalOptions="Fill">
 
                 <Grid
                     ColumnDefinitions="0.2*,0.6*,0.2*"
@@ -775,7 +775,7 @@
                     IsVisible="true"
                     IsZoomEnabled="True"
                     MapType="Street"
-                    VerticalOptions="FillAndExpand"
+                    VerticalOptions="Fill"
                     WidthRequest="400" />
             </VerticalStackLayout>
 

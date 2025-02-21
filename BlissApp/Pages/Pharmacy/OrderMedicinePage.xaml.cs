@@ -13,25 +13,25 @@ public partial class OrderMedicinePage : ContentPage
         Application.Current.UserAppTheme = AppTheme.Light;
     }
 
-    private async void OnSelectionChanged(object sender, Syncfusion.Maui.Inputs.SelectionChangedEventArgs e)
-    {
-        try
-        {
-            if (autocomplete != null && autocomplete.SelectedValue != null)
-            {
+    //private async void OnSelectionChanged(object sender, Syncfusion.Maui.Inputs.SelectionChangedEventArgs e)
+    //{
+    //    try
+    //    {
+    //        if (autocomplete != null && autocomplete.SelectedValue != null)
+    //        {
 
-                await Shell.Current.GoToAsync(nameof(AddToCartPage), animate: true);
+    //            await Shell.Current.GoToAsync(nameof(AddToCartPage), animate: true);
 
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.Message);
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        Console.WriteLine(ex.Message);
 
-            return;
-        }
+    //        return;
+    //    }
 
 
 
-    }
+    //}
 }

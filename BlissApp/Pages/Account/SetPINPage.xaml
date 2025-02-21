@@ -28,7 +28,7 @@
             <StackLayout
                 Padding="20"
                 HorizontalOptions="Fill"
-                VerticalOptions="FillAndExpand">
+                VerticalOptions="Fill">
                 <Image
                     Margin="20"
                     Aspect="Fill"
@@ -52,7 +52,7 @@
                 <StackLayout
                     HorizontalOptions="Fill"
                     Spacing="10"
-                    VerticalOptions="FillAndExpand">
+                    VerticalOptions="Fill">
                     <sfCore:SfTextInputLayout
                         ErrorText="{Binding PinErrorText}"
                         HasError="{Binding PinHasError}"

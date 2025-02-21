@@ -48,7 +48,7 @@
     <Style x:Key="sfInputLayoutOutlineStyle" TargetType="sfCore:SfTextInputLayout">
 
         <Setter Property="VerticalOptions" Value="Start" />
-        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="HorizontalOptions" Value="Fill" />
         <Setter Property="ContainerBackground" Value="Transparent" />
         <Setter Property="ContainerType" Value="Outlined" />
         <Setter Property="IsHintAlwaysFloated" Value="False" />
@@ -84,8 +84,8 @@
         <Setter Property="InputViewPadding" Value="0" />
         <Setter Property="HeightRequest" Value="80" />
         <Setter Property="WidthRequest" Value="60" />
-        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
-        <Setter Property="VerticalOptions" Value="FillAndExpand" />
+        <Setter Property="HorizontalOptions" Value="Fill" />
+        <Setter Property="VerticalOptions" Value="Fill" />
     </Style>
 
 

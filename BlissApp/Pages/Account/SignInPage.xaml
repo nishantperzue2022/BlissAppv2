@@ -31,7 +31,7 @@
             <StackLayout
                 Padding="20"
                 HorizontalOptions="Fill"
-                VerticalOptions="FillAndExpand">
+                VerticalOptions="Fill">
                 <StackLayout Orientation="Horizontal" Spacing="10">
                     <!--<Image
                     HeightRequest="15"
@@ -86,7 +86,7 @@
                 <StackLayout
                     HorizontalOptions="Fill"
                     Spacing="10"
-                    VerticalOptions="FillAndExpand">
+                    VerticalOptions="Fill">
 
                     <sfCore:SfTextInputLayout
                         Margin="0,40,0,0"
