@@ -448,9 +448,15 @@ namespace BlissApp.ViewModels
             try
             { 
                IsBusy = true;
-        
-                var data = (await medicalCenteRepository.GetMedicalcentre()).Item2;
 
+               
+                if (ListOfMedicalCentre.Count != 0)
+                {
+                    return;
+                }
+
+
+                var data = (await medicalCenteRepository.GetMedicalcentre()).Item2;
 
                 if (data != null)
                 {
@@ -465,6 +471,8 @@ namespace BlissApp.ViewModels
                         ListOfMedicalCentre.Add(item);
                     }
                 }
+
+
             }
             catch (Exception ex)
             {

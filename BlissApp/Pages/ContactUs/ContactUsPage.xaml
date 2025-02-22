@@ -111,7 +111,6 @@
                     StrokeThickness="1" />
             </StackLayout>
 
-
             <StackLayout>
                 <Grid Margin="20" ColumnSpacing="20">
                     <Grid.RowDefinitions>
@@ -200,7 +199,6 @@
                     StrokeThickness="1" />
             </StackLayout>
 
-
             <StackLayout>
                 <Grid Margin="20" ColumnSpacing="20">
                     <Grid.RowDefinitions>
@@ -288,8 +286,49 @@
                     Stroke="#1f3c86"
                     StrokeThickness="1" />
             </StackLayout>
+            <StackLayout>
+                <Grid Margin="20" ColumnSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
 
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HeightRequest="20"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"
+                        WidthRequest="20">
+                        <Image.Source>
+                            <FontImageSource
+                                FontFamily="FontAwesome"
+                                Glyph="{x:Static fontawesome:IconFont.Info}"
+                                Size="20"
+                                Color="#08457E" />
+                        </Image.Source>
+                    </Image>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Style="{StaticResource LabelMedium}"
+                        Text="Life @ Bliss">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateToVideosCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
 
+                </Grid>
+                <Border
+                    Margin="20,5,20,0"
+                    BackgroundColor="#1f3c86"
+                    Stroke="#1f3c86"
+                    StrokeThickness="1" />
+            </StackLayout>
 
             <ActivityIndicator
                 Grid.RowSpan="2"

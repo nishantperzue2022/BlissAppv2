@@ -9,5 +9,7 @@ public partial class AddToCartPage : ContentPage
 		InitializeComponent();
 
 		BindingContext = vm;
-	}
+
+        Application.Current.UserAppTheme = AppTheme.Light;
+    }
 }

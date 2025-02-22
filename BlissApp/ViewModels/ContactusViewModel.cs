@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 using BlissApp.BLL.ContactusModule;
 using BlissApp.Control;
 using BlissApp.Utility;
+using BlissApp.Pages.ContactUs;
 
 namespace BlissApp.ViewModels
 {
@@ -26,7 +27,6 @@ namespace BlissApp.ViewModels
         public string _infoEmail;
 
         private readonly IContactusRepository contactusRepository;
-
         public ContactusViewModel(IContactusRepository contactusRepository)
         {
             this.contactusRepository = contactusRepository;
@@ -34,8 +34,7 @@ namespace BlissApp.ViewModels
 
         [RelayCommand]
         public async Task GetContactDetails()
-        {
-
+        {    
             try
             {
                 if (IsBusy)
@@ -72,14 +71,13 @@ namespace BlissApp.ViewModels
                 IsBusy = false;
             }
         }
-
-
         [RelayCommand]
         async Task GetDialer()
         {
             try
             {
                 if (PhoneDialer.Default.IsSupported)
+
                     PhoneDialer.Default.Open(ContactNo);
 
             }
@@ -109,7 +107,23 @@ namespace BlissApp.ViewModels
                 return;
             }
         }
+        [RelayCommand]
+        async Task NavigateToVideos()
+        {
+            try
+            {
+                await Shell.Current.GoToAsync(nameof(VideoPage), animate: true);
 
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
+                await Application.Current.MainPage?.ShowPopupAsync(new ErrorMessage("Warning", "Unable to view details ,please try again"));
+
+                return;
+            }
+        }
         [RelayCommand]
         async Task GetEmail()
         {
@@ -117,16 +131,20 @@ namespace BlissApp.ViewModels
             {
                 if (Email.Default.IsComposeSupported)
                 {
-
                     string subject = "";
+
                     string body = "";
+
                     string[] recipients = new[] { "info@makl.co.ke" };
 
                     var message = new EmailMessage
                     {
                         Subject = subject,
+
                         Body = body,
+
                         BodyFormat = EmailBodyFormat.PlainText,
+
                         To = new List<string>(recipients)
                     };
 
@@ -142,8 +160,6 @@ namespace BlissApp.ViewModels
                 return;
             }
         }
-
-
         [RelayCommand]
         async Task GetLindaLink()
         {

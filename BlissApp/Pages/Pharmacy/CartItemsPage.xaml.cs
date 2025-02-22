@@ -8,5 +8,7 @@ public partial class CartItemsPage : ContentPage
 	{
 		InitializeComponent();
 		BindingContext = vm;
-	}
+
+        Application.Current.UserAppTheme = AppTheme.Light;
+    }
 }

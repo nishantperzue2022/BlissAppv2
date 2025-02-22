@@ -40,6 +40,7 @@ namespace BlissApp
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                    .UseMauiCommunityToolkitMediaElement()
                 .UseMauiCommunityToolkit()
                 .ConfigureSyncfusionCore()
                 .ConfigureFonts(fonts =>
@@ -86,6 +87,7 @@ namespace BlissApp
 
             //Pages
   
+            builder.Services.AddTransient<VideoPage>();
             builder.Services.AddTransient<SuccessPage>();
             builder.Services.AddTransient<DependantPage>();
             builder.Services.AddTransient<HospitalVisitPage>();

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlissApp.Pages.ContactUs.VideoPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="clr-namespace:CommunityToolkit.Maui.Media;assembly=CommunityToolkit.Maui.Core"
+    Title="Video"
+    Background="{StaticResource BackgroudColor}"
+    Shell.BackgroundColor="White"
+    Shell.ForegroundColor="Black"
+    Shell.TitleColor="Black">
+    <StackLayout>
+        <HorizontalStackLayout>
+            <Frame>
+                <WebView
+                    x:Name="youtubeWebView"
+                    HeightRequest="300"
+                    Source="https://www.youtube.com/watch?v=GGc096CFa8A"
+                    WidthRequest="500" />
+            </Frame>
+        </HorizontalStackLayout>
+    </StackLayout>
+</ContentPage>

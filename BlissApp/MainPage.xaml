@@ -15,12 +15,12 @@
     <Grid RowDefinitions="*,Auto">
         <CarouselView
             Grid.Row="0"
-            HorizontalOptions="Fill"
+            HorizontalOptions="FillAndExpand"
             IndicatorView="indicatorView"
             ItemsSource="{Binding OnboardingSteps}"
             Loop="False"
             PositionChanged="CarouselView_PositionChanged"
-            VerticalOptions="Fill">
+            VerticalOptions="FillAndExpand">
             <CarouselView.ItemTemplate>
                 <DataTemplate x:DataType="vm:OnboardingModel">
                     <StackLayout BackgroundColor="Transparent">
@@ -33,15 +33,15 @@
                             <Image
                                 Grid.Row="0"
                                 Aspect="AspectFill"
-                                HorizontalOptions="Fill"
+                                HorizontalOptions="FillAndExpand"
                                 Source="{Binding Image}"
-                                VerticalOptions="Fill" />
+                                VerticalOptions="FillAndExpand" />
                             <Label
                                 Grid.Row="1"
                                 Margin="0,70,0,0"
                                 FontSize="24"
                                 HorizontalOptions="Center"
-                                Style="{StaticResource LabelMontserratMedium}"
+                                Style="{StaticResource LabelMedium}"
                                 Text="{Binding Heading}"
                                 TextColor="{StaticResource Black}"
                                 VerticalOptions="Start" />
@@ -50,7 +50,7 @@
                                 Margin="20,0,20,0"
                                 FontSize="14"
                                 HorizontalTextAlignment="Center"
-                                Style="{StaticResource LabelMontserratRegular}"
+                                Style="{StaticResource LabelLight}"
                                 Text="{Binding Description}"
                                 TextColor="{StaticResource Black}"
                                 TextType="Text" />
@@ -88,10 +88,9 @@
                     BackgroundColor="White"
                     CornerRadius="10"
                     FontAttributes="Bold"
-                    FontFamily="{StaticResource LabelMontserratMedium}"
                     FontSize="16"
                     HeightRequest="35"
-                    HorizontalOptions="End"
+                    HorizontalOptions="EndAndExpand"
                     IsVisible="{Binding IsNotLastStep}"
                     Text="Skip"
                     TextColor="Black"
@@ -108,7 +107,6 @@
                     Padding="0"
                     CornerRadius="10"
                     FontAttributes="Bold"
-                    FontFamily="{StaticResource LabelMontserratMedium}"
                     FontSize="12"
                     HeightRequest="35"
                     HorizontalOptions="End"

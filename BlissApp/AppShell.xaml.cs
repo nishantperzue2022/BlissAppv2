@@ -32,6 +32,7 @@ namespace BlissApp
             try
             {
          
+                Routing.RegisterRoute(nameof(VideoPage), typeof(VideoPage));        
                 Routing.RegisterRoute(nameof(CartItemsPage), typeof(CartItemsPage));        
                 Routing.RegisterRoute(nameof(AddToCartPage), typeof(AddToCartPage));
                 Routing.RegisterRoute(nameof(OrderMedicinePage), typeof(OrderMedicinePage));

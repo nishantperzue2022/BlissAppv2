@@ -10,5 +10,8 @@ public partial class ContactUsPage : ContentPage
 
 		BindingContext = vm;
 
+
+        Application.Current.UserAppTheme = AppTheme.Light;
+
     }
 }

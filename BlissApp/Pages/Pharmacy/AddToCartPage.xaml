@@ -24,8 +24,6 @@
                 Text="{Binding MedicineDTO.Name}"
                 VerticalOptions="Start" />
 
-
-
             <Grid
                 Margin="0,10,0,0"
                 ColumnDefinitions="*,*"
@@ -74,15 +72,16 @@
                         MaxDropDownHeight="300"
                         SelectedItem="{Binding SelectedItem}"
                         Stroke="{StaticResource Tertiary}">
-                        <editors:SfComboBox.ItemTemplate>
+                        <!--<editors:SfComboBox.ItemTemplate>
                             <DataTemplate>
                                 <Label
                                     Margin="10,5,5,5"
                                     FontSize="13"
                                     Text="{Binding .}"
+                                    TextColor="Black"
                                     VerticalOptions="Center" />
                             </DataTemplate>
-                        </editors:SfComboBox.ItemTemplate>
+                        </editors:SfComboBox.ItemTemplate>-->
                     </editors:SfComboBox>
                     <sfCore:SfTextInputLayout.HintLabelStyle>
                         <sfCore:LabelStyle FontSize="24" />
@@ -163,15 +162,16 @@
                 Placeholder="Location"
                 SelectedItem="{Binding SelectedPickup}"
                 Stroke="{StaticResource Tertiary}">
-                <editors:SfComboBox.ItemTemplate>
+                <!--<editors:SfComboBox.ItemTemplate>
                     <DataTemplate>
                         <Label
                             Margin="10,5,5,5"
                             FontSize="13"
                             Text="{Binding Location}"
+                            TextColor="Black"
                             VerticalOptions="Center" />
                     </DataTemplate>
-                </editors:SfComboBox.ItemTemplate>
+                </editors:SfComboBox.ItemTemplate>-->
             </editors:SfComboBox>
         </VerticalStackLayout>
 
