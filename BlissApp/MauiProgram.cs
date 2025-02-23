@@ -31,6 +31,7 @@ using BlissApp.Pages.Pharmacy;
 using BlissApp.Controls;
 using BlissApp.BLL.OrderModule;
 using BlissApp.BLL.MedicineModule;
+using BlissApp.BLL.ConsultationModule;
 namespace BlissApp
 {
     public static class MauiProgram
@@ -84,9 +85,11 @@ namespace BlissApp
             builder.Services.AddTransient<IDepartmentRepository, DepartmentRepository>();
             builder.Services.AddTransient<IOrderRepository, OrderRepository>();
             builder.Services.AddTransient<IMedicineRepository, MedicineRepository>();
+            builder.Services.AddTransient<IConsultationRepository, ConsultationRepository>();
 
             //Pages
   
+            builder.Services.AddTransient<BookAppointmentPage>();
             builder.Services.AddTransient<VideoPage>();
             builder.Services.AddTransient<SuccessPage>();
             builder.Services.AddTransient<DependantPage>();
@@ -133,6 +136,7 @@ namespace BlissApp
             builder.Services.AddTransient<HospitalPage>();
             builder.Services.AddTransient<AddToCartPage>();
             //view models
+            builder.Services.AddTransient<ConsultationViewModel>();
             builder.Services.AddTransient<CartViewModel>();
             builder.Services.AddTransient<AlertViewModel>();
             builder.Services.AddTransient<AccountViewModel>();

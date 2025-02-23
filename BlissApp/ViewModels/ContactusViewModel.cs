@@ -10,7 +10,7 @@ namespace BlissApp.ViewModels
 {
     public partial class ContactusViewModel : BaseViewModel
     {
-
+        
         [ObservableProperty]
         public string _maklLink;
 

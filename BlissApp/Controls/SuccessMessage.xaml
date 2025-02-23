@@ -9,50 +9,49 @@
 
 
 
-    <Frame
-        Margin="20"
+
+
+    <VerticalStackLayout
+        Margin="10"
         Padding="10"
-        BorderColor="{StaticResource AppGreenColor}"
-        CornerRadius="20">
+        Background="White"
+        BackgroundColor="White">
 
-        <VerticalStackLayout>
+        <Image
+            Margin="10"
+            Aspect="AspectFit"
+            HeightRequest="68"
+            Source="success.png"
+            WidthRequest="68" />
+        <Label
+            x:Name="lblMessage"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            Text="Your account has been registered successfully Your account has been registered successfully Your account has been registered successfully"
+            VerticalOptions="Center" />
 
-            <Image
-                Margin="10"
-                Aspect="AspectFit"
-                HeightRequest="75"
-                Source="success.png"
-                WidthRequest="75" />
-            <Label
-                x:Name="lblMessage"
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                Text="Your account has been registered successfully Your account has been registered successfully Your account has been registered successfully"
-                VerticalOptions="Center" />
+        <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+            <Button
+                x:Name="btnCancel"
+                BackgroundColor="{StaticResource AppGreenColor}"
+                BorderColor="{StaticResource AppGreenColor}"
+                BorderWidth="2"
+                Clicked="btnCancel_Clicked"
+                FontAttributes="Bold"
+                Text="Cancel"
+                TextColor="White" />
 
-            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                <Button
-                    x:Name="btnCancel"
-                    BackgroundColor="{StaticResource AppGreenColor}"
-                    BorderColor="{StaticResource AppGreenColor}"
-                    BorderWidth="2"
-                    Clicked="btnCancel_Clicked"
-                    FontAttributes="Bold"
-                    Text="Cancel"
-                    TextColor="White" />
-
-                <Button
-                    x:Name="btnOk"
-                    BackgroundColor="{StaticResource AppGreenColor}"
-                    BorderColor="{StaticResource AppGreenColor}"
-                    BorderWidth="2"
-                    Clicked="btnOk_Clicked"
-                    FontAttributes="Bold"
-                    Text="Ok"
-                    TextColor="White" />
-            </HorizontalStackLayout>
-        </VerticalStackLayout>
-    </Frame>
+            <Button
+                x:Name="btnOk"
+                BackgroundColor="{StaticResource AppGreenColor}"
+                BorderColor="{StaticResource AppGreenColor}"
+                BorderWidth="2"
+                Clicked="btnOk_Clicked"
+                FontAttributes="Bold"
+                Text="Ok"
+                TextColor="White" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
 
 
 </toolkit:Popup>

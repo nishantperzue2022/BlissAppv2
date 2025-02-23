@@ -342,7 +342,7 @@ namespace BlissApp.ViewModels
 
                 if (response == true)
                 {
-                    await Application.Current.MainPage?.ShowPopupAsync(new SuccessMessage("Success", "Item has been successfuly removed from your cart"));
+                    await Application.Current.MainPage?.ShowPopupAsync(new SuccessMessage("Success", "Item has been successfully removed from your cart"));
 
                     if (ListOfOrders?.Count() != 0)
                     {
@@ -388,7 +388,7 @@ namespace BlissApp.ViewModels
 
                 if (response == true)
                 {
-                    await Application.Current.MainPage?.ShowPopupAsync(new SuccessMessage("Success", "Item has been successfuly removed from your cart"));
+                    await Application.Current.MainPage?.ShowPopupAsync(new SuccessMessage("Success", "Item has been successfully removed from your cart"));
 
                     IsBusy = false;
 

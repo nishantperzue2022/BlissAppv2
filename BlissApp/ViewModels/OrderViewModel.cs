@@ -87,7 +87,7 @@ namespace BlissApp.ViewModels
 
             //await Shell.Current.GoToAsync($"AddToCartPage", navigationParameter);
 
-            //var s = "Order has been successfuly submitted";
+            //var s = "Order has been successfully submitted";
 
             //await Shell.Current.GoToAsync($"{nameof(AddToCartPage)}?Text={s}", animate: true);
 
@@ -375,7 +375,7 @@ namespace BlissApp.ViewModels
 
                 if (response == true)
                 {
-                    await Application.Current.MainPage?.ShowPopupAsync(new SuccessMessage("Success", "Item has been successfuly removed from your cart"));
+                    await Application.Current.MainPage?.ShowPopupAsync(new SuccessMessage("Success", "Item has been successfully removed from your cart"));
 
                     if (ListOfOrders?.Count() != 0)
                     {
@@ -423,7 +423,7 @@ namespace BlissApp.ViewModels
                 {
                     await GetOrders();
 
-                    await Application.Current.MainPage?.ShowPopupAsync(new SuccessMessage("Success", "Item has been successfuly removed from your cart"));
+                    await Application.Current.MainPage?.ShowPopupAsync(new SuccessMessage("Success", "Item has been successfully removed from your cart"));
                     
                 }
                 else
@@ -603,7 +603,7 @@ namespace BlissApp.ViewModels
                 if (response == true)
                 {
 
-                    var s = "Order has been successfuly submitted";
+                    var s = "Order has been successfully submitted";
 
                     await Shell.Current.GoToAsync($"{nameof(SuccessPage)}?Text={s}", animate: true);
 

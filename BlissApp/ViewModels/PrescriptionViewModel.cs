@@ -6,6 +6,7 @@ using BlissApp.Control;
 using BlissApp.Controls;
 using BlissApp.DTO.AuthenticationModule;
 using BlissApp.DTO.MedicalCentres;
+using BlissApp.DTO.MedicineModule;
 using BlissApp.Pages.Pharmacy;
 using BlissApp.Utility;
 using CommunityToolkit.Maui.Views;
@@ -243,7 +244,7 @@ namespace BlissApp.ViewModels
                         {
                             PhotoPaths.Clear();                 
 
-                            var s = "Prescription has been successfuly submitted";
+                            var s = "Prescription has been successfully submitted";
 
 
                             await Shell.Current.GoToAsync($"{nameof(SuccessPage)}?Text={s}", animate: true);
@@ -394,7 +395,19 @@ namespace BlissApp.ViewModels
         {
             try
             {
-                await Shell.Current.GoToAsync(nameof(BookAppointmentPage), animate: true);
+                //await Shell.Current.GoToAsync(nameof(BookAppointmentPage), animate: true);
+
+
+                var data = new Dictionary<string, object>
+                {
+                        { "Listofmedicalcentre", listofmedicalcentre }
+            };
+
+                await Shell.Current.GoToAsync($"BookAppointmentPage", data);
+
+
+
+
 
                 return;
             }

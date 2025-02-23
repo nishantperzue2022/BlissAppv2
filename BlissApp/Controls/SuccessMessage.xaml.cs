@@ -10,6 +10,9 @@ public partial class SuccessMessage : Popup
         InitializeComponent();
 
     }
+
+
+
     public SuccessMessage(string title, string message, string okButtonText = "Ok", string cancelButtonText = "Cancel", bool isInfoPopup = true)
     {
         InitializeComponent();  
