@@ -9,34 +9,37 @@
     Shell.ForegroundColor="Black"
     Shell.TitleColor="Black">
 
-    <StackLayout Margin="15" BackgroundColor="Transparent">
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Image
-                Grid.Row="0"
-                Aspect="AspectFill"
-                HorizontalOptions="Fill"
-                Source="{Binding Image}"
-                VerticalOptions="Fill" />
-            <Label
-                x:Name="txtConsulation"
-                Grid.Row="2"
-                Margin="20,0,20,0"
-                FontSize="14"
-                HorizontalTextAlignment="Center"
-                Style="{StaticResource LabelLight}"
-                Text="{Binding ConsultationDescription}"
-                TextColor="{StaticResource Black}"
-                TextType="Text" />
 
-        </Grid>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Image
+            Grid.Row="0"
+            Aspect="AspectFill"
+            HorizontalOptions="Fill"
+            Source="{Binding Image}"
+            VerticalOptions="Fill" />
+        <Label
+            x:Name="txtConsulation"
+            Grid.Row="2"
+            Margin="20,0,20,0"
+            FontSize="14"
+            HorizontalTextAlignment="Center"
+            Style="{StaticResource LabelLight}"
+            Text="{Binding ConsultationDescription}"
+            TextColor="{StaticResource Black}"
+            TextType="Text" />
 
-        <VerticalStackLayout Grid.Row="3" VerticalOptions="End">
+
+
+        <VerticalStackLayout
+            Grid.Row="3"
+            Margin="15"
+            VerticalOptions="End">
             <ActivityIndicator
                 HorizontalOptions="Center"
                 IsRunning="{Binding IsBusy}"
@@ -53,7 +56,8 @@
                 VerticalOptions="Start" />
 
         </VerticalStackLayout>
-    </StackLayout>
+    </Grid>
+
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior Command="{Binding GetConsultationCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>

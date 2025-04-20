@@ -1,5 +1,4 @@
 using BlissApp.ViewModels;
-
 namespace BlissApp.Pages.Account;
 
 public partial class OTPVerifyEmailPage : ContentPage

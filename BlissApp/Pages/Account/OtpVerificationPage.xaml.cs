@@ -33,15 +33,6 @@ public partial class OtpVerificationPage : ContentPage
         base.OnAppearing();
     }   
     
-    protected  void RunOTPTimer()
-    {
-        _timeLeft = 30; // Reset timer to 30 seconds
-
-        TimerLabel.Text = $"Resend code in{_timeLeft:D2}:00"; // Display timer
-
-        _otpTimer.Start(); // Start the countdown timer   
- 
-    }
 
     private void txtNo1_TextChanged(object sender, TextChangedEventArgs e)
     {
@@ -159,7 +150,30 @@ public partial class OtpVerificationPage : ContentPage
 
                 //TimerLabel.Text = "Expired"; // Indicate the OTP has expired
             });
+
+            ClearInPuts();
         }
+    }
+
+    private void ClearInPuts()
+    {
+        txtNo1.Text = string.Empty; 
+        txtNo2.Text = string.Empty; 
+        txtNo3.Text = string.Empty; 
+        txtNo4.Text = string.Empty; 
+        txtNo5.Text = string.Empty; 
+        txtNo6.Text = string.Empty;
+        txtNo1.Focus();
+    }
+
+    protected void RunOTPTimer()
+    {
+        _timeLeft = 120; // Reset timer to 30 seconds
+
+        TimerLabel.Text = $"Resend code in{_timeLeft:D2}:00"; // Display timer
+
+        _otpTimer.Start(); // Start the countdown timer   
+
     }
 
     private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)

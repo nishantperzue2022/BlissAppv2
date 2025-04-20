@@ -47,7 +47,7 @@
                 <Label
                     Grid.Column="1"
                     FontSize="18"
-                    HorizontalOptions="CenterAndExpand"
+                    HorizontalOptions="Center"
                     Style="{StaticResource LabelMedium}"
                     Text="Upload Profile  Photo"
                     VerticalOptions="Center" />

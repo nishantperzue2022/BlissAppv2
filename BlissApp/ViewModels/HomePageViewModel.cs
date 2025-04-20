@@ -147,7 +147,7 @@ namespace BlissApp.ViewModels
         {
             try
             {
-                await Shell.Current.GoToAsync(nameof(DependantPage));
+                await Shell.Current.GoToAsync(nameof(DependantPage), animate: true);
             }
             catch (Exception ex)
             {
@@ -182,7 +182,7 @@ namespace BlissApp.ViewModels
         {
             try
             {
-                await Shell.Current.GoToAsync(nameof(RequestCallbackPage));
+                await Shell.Current.GoToAsync(nameof(RequestCallbackPage), animate: true);
             }
             catch (Exception ex)
             {
@@ -199,7 +199,7 @@ namespace BlissApp.ViewModels
         {
             try
             {
-                await Shell.Current.GoToAsync(nameof(FeedbackPage));
+                await Shell.Current.GoToAsync(nameof(FeedbackPage), animate: true);
             }
             catch (Exception ex)
             {
@@ -216,7 +216,7 @@ namespace BlissApp.ViewModels
         {
             try
             {
-                await Shell.Current.GoToAsync(nameof(HospitalVisitPage));
+                await Shell.Current.GoToAsync(nameof(HospitalVisitPage), animate: true);
             }
             catch (Exception ex)
             {
@@ -233,7 +233,7 @@ namespace BlissApp.ViewModels
         {
             try
             {
-                await Shell.Current.GoToAsync(nameof(MedicalCentrePage));
+                await Shell.Current.GoToAsync(nameof(MedicalCentrePage), animate: true);
             }
             catch (Exception ex)
             {
@@ -250,7 +250,7 @@ namespace BlissApp.ViewModels
         {
             try
             {
-                await Shell.Current.GoToAsync(nameof(ContactUsPage));
+                await Shell.Current.GoToAsync(nameof(ContactUsPage), animate: true);
             }
             catch (Exception ex)
             {
@@ -267,7 +267,7 @@ namespace BlissApp.ViewModels
         {
             try
             {
-                await Shell.Current.GoToAsync(nameof(AppointmentPage));
+                await Shell.Current.GoToAsync(nameof(AppointmentPage), animate: true);
             }
             catch (Exception ex)
             {
@@ -284,7 +284,7 @@ namespace BlissApp.ViewModels
         {
             try
             {
-                await Shell.Current.GoToAsync(nameof(DentalPage));
+                await Shell.Current.GoToAsync(nameof(DentalPage), animate: true);
             }
             catch (Exception ex)
             {
@@ -301,7 +301,7 @@ namespace BlissApp.ViewModels
         {
             try
             {
-                await Shell.Current.GoToAsync(nameof(ConsultationPage));
+                await Shell.Current.GoToAsync(nameof(ConsultationPage), animate: true);
             }
             catch (Exception ex)
             {
@@ -318,7 +318,7 @@ namespace BlissApp.ViewModels
         {
             try
             {
-                await Shell.Current.GoToAsync(nameof(DawaPage));
+                await Shell.Current.GoToAsync(nameof(DawaPage), animate: true);
             }
             catch (Exception ex)
             {
@@ -335,7 +335,7 @@ namespace BlissApp.ViewModels
         {
             try
             {
-                await Shell.Current.GoToAsync(nameof(PharmacyPage));
+                await Shell.Current.GoToAsync(nameof(PharmacyPage), animate: true);
             }
             catch (Exception ex)
             {
@@ -352,7 +352,7 @@ namespace BlissApp.ViewModels
         {
             try
             {
-                await Shell.Current.GoToAsync(nameof(LaboratoryPage));
+                await Shell.Current.GoToAsync(nameof(LaboratoryPage), animate: true);
             }
             catch (Exception ex)
             {
@@ -369,7 +369,7 @@ namespace BlissApp.ViewModels
         {
             try
             {
-                await Shell.Current.GoToAsync(nameof(OpticalPage));
+                await Shell.Current.GoToAsync(nameof(OpticalPage), animate: true);
             }
             catch (Exception ex)
             {
@@ -386,7 +386,25 @@ namespace BlissApp.ViewModels
         {
             try
             {
-                await Shell.Current.GoToAsync(nameof(XrayPage));
+                await Shell.Current.GoToAsync(nameof(XrayPage), animate: true);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
+                await Application.Current.MainPage?.ShowPopupAsync(new ErrorMessage("Warning", "Unable to view details ,please try again"));
+
+                return;
+            }
+        }     
+        
+        
+        [RelayCommand]
+        public async Task NavigateToRadiology()
+        {
+            try
+            {
+                await Shell.Current.GoToAsync(nameof(Radiology),animate:true);
             }
             catch (Exception ex)
             {

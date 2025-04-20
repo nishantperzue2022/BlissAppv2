@@ -297,9 +297,6 @@ namespace BlissApp.ViewModels
                         }
                     }
                 }
-
-
-
             }
             catch (Exception ex)
             {
@@ -311,9 +308,6 @@ namespace BlissApp.ViewModels
             }
 
         }
-
-
-
 
         [RelayCommand]
         public async Task GetOrders()
@@ -375,7 +369,7 @@ namespace BlissApp.ViewModels
 
                 if (response == true)
                 {
-                    await Application.Current.MainPage?.ShowPopupAsync(new SuccessMessage("Success", "Item has been successfully removed from your cart"));
+                    await Application.Current.MainPage.ShowPopupAsync(new SuccessMessage("Success", "Item has been successfully removed from your cart"));
 
                     if (ListOfOrders?.Count() != 0)
                     {

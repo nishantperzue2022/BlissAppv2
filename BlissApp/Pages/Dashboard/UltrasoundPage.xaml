@@ -8,48 +8,51 @@
     Shell.BackgroundColor="White"
     Shell.ForegroundColor="Black"
     Shell.TitleColor="Black">
-    <StackLayout Margin="15" BackgroundColor="Transparent">
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Image
-                Grid.Row="0"
-                Aspect="AspectFill"
-                HorizontalOptions="Fill"
-                Source="{Binding Image}"
-                VerticalOptions="Fill" />
-            <Label
-                x:Name="txtConsulation"
-                Grid.Row="2"
-                Margin="20,0,20,0"
-                FontSize="14"
-                HorizontalTextAlignment="Center"
-                Style="{StaticResource LabelLight}"
-                Text="{Binding UltrasoundDescription}"
-                TextColor="{StaticResource Black}"
-                TextType="Text" />
-        </Grid>
-        <VerticalStackLayout Grid.Row="3" VerticalOptions="End">
+
+
+    <Grid RowDefinitions="*,*,*">
+
+        <Image
+            Grid.Row="0"
+            Aspect="AspectFill"
+            HorizontalOptions="Fill"
+            Source="{Binding Image}"
+            VerticalOptions="Fill" />
+        <Label
+            x:Name="txtConsulation"
+            Grid.Row="2"
+            Margin="20,0,20,0"
+            FontSize="14"
+            HorizontalTextAlignment="Center"
+            Style="{StaticResource LabelLight}"
+            Text="{Binding UltrasoundDescription}"
+            TextColor="{StaticResource Black}"
+            TextType="Text" />
+
+        <VerticalStackLayout Grid.Row="1">
             <ActivityIndicator
                 HorizontalOptions="Center"
                 IsRunning="{Binding IsBusy}"
                 IsVisible="{Binding IsBusy}"
                 VerticalOptions="Center"
                 Color="{StaticResource Primary}" />
+            <Entry IsVisible="False" Text="{Binding AppointmentType}" />
+
+
+        </VerticalStackLayout>
+        <VerticalStackLayout
+            Grid.Row="2"
+            Margin="15"
+            VerticalOptions="End">
             <Button
-                Margin="0,10,0,0"
                 Command="{Binding RequestAppointmentCommand}"
-                HorizontalOptions="Fill"
                 Style="{StaticResource BaseButton}"
                 Text="Request an Appointment"
-                TextColor="White"
-                VerticalOptions="Start" />
+                TextColor="White" />
         </VerticalStackLayout>
-    </StackLayout>
+
+    </Grid>
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior Command="{Binding GetUltrasoundCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>

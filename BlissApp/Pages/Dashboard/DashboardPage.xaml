@@ -358,7 +358,7 @@
                                     Text="Radiology" />
                             </Grid>
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding X_RayCommand}" />
+                                <TapGestureRecognizer Command="{Binding NavigateToRadiologyCommand}" />
                             </Frame.GestureRecognizers>
                         </Frame>
 

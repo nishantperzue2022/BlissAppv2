@@ -12,7 +12,7 @@
         CornerRadius="20"
         HeightRequest="300"
         HorizontalOptions="Center"
-        VerticalOptions="CenterAndExpand">
+        VerticalOptions="Center">
         <VerticalStackLayout Spacing="10">
 
 
@@ -29,7 +29,7 @@
                 HorizontalOptions="Center"
                 Text="Enable Location Services"
                 TextColor="Black"
-                VerticalOptions="CenterAndExpand" />
+                VerticalOptions="Center" />
 
             <Label
                 x:Name="lblMessage"
@@ -50,7 +50,7 @@
                     HorizontalOptions="Center"
                     Text="Ok"
                     TextColor="White"
-                    VerticalOptions="CenterAndExpand"
+                    VerticalOptions="Center"
                     WidthRequest="300" />
 
             </HorizontalStackLayout>

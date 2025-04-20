@@ -12,7 +12,7 @@
         Margin="10"
         CornerRadius="20"
         HorizontalOptions="Center"
-        VerticalOptions="CenterAndExpand">
+        VerticalOptions="Center">
 
         <StackLayout Spacing="10">
             <Grid ColumnDefinitions="*,*" RowDefinitions="*">
@@ -51,7 +51,7 @@
                 HorizontalOptions="Center"
                 IsRunning="{Binding IsBusy}"
                 IsVisible="{Binding IsBusy}"
-                VerticalOptions="CenterAndExpand"
+                VerticalOptions="Center"
                 Color="{StaticResource Primary}" />
         </StackLayout>
     </Frame>

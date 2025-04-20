@@ -90,6 +90,7 @@ namespace BlissApp
                 Routing.RegisterRoute(nameof(XrayPage), typeof(XrayPage));
                 Routing.RegisterRoute(nameof(AppointmentDetailsPage), typeof(AppointmentDetailsPage));
                 Routing.RegisterRoute(nameof(UploadPrescriptionPage), typeof(UploadPrescriptionPage));
+                Routing.RegisterRoute(nameof(PrescriptionPage), typeof(PrescriptionPage));
 
 
 

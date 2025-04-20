@@ -1,6 +1,7 @@
 ﻿using BlissApp.Control;
 using BlissApp.Pages.Appointment;
 using BlissApp.Pages.Dashboard;
+using BlissApp.Pages.Pharmacy;
 using BlissApp.Services;
 using BlissApp.Utility;
 using CommunityToolkit.Maui.Views;
@@ -55,6 +56,10 @@ namespace BlissApp.ViewModels
 
         private string Dawa_data = OurServices.Dawa().ToString();
 
+        private string Ultrasounds_data = OurServices.Ultrasounds().ToString();
+
+        private string MinorSurgery_data = OurServices.MinorSurgery().ToString();
+
         [RelayCommand]
         public void GetOptical()
         {
@@ -97,12 +102,12 @@ namespace BlissApp.ViewModels
             PharmacyDescription = Pharmacy_data;
         }
 
-        //[RelayCommand]
-        //public void GetUltrasound()
-        //{
-        //    Image = "Ultrasound1";
-        //    UltrasoundDescription = Ultrasound_data;
-        //}
+        [RelayCommand]
+        public void GetUltrasound()
+        {
+            Image = "Ultrasound1";
+            UltrasoundDescription = Ultrasounds_data;
+        }
 
         [RelayCommand]
         public void GetXray()
@@ -125,7 +130,7 @@ namespace BlissApp.ViewModels
 
                 Preferences.Default.Set("AppointmentType", AppointmentType);
 
-                await Shell.Current.GoToAsync(nameof(AppointmentPage));
+                await Shell.Current.GoToAsync(nameof(AppointmentPage), animate: true);
             }
             catch (Exception ex)
             {
@@ -152,7 +157,34 @@ namespace BlissApp.ViewModels
                 }
                 IsBusy = true;
 
-                await Shell.Current.GoToAsync(nameof(XrayPage));
+                await Shell.Current.GoToAsync(nameof(XrayPage),animate:true);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
+                await Application.Current.MainPage?.ShowPopupAsync(new ErrorMessage("Warning", "Unable to process your request ,please try again"));
+
+                return;
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }      
+        
+        [RelayCommand]
+        public async Task NavigateToPharmacy()
+        {
+            try
+            {
+                if (IsBusy)
+                {
+                    return;
+                }
+                IsBusy = true;
+
+                await Shell.Current.GoToAsync(nameof(PrescriptionPage),animate:true);
             }
             catch (Exception ex)
             {
@@ -179,7 +211,7 @@ namespace BlissApp.ViewModels
                 }
                 IsBusy = true;
 
-                await Shell.Current.GoToAsync(nameof(UltrasoundPage));
+                await Shell.Current.GoToAsync(nameof(UltrasoundPage), animate: true);
             }
             catch (Exception ex)
             {

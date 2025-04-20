@@ -15,12 +15,12 @@
     <Grid RowDefinitions="*,Auto">
         <CarouselView
             Grid.Row="0"
-            HorizontalOptions="FillAndExpand"
+            HorizontalOptions="Fill"
             IndicatorView="indicatorView"
             ItemsSource="{Binding OnboardingSteps}"
             Loop="False"
             PositionChanged="CarouselView_PositionChanged"
-            VerticalOptions="FillAndExpand">
+            VerticalOptions="Fill">
             <CarouselView.ItemTemplate>
                 <DataTemplate x:DataType="vm:OnboardingModel">
                     <StackLayout BackgroundColor="Transparent">
@@ -33,9 +33,9 @@
                             <Image
                                 Grid.Row="0"
                                 Aspect="AspectFill"
-                                HorizontalOptions="FillAndExpand"
+                                HorizontalOptions="Fill"
                                 Source="{Binding Image}"
-                                VerticalOptions="FillAndExpand" />
+                                VerticalOptions="Fill" />
                             <Label
                                 Grid.Row="1"
                                 Margin="0,70,0,0"

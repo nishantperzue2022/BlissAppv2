@@ -10,70 +10,68 @@
     Shell.TitleColor="Black">
     <ScrollView>
 
+        <Grid
+            Margin="20,5,20,0"
+            RowDefinitions="*,*,*"
+            RowSpacing="5">
+            <Border Grid.Row="0" Stroke="#fff">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
+                <Grid Padding="10" RowDefinitions="Auto,Auto">
+                    <Border
+                        Grid.Row="0"
+                        Margin="0,-5,0,0"
+                        HorizontalOptions="Center"
+                        StrokeShape="RoundRectangle 10,10,10,10"
+                        StrokeThickness="1">
+                        <Image
+                            Aspect="Fill"
+                            HorizontalOptions="Center"
+                            Source="x_ray"
+                            VerticalOptions="Center" />
+                    </Border>
+                    <Label
+                        Grid.Row="1"
+                        FontSize="15"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource LabelBold}"
+                        Text="X-Ray" />
+                </Grid>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding XrayCommand}" />
+                </Border.GestureRecognizers>
+            </Border>
+            <Border Grid.Row="1" Stroke="#fff">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
+                <Grid Padding="10" RowDefinitions="Auto,Auto">
+                    <Border
+                        Grid.Row="0"
+                        Margin="0,-5,0,0"
+                        HorizontalOptions="Center"
+                        StrokeShape="RoundRectangle 10,10,10,10"
+                        StrokeThickness="1">
+                        <Image
+                            Aspect="Fill"
+                            HorizontalOptions="Center"
+                            Source="Ultrasound"
+                            VerticalOptions="Center" />
+                    </Border>
+                    <Label
+                        Grid.Row="1"
+                        FontSize="15"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource LabelBold}"
+                        Text="Ultrasound" />
+                </Grid>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding UltrasoundCommand}" />
+                </Border.GestureRecognizers>
+            </Border>
 
-        <StackLayout BackgroundColor="#F0F0F0">
-            <Grid
-                Margin="20,5,20,0"
-                RowDefinitions="*,*"
-                RowSpacing="5">
-                <Border Grid.Row="0" Stroke="#fff">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="10" />
-                    </Border.StrokeShape>
-                    <Grid Padding="10" RowDefinitions="Auto,Auto">
-                        <Border
-                            Grid.Row="0"
-                            Margin="0,-5,0,0"
-                            HorizontalOptions="Center"
-                            StrokeShape="RoundRectangle 10,10,10,10"
-                            StrokeThickness="1">
-                            <Image
-                                Aspect="Fill"
-                                HorizontalOptions="Center"
-                                Source="x_ray"
-                                VerticalOptions="Center" />
-                        </Border>
-                        <Label
-                            Grid.Row="1"
-                            FontSize="15"
-                            HorizontalOptions="Start"
-                            Style="{StaticResource LabelBold}"
-                            Text="X-Ray" />
-                    </Grid>
-                    <Border.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding XrayCommand}" />
-                    </Border.GestureRecognizers>
-                </Border>
-                <Border Grid.Row="1" Stroke="#fff">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="10" />
-                    </Border.StrokeShape>
-                    <Grid Padding="10" RowDefinitions="Auto,Auto">
-                        <Border
-                            Grid.Row="0"
-                            Margin="0,-5,0,0"
-                            HorizontalOptions="Center"
-                            StrokeShape="RoundRectangle 10,10,10,10"
-                            StrokeThickness="1">
-                            <Image
-                                Aspect="Fill"
-                                HorizontalOptions="Center"
-                                Source="Ultrasound"
-                                VerticalOptions="Center" />
-                        </Border>
-                        <Label
-                            Grid.Row="1"
-                            FontSize="15"
-                            HorizontalOptions="Start"
-                            Style="{StaticResource LabelBold}"
-                            Text="Ultrasound" />
-                    </Grid>
-                    <Border.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding UltrasoundCommand}" />
-                    </Border.GestureRecognizers>
-                </Border>
-            </Grid>
-            <!--<VerticalStackLayout Grid.Row="3" VerticalOptions="End">
+            <VerticalStackLayout Grid.Row="2" VerticalOptions="End">
                 <ActivityIndicator
                     HorizontalOptions="Center"
                     IsRunning="{Binding IsBusy}"
@@ -88,8 +86,10 @@
                     Text="Request an Appointment"
                     TextColor="White"
                     VerticalOptions="Start" />
-            </VerticalStackLayout>-->
-        </StackLayout>
+
+            </VerticalStackLayout>
+        </Grid>
+
     </ScrollView>
 
 </ContentPage>

@@ -285,7 +285,7 @@
     </Style>
 
     <Style x:Key="StackLayoutLoginWith" TargetType="StackLayout">
-        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+        <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="Orientation" Value="Horizontal" />
         <Setter Property="Spacing" Value="10" />
         <Setter Property="VerticalOptions" Value="Fill" />

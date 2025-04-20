@@ -127,7 +127,7 @@ public partial class OtpVerificationForgotPassword : ContentPage
 
     protected void RunOTPTimer()
     {
-        _timeLeft = 30; // Reset timer to 30 seconds
+        _timeLeft = 120; // Reset timer to 30 seconds
 
         TimerLabel.Text = $"Resend code in{_timeLeft:D2}:00"; // Display timer
 

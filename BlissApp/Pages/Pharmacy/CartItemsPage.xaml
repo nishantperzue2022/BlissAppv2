@@ -74,6 +74,7 @@
                                     Grid.Column="2"
                                     HeightRequest="25"
                                     HorizontalOptions="End"
+                                    IsEnabled="False"
                                     VerticalOptions="Center"
                                     WidthRequest="25">
                                     <Image.Source>

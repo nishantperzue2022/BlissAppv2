@@ -8,6 +8,7 @@ using BlissApp.DTO.AuthenticationModule;
 using BlissApp.DTO.MedicalCentres;
 using BlissApp.DTO.MedicineModule;
 using BlissApp.Pages.Pharmacy;
+using BlissApp.Services;
 using BlissApp.Utility;
 using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -20,6 +21,9 @@ namespace BlissApp.ViewModels
 {
     public partial class PrescriptionViewModel : BaseViewModel
     {
+
+
+
         public ObservableCollection<Listofmedicalcentre> ListOfMedicalCentre { get; set; } = new();
 
         private List<ImageItem> photoPaths = new List<ImageItem>();
@@ -47,10 +51,15 @@ namespace BlissApp.ViewModels
         public PrescriptionViewModel()
         {
 
+
+
             CountFile = "No prescription has been uploaded";
 
             PhotoPaths.Clear();
         }
+
+
+
 
         [RelayCommand]
         public Task ClearList()
@@ -468,7 +477,6 @@ namespace BlissApp.ViewModels
                     return;
                 }
 
-
                 var data = (await medicalCenteRepository.GetMedicalcentre()).Item2;
 
                 if (data != null)
@@ -503,6 +511,17 @@ namespace BlissApp.ViewModels
                 IsRefreshing = false;
             }
         }
+
+
+
+
+
+
+
+
+
+
+
     }
 }
 public class ImageItem

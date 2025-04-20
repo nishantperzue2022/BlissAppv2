@@ -1,4 +1,6 @@
 ﻿using Android.Locations;
+using Java.Time;
+using static AndroidX.Core.Location.LocationRequestCompat;
 
 namespace BlissApp.Services
 {
@@ -52,6 +54,26 @@ namespace BlissApp.Services
         "patients manage these conditions efficiently.";
         }
 
+        public static string Ultrasounds()
+        {
+            return
+
+        "Bliss Healthcare in " +
+                "Kenya excels in providing top-tier ultrasound services, " +
+                "utilizing the latest technology to produce high-quality images for accurate diagnosis. " +
+                "We offer a comprehensive range of ultrasound services, such as obstetric, abdominal, pelvic," +
+                "breast, and thyroid ultrasounds.";
+        }     
+        
+        
+        public static string MinorSurgery
+()
+        {
+
+            return
+
+        "At Bliss Healthcare, we provide specialized care for minor surgeries, prioritizing your comfort and smooth recovery with top-quality support.";
+        }
 
 
 

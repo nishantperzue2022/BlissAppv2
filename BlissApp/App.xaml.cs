@@ -16,7 +16,7 @@ namespace BlissApp
 
             Current.UserAppTheme = AppTheme.Light;
 
-            //Preferences.Clear();
+            Preferences.Clear();
 
             bool hasKey = Preferences.Default.ContainsKey("FamilyMemberId");
 
